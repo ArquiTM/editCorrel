@@ -35,11 +35,13 @@
             this.NewOffset = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxNames = new System.Windows.Forms.GroupBox();
             this.labelName = new System.Windows.Forms.Label();
-            this.buttonView = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonView = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBoxTxt = new System.Windows.Forms.GroupBox();
             this.buttonImportNewValues = new System.Windows.Forms.Button();
+            this.textBoxTxtName = new System.Windows.Forms.TextBox();
+            this.labelTxtName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).BeginInit();
             this.groupBoxNames.SuspendLayout();
             this.groupBoxTxt.SuspendLayout();
@@ -105,15 +107,6 @@
             this.labelName.TabIndex = 1;
             this.labelName.Text = "Name";
             // 
-            // buttonView
-            // 
-            this.buttonView.Location = new System.Drawing.Point(260, 19);
-            this.buttonView.Name = "buttonView";
-            this.buttonView.Size = new System.Drawing.Size(75, 23);
-            this.buttonView.TabIndex = 2;
-            this.buttonView.Text = "View";
-            this.buttonView.UseVisualStyleBackColor = true;
-            // 
             // buttonDelete
             // 
             this.buttonDelete.Location = new System.Drawing.Point(260, 49);
@@ -123,9 +116,18 @@
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
             // 
+            // buttonView
+            // 
+            this.buttonView.Location = new System.Drawing.Point(260, 19);
+            this.buttonView.Name = "buttonView";
+            this.buttonView.Size = new System.Drawing.Size(75, 23);
+            this.buttonView.TabIndex = 2;
+            this.buttonView.Text = "View";
+            this.buttonView.UseVisualStyleBackColor = true;
+            // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(33, 624);
+            this.buttonSave.Location = new System.Drawing.Point(2, 624);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 3;
@@ -134,23 +136,41 @@
             // 
             // groupBoxTxt
             // 
+            this.groupBoxTxt.Controls.Add(this.labelTxtName);
+            this.groupBoxTxt.Controls.Add(this.textBoxTxtName);
             this.groupBoxTxt.Controls.Add(this.buttonImportNewValues);
             this.groupBoxTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxTxt.Location = new System.Drawing.Point(2, 136);
             this.groupBoxTxt.Name = "groupBoxTxt";
-            this.groupBoxTxt.Size = new System.Drawing.Size(339, 76);
+            this.groupBoxTxt.Size = new System.Drawing.Size(339, 89);
             this.groupBoxTxt.TabIndex = 4;
             this.groupBoxTxt.TabStop = false;
             this.groupBoxTxt.Text = "New Values";
             // 
             // buttonImportNewValues
             // 
-            this.buttonImportNewValues.Location = new System.Drawing.Point(258, 35);
+            this.buttonImportNewValues.Location = new System.Drawing.Point(260, 49);
             this.buttonImportNewValues.Name = "buttonImportNewValues";
             this.buttonImportNewValues.Size = new System.Drawing.Size(75, 23);
             this.buttonImportNewValues.TabIndex = 0;
             this.buttonImportNewValues.Text = "Import";
             this.buttonImportNewValues.UseVisualStyleBackColor = true;
+            // 
+            // textBoxTxtName
+            // 
+            this.textBoxTxtName.Location = new System.Drawing.Point(6, 50);
+            this.textBoxTxtName.Name = "textBoxTxtName";
+            this.textBoxTxtName.Size = new System.Drawing.Size(244, 22);
+            this.textBoxTxtName.TabIndex = 1;
+            // 
+            // labelTxtName
+            // 
+            this.labelTxtName.AutoSize = true;
+            this.labelTxtName.Location = new System.Drawing.Point(6, 31);
+            this.labelTxtName.Name = "labelTxtName";
+            this.labelTxtName.Size = new System.Drawing.Size(45, 16);
+            this.labelTxtName.TabIndex = 2;
+            this.labelTxtName.Text = "Name";
             // 
             // formMain
             // 
@@ -170,6 +190,7 @@
             this.groupBoxNames.ResumeLayout(false);
             this.groupBoxNames.PerformLayout();
             this.groupBoxTxt.ResumeLayout(false);
+            this.groupBoxTxt.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -188,6 +209,8 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.GroupBox groupBoxTxt;
         private System.Windows.Forms.Button buttonImportNewValues;
+        private System.Windows.Forms.Label labelTxtName;
+        private System.Windows.Forms.TextBox textBoxTxtName;
     }
 }
 
