@@ -65,5 +65,11 @@ namespace EditCorrel
             else
                 buttonVerify.BackColor = Color.Red;
         }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (!status)
+                MessageBox.Show("Não há arquivo Correl selecionado!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
     }
 }
