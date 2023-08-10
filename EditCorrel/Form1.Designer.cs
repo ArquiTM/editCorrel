@@ -39,9 +39,10 @@
             this.buttonView = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBoxTxt = new System.Windows.Forms.GroupBox();
-            this.buttonImportNewValues = new System.Windows.Forms.Button();
-            this.textBoxTxtName = new System.Windows.Forms.TextBox();
             this.labelTxtName = new System.Windows.Forms.Label();
+            this.textBoxTxtName = new System.Windows.Forms.TextBox();
+            this.buttonImportNewValues = new System.Windows.Forms.Button();
+            this.buttonVerify = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).BeginInit();
             this.groupBoxNames.SuspendLayout();
             this.groupBoxTxt.SuspendLayout();
@@ -90,7 +91,7 @@
             this.groupBoxNames.Controls.Add(this.buttonDelete);
             this.groupBoxNames.Controls.Add(this.buttonView);
             this.groupBoxNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxNames.Location = new System.Drawing.Point(2, 12);
+            this.groupBoxNames.Location = new System.Drawing.Point(2, 160);
             this.groupBoxNames.Name = "groupBoxNames";
             this.groupBoxNames.Size = new System.Drawing.Size(339, 76);
             this.groupBoxNames.TabIndex = 2;
@@ -109,21 +110,24 @@
             // 
             // buttonDelete
             // 
+            this.buttonDelete.BackColor = System.Drawing.Color.White;
             this.buttonDelete.Location = new System.Drawing.Point(260, 49);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 3;
             this.buttonDelete.Text = "Delete";
-            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.UseVisualStyleBackColor = false;
             // 
             // buttonView
             // 
+            this.buttonView.BackColor = System.Drawing.Color.White;
             this.buttonView.Location = new System.Drawing.Point(260, 19);
             this.buttonView.Name = "buttonView";
             this.buttonView.Size = new System.Drawing.Size(75, 23);
             this.buttonView.TabIndex = 2;
             this.buttonView.Text = "View";
-            this.buttonView.UseVisualStyleBackColor = true;
+            this.buttonView.UseVisualStyleBackColor = false;
+            this.buttonView.Click += new System.EventHandler(this.buttonView_Click);
             // 
             // buttonSave
             // 
@@ -140,28 +144,12 @@
             this.groupBoxTxt.Controls.Add(this.textBoxTxtName);
             this.groupBoxTxt.Controls.Add(this.buttonImportNewValues);
             this.groupBoxTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxTxt.Location = new System.Drawing.Point(2, 136);
+            this.groupBoxTxt.Location = new System.Drawing.Point(2, 284);
             this.groupBoxTxt.Name = "groupBoxTxt";
             this.groupBoxTxt.Size = new System.Drawing.Size(339, 89);
             this.groupBoxTxt.TabIndex = 4;
             this.groupBoxTxt.TabStop = false;
             this.groupBoxTxt.Text = "New Values";
-            // 
-            // buttonImportNewValues
-            // 
-            this.buttonImportNewValues.Location = new System.Drawing.Point(260, 49);
-            this.buttonImportNewValues.Name = "buttonImportNewValues";
-            this.buttonImportNewValues.Size = new System.Drawing.Size(75, 23);
-            this.buttonImportNewValues.TabIndex = 0;
-            this.buttonImportNewValues.Text = "Import";
-            this.buttonImportNewValues.UseVisualStyleBackColor = true;
-            // 
-            // textBoxTxtName
-            // 
-            this.textBoxTxtName.Location = new System.Drawing.Point(6, 50);
-            this.textBoxTxtName.Name = "textBoxTxtName";
-            this.textBoxTxtName.Size = new System.Drawing.Size(244, 22);
-            this.textBoxTxtName.TabIndex = 1;
             // 
             // labelTxtName
             // 
@@ -172,12 +160,42 @@
             this.labelTxtName.TabIndex = 2;
             this.labelTxtName.Text = "Name";
             // 
+            // textBoxTxtName
+            // 
+            this.textBoxTxtName.Location = new System.Drawing.Point(6, 50);
+            this.textBoxTxtName.Name = "textBoxTxtName";
+            this.textBoxTxtName.Size = new System.Drawing.Size(244, 22);
+            this.textBoxTxtName.TabIndex = 1;
+            // 
+            // buttonImportNewValues
+            // 
+            this.buttonImportNewValues.BackColor = System.Drawing.Color.White;
+            this.buttonImportNewValues.Location = new System.Drawing.Point(260, 49);
+            this.buttonImportNewValues.Name = "buttonImportNewValues";
+            this.buttonImportNewValues.Size = new System.Drawing.Size(75, 23);
+            this.buttonImportNewValues.TabIndex = 0;
+            this.buttonImportNewValues.Text = "Import";
+            this.buttonImportNewValues.UseVisualStyleBackColor = false;
+            // 
+            // buttonVerify
+            // 
+            this.buttonVerify.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonVerify.Location = new System.Drawing.Point(149, 12);
+            this.buttonVerify.Name = "buttonVerify";
+            this.buttonVerify.Size = new System.Drawing.Size(79, 69);
+            this.buttonVerify.TabIndex = 5;
+            this.buttonVerify.Text = "File Verify";
+            this.buttonVerify.UseVisualStyleBackColor = false;
+            this.buttonVerify.Click += new System.EventHandler(this.buttonVerify_Click);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(741, 659);
+            this.Controls.Add(this.buttonVerify);
             this.Controls.Add(this.groupBoxTxt);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.groupBoxNames);
@@ -211,6 +229,7 @@
         private System.Windows.Forms.Button buttonImportNewValues;
         private System.Windows.Forms.Label labelTxtName;
         private System.Windows.Forms.TextBox textBoxTxtName;
+        private System.Windows.Forms.Button buttonVerify;
     }
 }
 
