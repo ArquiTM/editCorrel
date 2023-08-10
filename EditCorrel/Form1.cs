@@ -9,6 +9,7 @@ namespace EditCorrel
     public partial class formMain : Form
     {
         string strLogPattern = "*.correl*";
+        string line = string.Empty;
         bool status = false;
 
 
@@ -16,7 +17,6 @@ namespace EditCorrel
         public formMain()
         {
             InitializeComponent();
-
         }
 
         public void OpenFile()
@@ -27,7 +27,6 @@ namespace EditCorrel
                 {
                     using (var reader = new StreamReader(file_name))
                     {
-                        string line;
                         status = true;
                         while ((line = reader.ReadLine()) != null)
                         {
@@ -41,22 +40,19 @@ namespace EditCorrel
                             //                                if (line.Contains("TH4") && !line.Contains("LEAK") && !line.Contains("L2VISIONCAL") && !line.Contains("L2ARNORM") && !line.Contains("L2ARGEN") && !line.Contains("RadioTst_VisCal"))
                             //                                  getPatternAndWriteToDB(line);
                         }
-                    }                    
+                    }
                 }
             }
-
-
             catch
             {
                 status = false;
             }
         }
 
-
-
         private void buttonView_Click(object sender, EventArgs e)
         {
-            
+            if(!status)
+                MessageBox.Show("Não há arquivo Correl selecionado!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void buttonVerify_Click(object sender, EventArgs e)
@@ -68,7 +64,6 @@ namespace EditCorrel
 
             else
                 buttonVerify.BackColor = Color.Red;
-
         }
     }
 }
