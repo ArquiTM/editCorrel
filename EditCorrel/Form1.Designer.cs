@@ -137,10 +137,10 @@
             // buttonGravar
             // 
             this.buttonGravar.BackColor = System.Drawing.Color.ForestGreen;
-            this.buttonGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGravar.Location = new System.Drawing.Point(5, 417);
             this.buttonGravar.Name = "buttonGravar";
-            this.buttonGravar.Size = new System.Drawing.Size(75, 55);
+            this.buttonGravar.Size = new System.Drawing.Size(100, 60);
             this.buttonGravar.TabIndex = 3;
             this.buttonGravar.Text = "Gravar Alterações";
             this.buttonGravar.UseVisualStyleBackColor = false;
@@ -191,7 +191,7 @@
             this.buttonVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.buttonVerify.Location = new System.Drawing.Point(126, 77);
             this.buttonVerify.Name = "buttonVerify";
-            this.buttonVerify.Size = new System.Drawing.Size(79, 69);
+            this.buttonVerify.Size = new System.Drawing.Size(80, 70);
             this.buttonVerify.TabIndex = 5;
             this.buttonVerify.Text = "File Verify";
             this.buttonVerify.UseVisualStyleBackColor = false;
