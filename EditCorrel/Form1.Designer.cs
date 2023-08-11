@@ -43,7 +43,9 @@
             this.textBoxTxtName = new System.Windows.Forms.TextBox();
             this.buttonImportNewValues = new System.Windows.Forms.Button();
             this.buttonVerify = new System.Windows.Forms.Button();
-            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
+            this.buttonOpenFile = new System.Windows.Forms.Button();
+            this.textBoxCorrelDir = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).BeginInit();
             this.groupBoxNames.SuspendLayout();
             this.groupBoxTxt.SuspendLayout();
@@ -184,9 +186,9 @@
             // 
             // buttonVerify
             // 
-            this.buttonVerify.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonVerify.BackColor = System.Drawing.Color.Red;
             this.buttonVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.buttonVerify.Location = new System.Drawing.Point(149, 12);
+            this.buttonVerify.Location = new System.Drawing.Point(126, 59);
             this.buttonVerify.Name = "buttonVerify";
             this.buttonVerify.Size = new System.Drawing.Size(79, 69);
             this.buttonVerify.TabIndex = 5;
@@ -194,11 +196,22 @@
             this.buttonVerify.UseVisualStyleBackColor = false;
             this.buttonVerify.Click += new System.EventHandler(this.buttonVerify_Click);
             // 
-            // directorySearcher1
+            // buttonOpenFile
             // 
-            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            this.buttonOpenFile.Location = new System.Drawing.Point(284, 23);
+            this.buttonOpenFile.Name = "buttonOpenFile";
+            this.buttonOpenFile.Size = new System.Drawing.Size(44, 22);
+            this.buttonOpenFile.TabIndex = 6;
+            this.buttonOpenFile.Text = "...";
+            this.buttonOpenFile.UseVisualStyleBackColor = true;
+            this.buttonOpenFile.Click += new System.EventHandler(this.buttonOpenFile_Click);
+            // 
+            // textBoxCorrelDir
+            // 
+            this.textBoxCorrelDir.Location = new System.Drawing.Point(27, 23);
+            this.textBoxCorrelDir.Name = "textBoxCorrelDir";
+            this.textBoxCorrelDir.Size = new System.Drawing.Size(251, 20);
+            this.textBoxCorrelDir.TabIndex = 7;
             // 
             // formMain
             // 
@@ -206,6 +219,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(741, 811);
+            this.Controls.Add(this.textBoxCorrelDir);
+            this.Controls.Add(this.buttonOpenFile);
             this.Controls.Add(this.buttonVerify);
             this.Controls.Add(this.groupBoxTxt);
             this.Controls.Add(this.buttonGravar);
@@ -221,6 +236,7 @@
             this.groupBoxTxt.ResumeLayout(false);
             this.groupBoxTxt.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -241,7 +257,9 @@
         private System.Windows.Forms.Label labelTxtName;
         private System.Windows.Forms.TextBox textBoxTxtName;
         private System.Windows.Forms.Button buttonVerify;
-        private System.DirectoryServices.DirectorySearcher directorySearcher1;
+        private System.Windows.Forms.Button buttonOpenFile;
+        private System.Windows.Forms.TextBox textBoxCorrelDir;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

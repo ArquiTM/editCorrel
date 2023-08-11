@@ -17,7 +17,7 @@ namespace EditCorrel
         public formMain()
         {
             InitializeComponent();
-            getFile();
+            //            getFile();
 
         }
 
@@ -25,8 +25,10 @@ namespace EditCorrel
         {
             try
             {
-                foreach (string file_name in Directory.GetFiles(@".\", strLogPattern, SearchOption.TopDirectoryOnly))
+                if (!status)
                 {
+                    string file_name = (textBoxCorrelDir.Text);
+
                     using (var reader = new StreamReader(file_name))
                     {
                         myDoc.Load(new StreamReader(file_name));
@@ -43,6 +45,7 @@ namespace EditCorrel
                     }
                 }
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(" " + ex);
@@ -77,23 +80,22 @@ namespace EditCorrel
             {
                 string freqF = string.Empty;
                 string offS = string.Empty;
-                string nodesXml = String.Empty;
+                string nodesXml = string.Empty;
                 string[] line;
                 string[] vectLine;
 
-                int countCorrect = 0;
+                int countLine = 0;
 
                 foreach (XmlNode node in myDoc.DocumentElement.ChildNodes)
                 {
                     nodesXml = node.InnerXml;
 
-
                     if (nodesXml.Contains(comboBoxNames.Text))
                     {
-                        line = nodesXml.Split(new[] { "</ValueDescription>" ,  "<ValueDescription />", "</FrequencyOffset>" }, StringSplitOptions.None);                        
-                        countCorrect = line.Length;
-                     
-                        for (int i = 0; i < countCorrect; i++)
+                        line = nodesXml.Split(new[] { "</ValueDescription>", "<ValueDescription />", "</FrequencyOffset>" }, StringSplitOptions.None);
+                        countLine = line.Length;
+
+                        for (int i = 0; i < countLine; i++)
                         {
                             if (line[i].Contains("Frequency"))
                             {
@@ -122,13 +124,37 @@ namespace EditCorrel
 
             else
             {
+                string nodesXml = string.Empty;
 
+                foreach (XmlNode node in myDoc.DocumentElement.ChildNodes)
+                {
+                    nodesXml = node.InnerXml;
+
+                    if (nodesXml.Contains(comboBoxNames.Text))
+                    {
+                        node.RemoveAll();
+                        comboBoxNames.Items.Remove(comboBoxNames.Text);
+                        comboBoxNames.Text = "";
+
+
+                    }
+                }
             }
         }
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonOpenFile_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Correl files (*.correl)|*.correl|All files (*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBoxCorrelDir.Text = openFileDialog1.FileName;
+            }
+            // textBoxCorrelDir.Text + @"\" //to use
         }
     }
 }
