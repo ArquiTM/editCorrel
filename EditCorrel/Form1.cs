@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-
+using System.Xml;
 
 namespace EditCorrel
 {
@@ -11,7 +11,7 @@ namespace EditCorrel
         string strLogPattern = "*.correl*";
         string line = string.Empty;
         bool status = false;
-
+        XmlDocument myDoc = new XmlDocument();
 
 
         public formMain()
@@ -27,34 +27,26 @@ namespace EditCorrel
                 {
                     using (var reader = new StreamReader(file_name))
                     {
+                        myDoc.Load(new StreamReader(file_name));
                         status = true;
                         while ((line = reader.ReadLine()) != null)
                         {
                             if (line.Contains("<Name>"))
                             {
-                                line = line.Replace("   <Name>", "");
+                                line = line.Replace("    <Name>", "");
                                 line = line.Replace("</Name>", "");
                                 comboBoxNames.Items.Add(line);
                             }
-
-                            //                                if (line.Contains("TH4") && !line.Contains("LEAK") && !line.Contains("L2VISIONCAL") && !line.Contains("L2ARNORM") && !line.Contains("L2ARGEN") && !line.Contains("RadioTst_VisCal"))
-                            //                                  getPatternAndWriteToDB(line);
                         }
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(" " + ex);
                 status = false;
             }
         }
-
-        private void buttonView_Click(object sender, EventArgs e)
-        {
-            if(!status)
-                MessageBox.Show("Não há arquivo Correl selecionado!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
         private void buttonVerify_Click(object sender, EventArgs e)
         {
             OpenFile();
@@ -64,6 +56,40 @@ namespace EditCorrel
 
             else
                 buttonVerify.BackColor = Color.Red;
+        }
+
+        private void buttonView_Click(object sender, EventArgs e)
+        {
+            if (!status)
+                MessageBox.Show("Não há arquivo Correl selecionado!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            else
+            {
+
+                string[] correct;
+                foreach (XmlNode node in myDoc.DocumentElement.ChildNodes)
+                {
+                    string nodesXml = node.InnerXml;
+                    string combo = comboBoxNames.Text;
+                    if (nodesXml.Contains(combo))
+                        correct = nodesXml.Split(new string[] { "</FrequencyOffset>" }, StringSplitOptions.None);
+
+                    
+                }
+
+                //for (int i = 0; i < correct.Length; i++)
+                {
+                 //   textBoxTest.Text = correct[1] + Environment.NewLine;
+                }
+
+                //string nameOfFreq = myDoc["CorrelationData"]["Tests"].OuterXml;
+
+
+                // foreach (string frequencyFromFile in )
+                {
+
+                }
+            }
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)

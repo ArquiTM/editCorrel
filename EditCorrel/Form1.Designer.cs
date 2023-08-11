@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.comboBoxNames = new System.Windows.Forms.ComboBox();
             this.dataGridViewCorrel = new System.Windows.Forms.DataGridView();
             this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +44,8 @@
             this.textBoxTxtName = new System.Windows.Forms.TextBox();
             this.buttonImportNewValues = new System.Windows.Forms.Button();
             this.buttonVerify = new System.Windows.Forms.Button();
+            this.textBoxTest = new System.Windows.Forms.TextBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).BeginInit();
             this.groupBoxNames.SuspendLayout();
             this.groupBoxTxt.SuspendLayout();
@@ -66,7 +69,7 @@
             this.NewOffset});
             this.dataGridViewCorrel.Location = new System.Drawing.Point(382, 12);
             this.dataGridViewCorrel.Name = "dataGridViewCorrel";
-            this.dataGridViewCorrel.Size = new System.Drawing.Size(347, 635);
+            this.dataGridViewCorrel.Size = new System.Drawing.Size(347, 69);
             this.dataGridViewCorrel.TabIndex = 1;
             // 
             // Frequency
@@ -190,12 +193,28 @@
             this.buttonVerify.UseVisualStyleBackColor = false;
             this.buttonVerify.Click += new System.EventHandler(this.buttonVerify_Click);
             // 
+            // textBoxTest
+            // 
+            this.textBoxTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTest.Location = new System.Drawing.Point(391, 133);
+            this.textBoxTest.Multiline = true;
+            this.textBoxTest.Name = "textBoxTest";
+            this.textBoxTest.Size = new System.Drawing.Size(338, 503);
+            this.textBoxTest.TabIndex = 6;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(741, 659);
+            this.Controls.Add(this.textBoxTest);
             this.Controls.Add(this.buttonVerify);
             this.Controls.Add(this.groupBoxTxt);
             this.Controls.Add(this.buttonSave);
@@ -211,6 +230,7 @@
             this.groupBoxTxt.ResumeLayout(false);
             this.groupBoxTxt.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -231,6 +251,8 @@
         private System.Windows.Forms.Label labelTxtName;
         private System.Windows.Forms.TextBox textBoxTxtName;
         private System.Windows.Forms.Button buttonVerify;
+        private System.Windows.Forms.TextBox textBoxTest;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
