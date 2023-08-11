@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.comboBoxNames = new System.Windows.Forms.ComboBox();
             this.dataGridViewCorrel = new System.Windows.Forms.DataGridView();
             this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,7 +43,7 @@
             this.textBoxTxtName = new System.Windows.Forms.TextBox();
             this.buttonImportNewValues = new System.Windows.Forms.Button();
             this.buttonVerify = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).BeginInit();
             this.groupBoxNames.SuspendLayout();
             this.groupBoxTxt.SuspendLayout();
@@ -195,11 +194,11 @@
             this.buttonVerify.UseVisualStyleBackColor = false;
             this.buttonVerify.Click += new System.EventHandler(this.buttonVerify_Click);
             // 
-            // imageList1
+            // directorySearcher1
             // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
             // formMain
             // 
@@ -242,7 +241,7 @@
         private System.Windows.Forms.Label labelTxtName;
         private System.Windows.Forms.TextBox textBoxTxtName;
         private System.Windows.Forms.Button buttonVerify;
-        private System.Windows.Forms.ImageList imageList1;
+        private System.DirectoryServices.DirectorySearcher directorySearcher1;
     }
 }
 
