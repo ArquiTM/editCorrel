@@ -46,6 +46,7 @@
             this.buttonOpenFile = new System.Windows.Forms.Button();
             this.textBoxCorrelDir = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.labelFile = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).BeginInit();
             this.groupBoxNames.SuspendLayout();
             this.groupBoxTxt.SuspendLayout();
@@ -94,7 +95,7 @@
             this.groupBoxNames.Controls.Add(this.buttonDelete);
             this.groupBoxNames.Controls.Add(this.buttonView);
             this.groupBoxNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxNames.Location = new System.Drawing.Point(2, 160);
+            this.groupBoxNames.Location = new System.Drawing.Point(2, 199);
             this.groupBoxNames.Name = "groupBoxNames";
             this.groupBoxNames.Size = new System.Drawing.Size(339, 76);
             this.groupBoxNames.TabIndex = 2;
@@ -137,7 +138,7 @@
             // 
             this.buttonGravar.BackColor = System.Drawing.Color.ForestGreen;
             this.buttonGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGravar.Location = new System.Drawing.Point(5, 378);
+            this.buttonGravar.Location = new System.Drawing.Point(5, 417);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(75, 55);
             this.buttonGravar.TabIndex = 3;
@@ -151,7 +152,7 @@
             this.groupBoxTxt.Controls.Add(this.textBoxTxtName);
             this.groupBoxTxt.Controls.Add(this.buttonImportNewValues);
             this.groupBoxTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxTxt.Location = new System.Drawing.Point(2, 284);
+            this.groupBoxTxt.Location = new System.Drawing.Point(2, 323);
             this.groupBoxTxt.Name = "groupBoxTxt";
             this.groupBoxTxt.Size = new System.Drawing.Size(339, 89);
             this.groupBoxTxt.TabIndex = 4;
@@ -188,7 +189,7 @@
             // 
             this.buttonVerify.BackColor = System.Drawing.Color.Red;
             this.buttonVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.buttonVerify.Location = new System.Drawing.Point(126, 59);
+            this.buttonVerify.Location = new System.Drawing.Point(126, 77);
             this.buttonVerify.Name = "buttonVerify";
             this.buttonVerify.Size = new System.Drawing.Size(79, 69);
             this.buttonVerify.TabIndex = 5;
@@ -198,20 +199,31 @@
             // 
             // buttonOpenFile
             // 
-            this.buttonOpenFile.Location = new System.Drawing.Point(284, 23);
+            this.buttonOpenFile.BackColor = System.Drawing.Color.White;
+            this.buttonOpenFile.Location = new System.Drawing.Point(293, 33);
             this.buttonOpenFile.Name = "buttonOpenFile";
             this.buttonOpenFile.Size = new System.Drawing.Size(44, 22);
             this.buttonOpenFile.TabIndex = 6;
             this.buttonOpenFile.Text = "...";
-            this.buttonOpenFile.UseVisualStyleBackColor = true;
+            this.buttonOpenFile.UseVisualStyleBackColor = false;
             this.buttonOpenFile.Click += new System.EventHandler(this.buttonOpenFile_Click);
             // 
             // textBoxCorrelDir
             // 
-            this.textBoxCorrelDir.Location = new System.Drawing.Point(27, 23);
+            this.textBoxCorrelDir.Location = new System.Drawing.Point(8, 33);
             this.textBoxCorrelDir.Name = "textBoxCorrelDir";
-            this.textBoxCorrelDir.Size = new System.Drawing.Size(251, 20);
+            this.textBoxCorrelDir.Size = new System.Drawing.Size(279, 20);
             this.textBoxCorrelDir.TabIndex = 7;
+            // 
+            // labelFile
+            // 
+            this.labelFile.AutoSize = true;
+            this.labelFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.labelFile.Location = new System.Drawing.Point(8, 14);
+            this.labelFile.Name = "labelFile";
+            this.labelFile.Size = new System.Drawing.Size(33, 16);
+            this.labelFile.TabIndex = 8;
+            this.labelFile.Text = "File:";
             // 
             // formMain
             // 
@@ -219,6 +231,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(741, 811);
+            this.Controls.Add(this.labelFile);
             this.Controls.Add(this.textBoxCorrelDir);
             this.Controls.Add(this.buttonOpenFile);
             this.Controls.Add(this.buttonVerify);
@@ -260,6 +273,7 @@
         private System.Windows.Forms.Button buttonOpenFile;
         private System.Windows.Forms.TextBox textBoxCorrelDir;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label labelFile;
     }
 }
 
