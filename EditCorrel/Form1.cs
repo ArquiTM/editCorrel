@@ -144,6 +144,13 @@ namespace EditCorrel
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
+            string newName = textBoxCorrelDir.Text.Replace(".correl", "");
+            string path = (newName + "_copy.correl");
+
+            using (StreamWriter correlUptade = File.CreateText(path))
+            {
+
+            }
 
         }
 
@@ -153,6 +160,7 @@ namespace EditCorrel
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxCorrelDir.Text = openFileDialog1.FileName;
+
             }
             // textBoxCorrelDir.Text + @"\" //to use
         }
