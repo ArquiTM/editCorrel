@@ -17,8 +17,6 @@ namespace EditCorrel
         public formMain()
         {
             InitializeComponent();
-            //            getFile();
-
         }
 
         public void OpenFile() //Abrir o arquivo na raiz do diretório que contém ".correl"
@@ -160,11 +158,8 @@ namespace EditCorrel
                 {
 
                 }
-
                 FormExportOk formEOk = new FormExportOk();
                 formEOk.Show();
-                formEOk.labelStatusFinishIcon.Text = "Arquivo salvo com sucesso!!!";
-                formEOk.Text = "Success";
             }
         }
 
@@ -175,7 +170,6 @@ namespace EditCorrel
             {
                 textBoxCorrelDir.Text = openFileDialog1.FileName;
             }
-            // textBoxCorrelDir.Text + @"\" //to use
         }
     }
 }
