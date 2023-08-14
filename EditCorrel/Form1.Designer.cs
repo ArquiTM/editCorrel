@@ -38,10 +38,6 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonView = new System.Windows.Forms.Button();
             this.buttonGravar = new System.Windows.Forms.Button();
-            this.groupBoxTxt = new System.Windows.Forms.GroupBox();
-            this.labelTxtName = new System.Windows.Forms.Label();
-            this.textBoxTxtName = new System.Windows.Forms.TextBox();
-            this.buttonImportNewValues = new System.Windows.Forms.Button();
             this.buttonVerify = new System.Windows.Forms.Button();
             this.buttonOpenFile = new System.Windows.Forms.Button();
             this.textBoxCorrelDir = new System.Windows.Forms.TextBox();
@@ -49,7 +45,6 @@
             this.labelFile = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).BeginInit();
             this.groupBoxNames.SuspendLayout();
-            this.groupBoxTxt.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxNames
@@ -146,45 +141,6 @@
             this.buttonGravar.UseVisualStyleBackColor = false;
             this.buttonGravar.Click += new System.EventHandler(this.buttonGravar_Click);
             // 
-            // groupBoxTxt
-            // 
-            this.groupBoxTxt.Controls.Add(this.labelTxtName);
-            this.groupBoxTxt.Controls.Add(this.textBoxTxtName);
-            this.groupBoxTxt.Controls.Add(this.buttonImportNewValues);
-            this.groupBoxTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxTxt.Location = new System.Drawing.Point(2, 323);
-            this.groupBoxTxt.Name = "groupBoxTxt";
-            this.groupBoxTxt.Size = new System.Drawing.Size(339, 89);
-            this.groupBoxTxt.TabIndex = 4;
-            this.groupBoxTxt.TabStop = false;
-            this.groupBoxTxt.Text = "New Values";
-            // 
-            // labelTxtName
-            // 
-            this.labelTxtName.AutoSize = true;
-            this.labelTxtName.Location = new System.Drawing.Point(6, 31);
-            this.labelTxtName.Name = "labelTxtName";
-            this.labelTxtName.Size = new System.Drawing.Size(45, 16);
-            this.labelTxtName.TabIndex = 2;
-            this.labelTxtName.Text = "Name";
-            // 
-            // textBoxTxtName
-            // 
-            this.textBoxTxtName.Location = new System.Drawing.Point(6, 50);
-            this.textBoxTxtName.Name = "textBoxTxtName";
-            this.textBoxTxtName.Size = new System.Drawing.Size(244, 22);
-            this.textBoxTxtName.TabIndex = 1;
-            // 
-            // buttonImportNewValues
-            // 
-            this.buttonImportNewValues.BackColor = System.Drawing.Color.White;
-            this.buttonImportNewValues.Location = new System.Drawing.Point(260, 49);
-            this.buttonImportNewValues.Name = "buttonImportNewValues";
-            this.buttonImportNewValues.Size = new System.Drawing.Size(75, 23);
-            this.buttonImportNewValues.TabIndex = 0;
-            this.buttonImportNewValues.Text = "Import";
-            this.buttonImportNewValues.UseVisualStyleBackColor = false;
-            // 
             // buttonVerify
             // 
             this.buttonVerify.BackColor = System.Drawing.Color.Red;
@@ -235,7 +191,6 @@
             this.Controls.Add(this.textBoxCorrelDir);
             this.Controls.Add(this.buttonOpenFile);
             this.Controls.Add(this.buttonVerify);
-            this.Controls.Add(this.groupBoxTxt);
             this.Controls.Add(this.buttonGravar);
             this.Controls.Add(this.groupBoxNames);
             this.Controls.Add(this.dataGridViewCorrel);
@@ -246,8 +201,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).EndInit();
             this.groupBoxNames.ResumeLayout(false);
             this.groupBoxNames.PerformLayout();
-            this.groupBoxTxt.ResumeLayout(false);
-            this.groupBoxTxt.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,10 +218,6 @@
         private System.Windows.Forms.Button buttonView;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonGravar;
-        private System.Windows.Forms.GroupBox groupBoxTxt;
-        private System.Windows.Forms.Button buttonImportNewValues;
-        private System.Windows.Forms.Label labelTxtName;
-        private System.Windows.Forms.TextBox textBoxTxtName;
         private System.Windows.Forms.Button buttonVerify;
         private System.Windows.Forms.Button buttonOpenFile;
         private System.Windows.Forms.TextBox textBoxCorrelDir;
