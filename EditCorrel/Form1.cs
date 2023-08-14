@@ -148,11 +148,23 @@ namespace EditCorrel
         private void buttonGravar_Click(object sender, EventArgs e)
         {
             string newName = textBoxCorrelDir.Text.Replace(".correl", "");
-            string path = (newName + "_copy.correl");
 
-            using (StreamWriter correlUptade = File.CreateText(path))
+            if (newName == string.Empty)
+                MessageBox.Show("Não há arquivo Correl selecionado!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            else
             {
+                string path = (newName + "_copy.correl");
 
+                using (StreamWriter correlUptade = File.CreateText(path))
+                {
+
+                }
+
+                FormExportOk formEOk = new FormExportOk();
+                formEOk.Show();
+                formEOk.labelStatusFinishIcon.Text = "Arquivo salvo com sucesso!!!";
+                formEOk.Text = "Success";
             }
         }
 

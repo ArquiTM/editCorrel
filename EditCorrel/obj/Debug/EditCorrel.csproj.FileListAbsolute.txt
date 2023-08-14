@@ -2,6 +2,7 @@ C:\Projetos\EditCorrel\EditCorrel\bin\Debug\EditCorrel.exe.config
 C:\Projetos\EditCorrel\EditCorrel\bin\Debug\EditCorrel.exe
 C:\Projetos\EditCorrel\EditCorrel\bin\Debug\EditCorrel.pdb
 C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.formMain.resources
+C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.FormExportOk.resources
 C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.Properties.Resources.resources
 C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.csproj.GenerateResource.cache
 C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.csproj.CoreCompileInputs.cache
