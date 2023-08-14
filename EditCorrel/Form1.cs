@@ -29,17 +29,23 @@ namespace EditCorrel
                 {
                     string file_name = (textBoxCorrelDir.Text);
 
-                    using (var reader = new StreamReader(file_name))
+                    if (file_name == string.Empty)
+                        MessageBox.Show("Não foi selecionado nenhum arquivo para edição!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    else
                     {
-                        myDoc.Load(new StreamReader(file_name));
-                        status = true;
-                        while ((line = reader.ReadLine()) != null)
+                        using (var reader = new StreamReader(file_name))
                         {
-                            if (line.Contains("<Name>"))
+                            myDoc.Load(new StreamReader(file_name));
+                            status = true;
+                            while ((line = reader.ReadLine()) != null)
                             {
-                                line = line.Replace("    <Name>", "");
-                                line = line.Replace("</Name>", "");
-                                comboBoxNames.Items.Add(line);
+                                if (line.Contains("<Name>"))
+                                {
+                                    line = line.Replace("    <Name>", "");
+                                    line = line.Replace("</Name>", "");
+                                    comboBoxNames.Items.Add(line);
+                                }
                             }
                         }
                     }
@@ -105,8 +111,7 @@ namespace EditCorrel
                                 offS = freqF;
                                 vectLine = freqF.Split(' ');
 
-                                this.dataGridViewCorrel.Rows.Add(vectLine[0], vectLine[1]);
-
+                                dataGridViewCorrel.Rows.Add(vectLine[0], vectLine[1]);
                             }
                         }
                     }
@@ -135,8 +140,6 @@ namespace EditCorrel
                         node.RemoveAll();
                         comboBoxNames.Items.Remove(comboBoxNames.Text);
                         comboBoxNames.Text = "";
-
-
                     }
                 }
             }
@@ -151,7 +154,6 @@ namespace EditCorrel
             {
 
             }
-
         }
 
         private void buttonOpenFile_Click(object sender, EventArgs e)
@@ -160,7 +162,6 @@ namespace EditCorrel
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxCorrelDir.Text = openFileDialog1.FileName;
-
             }
             // textBoxCorrelDir.Text + @"\" //to use
         }

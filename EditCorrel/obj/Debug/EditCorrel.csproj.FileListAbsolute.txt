@@ -7,4 +7,3 @@ C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.csproj.GenerateResource.c
 C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.csproj.CoreCompileInputs.cache
 C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.exe
 C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.pdb
-C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.csprojAssemblyReference.cache
