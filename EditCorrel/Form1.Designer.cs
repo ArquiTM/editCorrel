@@ -133,7 +133,7 @@
             // 
             this.buttonGravar.BackColor = System.Drawing.Color.ForestGreen;
             this.buttonGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGravar.Location = new System.Drawing.Point(5, 417);
+            this.buttonGravar.Location = new System.Drawing.Point(26, 335);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(100, 60);
             this.buttonGravar.TabIndex = 3;

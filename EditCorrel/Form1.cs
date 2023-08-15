@@ -10,9 +10,9 @@ namespace EditCorrel
     public partial class formMain : Form
     {
         string strLogPattern = "*.correl*";
+        string line = string.Empty;
         bool status = false;
         XmlDocument myDoc = new XmlDocument();
-
 
         public formMain()
         {
@@ -34,8 +34,6 @@ namespace EditCorrel
                     {
                         using (var reader = new StreamReader(file_name))
                         {
-                            string line = string.Empty;
-
                             myDoc.Load(new StreamReader(file_name));
                             status = true;
                             while ((line = reader.ReadLine()) != null)
@@ -150,28 +148,32 @@ namespace EditCorrel
         private void buttonGravar_Click(object sender, EventArgs e)
         {
             string newName = textBoxCorrelDir.Text.Replace(".correl", "");
+            string newCorrel = (newName + "_copy.correl");
+
 
             if (newName == string.Empty)
                 MessageBox.Show("Não há arquivo Correl selecionado!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             else
             {
-                string sourcefile = (newName + ".correl");
+                if (!File.Exists(newName + "_copy.correl"))
+                {
+                    string sourcefile = (newName + ".correl");
 
-                string newCorrel = (newName + "_copy.correl");
-                File.Copy(sourcefile, newCorrel);
-
+                    File.Copy(sourcefile, newCorrel);
+                }
 
                 using (var reader = new StreamReader(textBoxCorrelDir.Text))
                 using (var writer = new StreamWriter(newCorrel))
                 {
-                    string line = string.Empty;
-
                     myDoc.Load(new StreamReader(textBoxCorrelDir.Text));
 
                     while ((line = reader.ReadLine()) != null)
                     {
-                        if (line.Contains("<Name>"))
+                        if (line.Contains("<Tests>"))
+                            line = line.Replace(line, "");
+
+                        else if (line.Contains("<Name>"))
                         {
                             line = line.Replace("    <Name>", "");
                             line = line.Replace("</Name>", "");
@@ -184,10 +186,10 @@ namespace EditCorrel
                                     writer.Write(line);
                                     line = reader.ReadLine();
                                 }
-                                writer.WriteLine(line);
                             }
                             else
                             {
+                                writer.WriteLine("  <Tests>");
                                 line = "    <Name>" + line + "</Name>";
                                 writer.WriteLine(line);
                             }
