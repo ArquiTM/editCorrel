@@ -10,7 +10,6 @@ namespace EditCorrel
     public partial class formMain : Form
     {
         string strLogPattern = "*.correl*";
-        string line = string.Empty;
         bool status = false;
         XmlDocument myDoc = new XmlDocument();
 
@@ -35,6 +34,8 @@ namespace EditCorrel
                     {
                         using (var reader = new StreamReader(file_name))
                         {
+                            string line = string.Empty;
+
                             myDoc.Load(new StreamReader(file_name));
                             status = true;
                             while ((line = reader.ReadLine()) != null)
@@ -153,7 +154,6 @@ namespace EditCorrel
 
             else
             {
-
                 string sourcefile = (newName + ".correl");
 
                 //XmlDocument newCorrel = new XmlDocument();
@@ -162,10 +162,12 @@ namespace EditCorrel
                 File.Copy(sourcefile, newCorrel);
 
 
-
-                using (var reader = new StreamReader(newCorrel))
+                using (var reader = new StreamReader(textBoxCorrelDir.Text))
+                using (var writer = new StreamWriter(newCorrel))
                 {
-                    myDoc.Load(new StreamReader(newCorrel));
+                    string line = string.Empty;
+
+                    myDoc.Load(new StreamReader(textBoxCorrelDir.Text));
 
                     while ((line = reader.ReadLine()) != null)
                     {
@@ -175,118 +177,27 @@ namespace EditCorrel
                             line = line.Replace("</Name>", "");
                             if (!comboBoxNames.Items.Contains(line))
                             {
-                                using (var writer = new StreamWriter(newCorrel))
+                                while (!line.Contains(@"</Tests>"))
                                 {
-
+                                    line = line.Replace(line, "");
+                                    writer.Write(line);
+                                    line = reader.ReadLine();
                                 }
+                                writer.WriteLine(line);
                             }
-                        }
-
-                        comboBoxNames.Items.Add(line);
-                    }
-                }
-            }
-
-            /*
-
-
-            XmlDocument doc = new XmlDocument();
-            doc.Load(newCorrel);
-
-            foreach (XmlNode node in doc)
-            {
-                if (!comboBoxNames.Items.Contains(node))
-                    doc.RemoveChild(node);
-            }
-
-            doc.Save(newName + "_copy.correl");
-
-
-
-            /*string path = (newName + "_copy.correl");
-
-
-
-
-            using (StreamWriter correlUptade = File.CreateText(path))
-            {
-                correlUptade.WriteLine(@"<?xml version=""1.0"" encoding=""utf - 16""?>");
-                correlUptade.WriteLine("<CorrelationData>");
-                correlUptade.WriteLine("    <XmlVersion> 2 </XmlVersion>");
-                correlUptade.WriteLine("    <UnitID> NNSR2C0106 </UnitID>");
-
-                string file_name = (textBoxCorrelDir.Text);
-
-
-                using (var reader = new StreamReader(file_name))
-                {
-                    //  XmlDocument doc = new XmlDocument();
-                    XmlElement root = myDoc.DocumentElement;
-                    XmlNodeList nodes = root.SelectNodes("//CorrelationData/Tests");
-
-                    myDoc.Load(new StreamReader(file_name));
-                    status = true;
-                    // while ((line = reader.ReadLine()) != null)
-                    {
-                        foreach (XmlNode node in nodes)
-                        {
-                            if (node.InnerText.Contains(comboBoxNames.GetItemText(0)))
+                            else
                             {
-                                correlUptade.WriteLine("    <Tests>");
-                                correlUptade.WriteLine(node.InnerXml);
-                                correlUptade.WriteLine("    </Tests>");
+                                line = "    <Name>" + line + "</Name>";
+                                writer.WriteLine(line);
                             }
-
-                            //using (StreamWriter correlUptade = File.WriteAllText(node)) { }
-
                         }
-                        correlUptade.WriteLine("</CorrelationData>");
+                        else
+                            writer.WriteLine(line);
                     }
-
                 }
-
-                //XmlDocument correlUpdate = new XmlDocument();
-
-
-
-
-
-
-                // correlUpdate.(newName + "_copy.correl");
-
-
-                /*  XmlElement root = correlUpdate.CreateElement("root");
-                  correlUpdate.AppendChild(root);
-                  XmlComment comment = correlUpdate.CreateComment("Comment");
-                  root.AppendChild(comment);
-
-                  XmlWriterSettings settings = new XmlWriterSettings
-                  {
-                      Encoding = Encoding.UTF8,
-                      ConformanceLevel = ConformanceLevel.Document,
-                      OmitXmlDeclaration = false,
-                      CloseOutput = true,
-                      Indent = true,
-                      IndentChars = "  ",
-                      NewLineHandling = NewLineHandling.Replace
-                  };
-
-                  using (StreamWriter sw = File.CreateText(newName + "_copy.correl"))
-                  using (XmlWriter writer = XmlWriter.Create(sw, settings))
-                  {
-                      correlUpdate.WriteContentTo(writer);
-                      writer.Close();
-                  }
-
-                 // string document = File.ReadAllText(newName + "_copy.correl");
-                 */
-
-
-
-
-
-            FormExportOk formEOk = new FormExportOk();
-            formEOk.Show();
+                FormExportOk formEOk = new FormExportOk();
+                formEOk.Show();
+            }
         }
 
 
