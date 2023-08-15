@@ -266,11 +266,15 @@ namespace EditCorrel
             }
             DataTable freqFileDt = ConvertCSVtoDataTable(textBoxFreqFileDir.Text);
 
-            int countR = freqFileDt.Rows.Count;
+            int countR = dataGridViewCorrel.Rows.Count;
 
             for (int i = 0; i < countR; i++)
             {
-                //if (freqFileDt.Columns[3])
+                foreach (DataRow row in freqFileDt.Rows)
+                {
+                    if (row[2].ToString().Contains(dataGridViewCorrel.Rows[i].Cells[0].Value.ToString()))
+                        dataGridViewCorrel.Rows[i].Cells[2].Value = Convert.ToDouble(row[3]);
+                }
             }
 
         }
