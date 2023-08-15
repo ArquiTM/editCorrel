@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -210,7 +211,7 @@ namespace EditCorrel
             }
         }
 
-        private void changeFreqNewFile()
+        private void changeFreqNewFile()//to continue
         {
             if (comboBoxNames.Text != "")
             {
@@ -219,9 +220,7 @@ namespace EditCorrel
                 {
                     if (dataGridViewCorrel.Rows[i].Cells[1].Value.ToString() != dataGridViewCorrel.Rows[i].Cells[2].Value.ToString())
                         dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
-
                 }
-
             }
         }
 
@@ -234,7 +233,7 @@ namespace EditCorrel
             }
         }
 
-        /*public DataTable ConvertCSVtoDataTable(string strFilePath)
+        public DataTable ConvertCSVtoDataTable(string strFilePath)
         {
             DataTable dt = new DataTable();
             using (StreamReader sr = new StreamReader(strFilePath))
@@ -256,7 +255,7 @@ namespace EditCorrel
                 }
             }
             return dt;
-        }*/
+        }
 
         private void buttonOpenFreqFile_Click(object sender, EventArgs e)
         {
@@ -265,6 +264,15 @@ namespace EditCorrel
             {
                 textBoxFreqFileDir.Text = openFileDialog2.FileName;
             }
+            DataTable freqFileDt = ConvertCSVtoDataTable(textBoxFreqFileDir.Text);
+
+            int countR = freqFileDt.Rows.Count;
+
+            for (int i = 0; i < countR; i++)
+            {
+                //if (freqFileDt.Columns[3])
+            }
+
         }
     }
 }
