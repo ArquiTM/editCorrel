@@ -147,6 +147,13 @@ namespace EditCorrel
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
+            deleteNamesNewFile();
+            changeFreqNewFile();
+
+        }
+
+        private void deleteNamesNewFile()
+        {
             string newName = textBoxCorrelDir.Text.Replace(".correl", "");
             string newCorrel = (newName + "_copy.correl");
 
@@ -203,12 +210,60 @@ namespace EditCorrel
             }
         }
 
+        private void changeFreqNewFile()
+        {
+            if (comboBoxNames.Text != "")
+            {
+                int count = dataGridViewCorrel.Rows.Count;
+                for (int i = 0; i < count; i++)
+                {
+                    if (dataGridViewCorrel.Rows[i].Cells[1].Value.ToString() != dataGridViewCorrel.Rows[i].Cells[2].Value.ToString())
+                        dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
+
+                }
+
+            }
+        }
+
         private void buttonOpenFile_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Correl files (*.correl)|*.correl|All files (*.*)|*.*";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxCorrelDir.Text = openFileDialog1.FileName;
+            }
+        }
+
+        /*public DataTable ConvertCSVtoDataTable(string strFilePath)
+        {
+            DataTable dt = new DataTable();
+            using (StreamReader sr = new StreamReader(strFilePath))
+            {
+                string[] headers = sr.ReadLine().Split(',');
+                foreach (string header in headers)
+                {
+                    dt.Columns.Add(header);
+                }
+                while (!sr.EndOfStream)
+                {
+                    string[] rows = sr.ReadLine().Split(',');
+                    DataRow dr = dt.NewRow();
+                    for (int i = 0; i < headers.Length; i++)
+                    {
+                        dr[i] = rows[i];
+                    }
+                    dt.Rows.Add(dr);
+                }
+            }
+            return dt;
+        }*/
+
+        private void buttonOpenFreqFile_Click(object sender, EventArgs e)
+        {
+            openFileDialog2.Filter = "Comma delimited (*.csv)|*.csv|All files (*.*)|*.*";
+            if (openFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                textBoxFreqFileDir.Text = openFileDialog2.FileName;
             }
         }
     }

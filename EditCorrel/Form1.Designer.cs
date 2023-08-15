@@ -43,6 +43,10 @@
             this.textBoxCorrelDir = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.labelFile = new System.Windows.Forms.Label();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.buttonOpenFreqFile = new System.Windows.Forms.Button();
+            this.textBoxFreqFileDir = new System.Windows.Forms.TextBox();
+            this.labelImportFreqFile = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).BeginInit();
             this.groupBoxNames.SuspendLayout();
             this.SuspendLayout();
@@ -57,12 +61,16 @@
             // 
             // dataGridViewCorrel
             // 
+            this.dataGridViewCorrel.AllowDrop = true;
+            this.dataGridViewCorrel.AllowUserToAddRows = false;
+            this.dataGridViewCorrel.AllowUserToDeleteRows = false;
             this.dataGridViewCorrel.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewCorrel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCorrel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Frequency,
             this.OldOffset,
             this.NewOffset});
+            this.dataGridViewCorrel.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridViewCorrel.Location = new System.Drawing.Point(347, 1);
             this.dataGridViewCorrel.Name = "dataGridViewCorrel";
             this.dataGridViewCorrel.Size = new System.Drawing.Size(382, 798);
@@ -133,7 +141,7 @@
             // 
             this.buttonGravar.BackColor = System.Drawing.Color.ForestGreen;
             this.buttonGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGravar.Location = new System.Drawing.Point(26, 335);
+            this.buttonGravar.Location = new System.Drawing.Point(241, 311);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(100, 60);
             this.buttonGravar.TabIndex = 3;
@@ -181,12 +189,43 @@
             this.labelFile.TabIndex = 8;
             this.labelFile.Text = "File:";
             // 
+            // buttonOpenFreqFile
+            // 
+            this.buttonOpenFreqFile.BackColor = System.Drawing.Color.White;
+            this.buttonOpenFreqFile.Location = new System.Drawing.Point(293, 476);
+            this.buttonOpenFreqFile.Name = "buttonOpenFreqFile";
+            this.buttonOpenFreqFile.Size = new System.Drawing.Size(44, 22);
+            this.buttonOpenFreqFile.TabIndex = 9;
+            this.buttonOpenFreqFile.Text = "...";
+            this.buttonOpenFreqFile.UseVisualStyleBackColor = false;
+            this.buttonOpenFreqFile.Click += new System.EventHandler(this.buttonOpenFreqFile_Click);
+            // 
+            // textBoxFreqFileDir
+            // 
+            this.textBoxFreqFileDir.Location = new System.Drawing.Point(8, 478);
+            this.textBoxFreqFileDir.Name = "textBoxFreqFileDir";
+            this.textBoxFreqFileDir.Size = new System.Drawing.Size(279, 20);
+            this.textBoxFreqFileDir.TabIndex = 10;
+            // 
+            // labelImportFreqFile
+            // 
+            this.labelImportFreqFile.AutoSize = true;
+            this.labelImportFreqFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.labelImportFreqFile.Location = new System.Drawing.Point(8, 459);
+            this.labelImportFreqFile.Name = "labelImportFreqFile";
+            this.labelImportFreqFile.Size = new System.Drawing.Size(84, 16);
+            this.labelImportFreqFile.TabIndex = 11;
+            this.labelImportFreqFile.Text = "Import Excel:";
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(741, 811);
+            this.Controls.Add(this.labelImportFreqFile);
+            this.Controls.Add(this.textBoxFreqFileDir);
+            this.Controls.Add(this.buttonOpenFreqFile);
             this.Controls.Add(this.labelFile);
             this.Controls.Add(this.textBoxCorrelDir);
             this.Controls.Add(this.buttonOpenFile);
@@ -223,6 +262,10 @@
         private System.Windows.Forms.TextBox textBoxCorrelDir;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label labelFile;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.Button buttonOpenFreqFile;
+        private System.Windows.Forms.TextBox textBoxFreqFileDir;
+        private System.Windows.Forms.Label labelImportFreqFile;
     }
 }
 
