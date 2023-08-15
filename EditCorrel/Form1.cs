@@ -73,6 +73,7 @@ namespace EditCorrel
             else
                 buttonVerify.BackColor = Color.Red;
         }
+
         private void buttonView_Click(object sender, EventArgs e) //Popula o data grid view
         {
             dataGridViewCorrel.Rows.Clear();
@@ -140,6 +141,7 @@ namespace EditCorrel
                         node.RemoveAll();
                         comboBoxNames.Items.Remove(comboBoxNames.Text);
                         comboBoxNames.Text = "";
+                        return;
                     }
                 }
             }
@@ -155,8 +157,6 @@ namespace EditCorrel
             else
             {
                 string sourcefile = (newName + ".correl");
-
-                //XmlDocument newCorrel = new XmlDocument();
 
                 string newCorrel = (newName + "_copy.correl");
                 File.Copy(sourcefile, newCorrel);
@@ -175,6 +175,7 @@ namespace EditCorrel
                         {
                             line = line.Replace("    <Name>", "");
                             line = line.Replace("</Name>", "");
+
                             if (!comboBoxNames.Items.Contains(line))
                             {
                                 while (!line.Contains(@"</Tests>"))
@@ -199,9 +200,6 @@ namespace EditCorrel
                 formEOk.Show();
             }
         }
-
-
-
 
         private void buttonOpenFile_Click(object sender, EventArgs e)
         {
