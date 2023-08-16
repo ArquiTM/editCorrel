@@ -10,7 +10,6 @@ namespace EditCorrel
 {
     public partial class formMain : Form
     {
-        string strLogPattern = "*.correl*";
         string line = string.Empty;
         bool status = false;
         XmlDocument myDoc = new XmlDocument();
@@ -111,6 +110,12 @@ namespace EditCorrel
                                 offS = freqF;
                                 vectLine = freqF.Split(' ');
 
+                                if (vectLine[0].Length == 4)
+                                    vectLine[0] = "0" + vectLine[0];
+
+                                else
+                                    vectLine[0] = "00" + vectLine[0];
+
                                 dataGridViewCorrel.Rows.Add(vectLine[0], vectLine[1]);
                             }
                         }
@@ -149,7 +154,7 @@ namespace EditCorrel
         private void buttonGravar_Click(object sender, EventArgs e)
         {
             deleteNamesNewFile();
-            changeFreqNewFile();
+            //  changeFreqNewFile();
         }
 
         private void deleteNamesNewFile()
@@ -219,7 +224,23 @@ namespace EditCorrel
                     if (dataGridViewCorrel.Rows[i].Cells[1].Value.ToString() != dataGridViewCorrel.Rows[i].Cells[2].Value.ToString())
                     {
                         dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
+                        string newName = textBoxCorrelDir.Text.Replace(".correl", "");
+                        string newCorrel = (newName + "_copy.correl");
 
+                        using (var reader = new StreamReader(textBoxCorrelDir.Text))
+                        using (var writer = new StreamWriter(newCorrel))
+                        {
+                            myDoc.Load(new StreamReader(textBoxCorrelDir.Text));
+                            {
+                                line = reader.ReadLine();
+                                if (line.Contains($"<Frequency>{dataGridViewCorrel.Rows[i].Cells[0]}"))
+                                {
+                                    line = reader.ReadLine();
+                                    writer.WriteLine($"<Offset>{ dataGridViewCorrel.Rows[i].Cells[1].Value}</Offset>");
+                                }
+                                line = reader.ReadLine();
+                            }
+                        }
                     }
                 }
             }
@@ -268,17 +289,20 @@ namespace EditCorrel
 
             int countR = dataGridViewCorrel.Rows.Count;
             double Ll = 0.0;
-            double Hl = 0.0;
+            double Ul = 0.0;
             double average = 0.0;
+            //string freq = string.Empty; ;
             for (int i = 0; i < countR; i++)
             {
                 foreach (DataRow row in freqFileDt.Rows)
                 {
+                    // freq = (dataGridViewCorrel.Rows[i].Cells[0]).ToString();
+
                     if (row[2].ToString().Contains(dataGridViewCorrel.Rows[i].Cells[0].Value.ToString()) && row[2].ToString().Contains("_AMP_"))
                     {
                         Ll = Convert.ToDouble(row[3]);
-                        Hl = Convert.ToDouble(row[4]);
-                        average = ((Ll + Hl) / 2);
+                        Ul = Convert.ToDouble(row[4]);
+                        average = ((Ll + Ul) / 2);
                         dataGridViewCorrel.Rows[i].Cells[2].Value = average;
                     }
                 }
