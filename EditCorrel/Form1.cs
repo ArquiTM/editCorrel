@@ -154,7 +154,9 @@ namespace EditCorrel
         private void buttonGravar_Click(object sender, EventArgs e)
         {
             deleteNamesNewFile();
-            //  changeFreqNewFile();
+            // changeFreqNewFile();
+            FormExportOk formEOk = new FormExportOk();
+            formEOk.Show();
         }
 
         private void deleteNamesNewFile()
@@ -207,38 +209,39 @@ namespace EditCorrel
                         }
                         else
                             writer.WriteLine(line);
-                    }
-                }
-                FormExportOk formEOk = new FormExportOk();
-                formEOk.Show();
-            }
-        }
 
-        private void changeFreqNewFile()//to continue
-        {
-            if (comboBoxNames.Text != "")
-            {
-                int count = dataGridViewCorrel.Rows.Count;
-                for (int i = 0; i < count; i++)
-                {
-                    if (dataGridViewCorrel.Rows[i].Cells[1].Value.ToString() != dataGridViewCorrel.Rows[i].Cells[2].Value.ToString())
-                    {
-                        dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
-                        string newName = textBoxCorrelDir.Text.Replace(".correl", "");
-                        string newCorrel = (newName + "_copy.correl");
 
-                        using (var reader = new StreamReader(textBoxCorrelDir.Text))
-                        using (var writer = new StreamWriter(newCorrel))
+
+
+                        int freqDataGridView = 0;
+                        if (comboBoxNames.Text != "")
                         {
-                            myDoc.Load(new StreamReader(textBoxCorrelDir.Text));
+                            int count = dataGridViewCorrel.Rows.Count;
+                            int i = 0;
+
+                            dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
+                            while ((line = reader.ReadLine()) != null && i < count)
                             {
-                                line = reader.ReadLine();
-                                if (line.Contains($"<Frequency>{dataGridViewCorrel.Rows[i].Cells[0]}"))
+                                dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
+                                if (line.Contains(comboBoxNames.Text))
                                 {
-                                    line = reader.ReadLine();
-                                    writer.WriteLine($"<Offset>{ dataGridViewCorrel.Rows[i].Cells[1].Value}</Offset>");
+                                    writer.WriteLine(line);
+                                    while ((line = reader.ReadLine()) != null && i < count)
+                                    {
+                                        freqDataGridView = Convert.ToInt32(dataGridViewCorrel.Rows[i].Cells[0].Value);
+                                        if (line.Contains($"<Frequency>{freqDataGridView.ToString()}"))
+                                        {
+                                            writer.WriteLine(line);
+                                            line = reader.ReadLine();
+                                            writer.WriteLine($"      <Offset>{ dataGridViewCorrel.Rows[i].Cells[2].Value}</Offset>");
+                                            i++;
+                                        }
+                                        else
+                                            writer.WriteLine(line);
+                                    }
                                 }
-                                line = reader.ReadLine();
+                                else
+                                    writer.WriteLine(line);
                             }
                         }
                     }
