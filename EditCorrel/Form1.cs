@@ -222,6 +222,8 @@ namespace EditCorrel
                             dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
                             while ((line = reader.ReadLine()) != null && i < count)
                             {
+                                if (i == 35)
+                                    writer.WriteLine(line);
                                 dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
                                 if (line.Contains(comboBoxNames.Text))
                                 {
@@ -243,6 +245,7 @@ namespace EditCorrel
                                 else
                                     writer.WriteLine(line);
                             }
+                            writer.WriteLine(line);
                         }
                     }
                 }
