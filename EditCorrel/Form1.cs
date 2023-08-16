@@ -150,14 +150,12 @@ namespace EditCorrel
         {
             deleteNamesNewFile();
             changeFreqNewFile();
-
         }
 
         private void deleteNamesNewFile()
         {
             string newName = textBoxCorrelDir.Text.Replace(".correl", "");
             string newCorrel = (newName + "_copy.correl");
-
 
             if (newName == string.Empty)
                 MessageBox.Show("Não há arquivo Correl selecionado!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -256,7 +254,6 @@ namespace EditCorrel
             }
             return dt;
         }
-
         private void buttonOpenFreqFile_Click(object sender, EventArgs e)
         {
             openFileDialog2.Filter = "Comma delimited (*.csv)|*.csv|All files (*.*)|*.*";
@@ -272,11 +269,10 @@ namespace EditCorrel
             {
                 foreach (DataRow row in freqFileDt.Rows)
                 {
-                    if (row[2].ToString().Contains(dataGridViewCorrel.Rows[i].Cells[0].Value.ToString()))
-                        dataGridViewCorrel.Rows[i].Cells[2].Value = Convert.ToDouble(row[3]);
+                    if (row[2].ToString().Contains(dataGridViewCorrel.Rows[i].Cells[0].Value.ToString()) && row[2].ToString().Contains("_AMP_"))
+                        dataGridViewCorrel.Rows[i].Cells[2].Value = (row[3].ToString());
                 }
             }
-
         }
     }
 }
