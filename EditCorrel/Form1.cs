@@ -10,6 +10,8 @@ namespace EditCorrel
 {
     public partial class formMain : Form
     {
+        string originalCorrel = string.Empty;
+        string newCorrel = string.Empty;
         string line = string.Empty;
         bool status = false;
         XmlDocument myDoc = new XmlDocument();
@@ -154,25 +156,21 @@ namespace EditCorrel
         private void buttonGravar_Click(object sender, EventArgs e)
         {
             deleteNamesNewFile();
-            // changeFreqNewFile();
+            changeFreqNewFile();
             FormExportOk formEOk = new FormExportOk();
             formEOk.Show();
         }
 
         private void deleteNamesNewFile()
         {
-            string newName = textBoxCorrelDir.Text.Replace(".correl", "");
-            string newCorrel = (newName + "_copy.correl");
-
-            if (newName == string.Empty)
+            if (originalCorrel == string.Empty)
                 MessageBox.Show("Não há arquivo Correl selecionado!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             else
             {
-                if (!File.Exists(newName + "_copy.correl"))
+                if (!File.Exists(newCorrel))
                 {
-                    string sourcefile = (newName + ".correl");
-
+                    string sourcefile = (originalCorrel + ".correl");
                     File.Copy(sourcefile, newCorrel);
                 }
 
@@ -209,47 +207,68 @@ namespace EditCorrel
                         }
                         else
                             writer.WriteLine(line);
-
-
-
-
-                        int freqDataGridView = 0;
-                        if (comboBoxNames.Text != "")
-                        {
-                            int count = dataGridViewCorrel.Rows.Count;
-                            int i = 0;
-
-                            dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
-                            while ((line = reader.ReadLine()) != null && i < count)
-                            {
-                                if (i == 35)
-                                    writer.WriteLine(line);
-                                dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
-                                if (line.Contains(comboBoxNames.Text))
-                                {
-                                    writer.WriteLine(line);
-                                    while ((line = reader.ReadLine()) != null && i < count)
-                                    {
-                                        freqDataGridView = Convert.ToInt32(dataGridViewCorrel.Rows[i].Cells[0].Value);
-                                        if (line.Contains($"<Frequency>{freqDataGridView.ToString()}"))
-                                        {
-                                            writer.WriteLine(line);
-                                            line = reader.ReadLine();
-                                            writer.WriteLine($"      <Offset>{ dataGridViewCorrel.Rows[i].Cells[2].Value}</Offset>");
-                                            i++;
-                                        }
-                                        else
-                                            writer.WriteLine(line);
-                                    }
-                                }
-                                else
-                                    writer.WriteLine(line);
-                            }
-                            writer.WriteLine(line);
-                        }
                     }
                 }
             }
+        }
+
+        private void changeFreqNewFile()
+        {
+            string finalFile = newCorrel.Replace("temp.correl", "new.correl");
+
+            if (File.Exists(originalCorrel + "_new.correl"))
+            {
+                File.Copy((originalCorrel + "_new.correl"), newCorrel);
+            }
+
+            if (comboBoxNames.Text != "")
+            {
+                using (var readerN = new StreamReader(newCorrel))
+                using (var writerN = new StreamWriter(finalFile))
+                {
+                    myDoc.Load(new StreamReader(newCorrel));
+                    int freqDataGridView = 0;
+
+                    int count = dataGridViewCorrel.Rows.Count;
+                    int i = 0;
+
+                    dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
+                    while ((line = readerN.ReadLine()) != null && i < count)
+                    {
+                        if (i == 35)
+                            writerN.WriteLine(line);
+
+                        dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
+
+                        if (line.Contains(comboBoxNames.Text))
+                        {
+                            writerN.WriteLine(line);
+                            while ((line = readerN.ReadLine()) != null && i < count)
+                            {
+                                freqDataGridView = Convert.ToInt32(dataGridViewCorrel.Rows[i].Cells[0].Value);
+                                if (line.Contains($"<Frequency>{freqDataGridView.ToString()}"))
+                                {
+                                    writerN.WriteLine(line);
+                                    line = readerN.ReadLine();
+                                    writerN.WriteLine($"      <Offset>{ dataGridViewCorrel.Rows[i].Cells[2].Value}</Offset>");
+                                    i++;
+                                }
+                                else
+                                    writerN.WriteLine(line);
+                            }
+                        }
+                        else
+                            writerN.WriteLine(line);
+                    }
+                    writerN.WriteLine(line);
+                }
+            }
+            else
+            {
+                File.Delete(finalFile);
+                File.Copy(newCorrel, finalFile);
+            }
+            File.Delete(originalCorrel + "_temp.correl");
         }
 
         private void buttonOpenFile_Click(object sender, EventArgs e)
@@ -258,6 +277,8 @@ namespace EditCorrel
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxCorrelDir.Text = openFileDialog1.FileName;
+                originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
+                newCorrel = (originalCorrel + "_temp.correl");
             }
         }
 
@@ -297,13 +318,11 @@ namespace EditCorrel
             double Ll = 0.0;
             double Ul = 0.0;
             double average = 0.0;
-            //string freq = string.Empty; ;
+
             for (int i = 0; i < countR; i++)
             {
                 foreach (DataRow row in freqFileDt.Rows)
                 {
-                    // freq = (dataGridViewCorrel.Rows[i].Cells[0]).ToString();
-
                     if (row[2].ToString().Contains(dataGridViewCorrel.Rows[i].Cells[0].Value.ToString()) && row[2].ToString().Contains("_AMP_"))
                     {
                         Ll = Convert.ToDouble(row[3]);
