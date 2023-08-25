@@ -11,7 +11,7 @@ namespace EditCorrel
     public partial class formMain : Form
     {
         string originalCorrel = string.Empty;
-        string newCorrel = string.Empty;
+        string tempCorrel = string.Empty;
         string line = string.Empty;
         bool status = false;
         XmlDocument myDoc = new XmlDocument();
@@ -168,14 +168,14 @@ namespace EditCorrel
 
             else
             {
-                if (!File.Exists(newCorrel))
+                if (!File.Exists(tempCorrel))
                 {
                     string sourcefile = (originalCorrel + ".correl");
-                    File.Copy(sourcefile, newCorrel);
+                    File.Copy(sourcefile, tempCorrel);
                 }
 
                 using (var reader = new StreamReader(textBoxCorrelDir.Text))
-                using (var writer = new StreamWriter(newCorrel))
+                using (var writer = new StreamWriter(tempCorrel))
                 {
                     myDoc.Load(new StreamReader(textBoxCorrelDir.Text));
 
@@ -214,21 +214,18 @@ namespace EditCorrel
 
         private void changeFreqNewFile()
         {
-            string finalFile = newCorrel.Replace("temp.correl", "new.correl");
+            string finalCorrel = tempCorrel.Replace("temp.correl", "new.correl");
 
             if (File.Exists(originalCorrel + "_new.correl"))
-            {
-                File.Copy((originalCorrel + "_new.correl"), newCorrel);
-            }
+                File.Copy((originalCorrel + "_new.correl"), tempCorrel);
 
             if (comboBoxNames.Text != "")
             {
-                using (var readerN = new StreamReader(newCorrel))
-                using (var writerN = new StreamWriter(finalFile))
+                using (var readerN = new StreamReader(tempCorrel))
+                using (var writerN = new StreamWriter(finalCorrel))
                 {
-                    myDoc.Load(new StreamReader(newCorrel));
+                    myDoc.Load(new StreamReader(tempCorrel));
                     int freqDataGridView = 0;
-
                     int count = dataGridViewCorrel.Rows.Count;
                     int i = 0;
 
@@ -265,10 +262,11 @@ namespace EditCorrel
             }
             else
             {
-                File.Delete(finalFile);
-                File.Copy(newCorrel, finalFile);
+                File.Delete(finalCorrel);
+                File.Copy(tempCorrel, finalCorrel);
             }
-            File.Delete(originalCorrel + "_temp.correl");
+            if (File.Exists(tempCorrel))
+                File.Delete(tempCorrel);
         }
 
         private void buttonOpenFile_Click(object sender, EventArgs e)
@@ -278,7 +276,7 @@ namespace EditCorrel
             {
                 textBoxCorrelDir.Text = openFileDialog1.FileName;
                 originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
-                newCorrel = (originalCorrel + "_temp.correl");
+                tempCorrel = (originalCorrel + "_temp.correl");
             }
         }
 
