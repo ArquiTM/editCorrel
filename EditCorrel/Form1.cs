@@ -301,7 +301,9 @@ namespace EditCorrel
                     dt.Rows.Add(dr);
                 }
             }
+
             return dt;
+
         }
         private void buttonOpenFreqFile_Click(object sender, EventArgs e)
         {
@@ -310,26 +312,31 @@ namespace EditCorrel
             {
                 textBoxFreqFileDir.Text = openFileDialog2.FileName;
             }
-            DataTable freqFileDt = ConvertCSVtoDataTable(textBoxFreqFileDir.Text);
-
-            int countR = dataGridViewCorrel.Rows.Count;
-            double Ll = 0.0;
-            double Ul = 0.0;
-            double average = 0.0;
-
-            for (int i = 0; i < countR; i++)
+            try
             {
-                foreach (DataRow row in freqFileDt.Rows)
+                DataTable freqFileDt = ConvertCSVtoDataTable(textBoxFreqFileDir.Text);
+                int countR = dataGridViewCorrel.Rows.Count;
+                double Ll = 0.0;
+                double Ul = 0.0;
+                double average = 0.0;
+
+                for (int i = 0; i < countR; i++)
                 {
-                    if (row[2].ToString().Contains(dataGridViewCorrel.Rows[i].Cells[0].Value.ToString()) && row[2].ToString().Contains("_AMP_"))
+                    foreach (DataRow row in freqFileDt.Rows)
                     {
-                        Ll = Convert.ToDouble(row[3]);
-                        Ul = Convert.ToDouble(row[4]);
-                        average = ((Ll + Ul) / 2);
-                        dataGridViewCorrel.Rows[i].Cells[2].Value = average;
+                        if (row[2].ToString().Contains(dataGridViewCorrel.Rows[i].Cells[0].Value.ToString()) && row[2].ToString().Contains("_AMP_"))
+                        {
+                            Ll = Convert.ToDouble(row[3]);
+                            Ul = Convert.ToDouble(row[4]);
+                            average = ((Ll + Ul) / 2);
+                            dataGridViewCorrel.Rows[i].Cells[2].Value = average;
+                        }
                     }
                 }
             }
+            catch { }
+
+
         }
     }
 }
