@@ -168,11 +168,12 @@ namespace EditCorrel
 
             else
             {
-                if (!File.Exists(tempCorrel))
-                {
-                    string sourcefile = (originalCorrel + ".correl");
-                    File.Copy(sourcefile, tempCorrel);
-                }
+                if (File.Exists(tempCorrel))
+                    File.Delete(tempCorrel);
+
+                string sourcefile = (originalCorrel + ".correl");
+                File.Copy(sourcefile, tempCorrel);
+
 
                 using (var reader = new StreamReader(textBoxCorrelDir.Text))
                 using (var writer = new StreamWriter(tempCorrel))
@@ -210,17 +211,23 @@ namespace EditCorrel
                     }
                 }
             }
+            
         }
 
         private void changeFreqNewFile()
         {
             string finalCorrel = tempCorrel.Replace("temp.correl", "new.correl");
 
-            if (File.Exists(originalCorrel + "_new.correl"))
-                File.Copy((originalCorrel + "_new.correl"), tempCorrel);
+          
 
             if (comboBoxNames.Text != "")
             {
+                if (File.Exists(tempCorrel))
+                    File.Delete(tempCorrel);
+
+                if (File.Exists(originalCorrel + "_new.correl"))
+                    File.Copy((originalCorrel + "_new.correl"), tempCorrel);
+
                 using (var readerN = new StreamReader(tempCorrel))
                 using (var writerN = new StreamWriter(finalCorrel))
                 {
@@ -265,8 +272,8 @@ namespace EditCorrel
                 File.Delete(finalCorrel);
                 File.Copy(tempCorrel, finalCorrel);
             }
-            if (File.Exists(tempCorrel))
-                File.Delete(tempCorrel);
+          //  if (File.Exists(tempCorrel))
+            //    File.Delete(tempCorrel);
         }
 
         private void buttonOpenFile_Click(object sender, EventArgs e)
@@ -276,7 +283,7 @@ namespace EditCorrel
             {
                 textBoxCorrelDir.Text = openFileDialog1.FileName;
                 originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
-                tempCorrel = (originalCorrel + "_temp.correl");
+                tempCorrel = originalCorrel + "_temp.correl";
             }
         }
 
