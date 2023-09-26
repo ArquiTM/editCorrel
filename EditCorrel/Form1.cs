@@ -76,6 +76,12 @@ namespace EditCorrel
 
         private void buttonView_Click(object sender, EventArgs e) //Popula o data grid view
         {
+            viewDataGridView();
+        }
+
+        private void viewDataGridView()
+        {
+
             dataGridViewCorrel.Rows.Clear();
             if (comboBoxNames.Text == "")
                 MessageBox.Show("Não foi selecionado nenhum arquivo!!!", "ComboBox Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -127,6 +133,11 @@ namespace EditCorrel
         }
 
         private void buttonDelete_Click(object sender, EventArgs e) //deletar os testes não usados
+        {
+            deleteLineComboBox();
+        }
+
+        private void deleteLineComboBox()
         {
             if (comboBoxNames.Text == "")
                 MessageBox.Show("Não foi selecionado nenhum arquivo!!!", "ComboBox Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
