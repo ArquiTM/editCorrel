@@ -162,6 +162,8 @@ namespace EditCorrel
                     }
                 }
             }
+            dataGridViewCorrel.Rows.Clear();
+            Application.DoEvents();
         }
 
         private void buttonGravar_Click(object sender, EventArgs e)
@@ -170,6 +172,7 @@ namespace EditCorrel
             changeFreqNewFile();
             FormExportOk formEOk = new FormExportOk();
             formEOk.Show();
+            deleteTemp();
         }
 
         private void deleteNamesNewFile()
@@ -222,14 +225,16 @@ namespace EditCorrel
                     }
                 }
             }
-            
+        }
+        private void deleteTemp()
+        {
+            if (File.Exists(tempCorrel))
+                File.Delete(tempCorrel);
         }
 
         private void changeFreqNewFile()
         {
             string finalCorrel = tempCorrel.Replace("temp.correl", "new.correl");
-
-          
 
             if (comboBoxNames.Text != "")
             {
@@ -271,6 +276,16 @@ namespace EditCorrel
                                 else
                                     writerN.WriteLine(line);
                             }
+                            writerN.WriteLine(line);
+
+
+                            if (comboBoxNames.SelectedIndex < comboBoxNames.Items.Count)
+                            {
+                                while ((line = readerN.ReadLine()) != null)
+                                {
+                                    writerN.WriteLine(line);
+                                }
+                            }
                         }
                         else
                             writerN.WriteLine(line);
@@ -280,10 +295,10 @@ namespace EditCorrel
             }
             else
             {
-                File.Delete(finalCorrel);
+                // File.Delete(finalCorrel);
                 File.Copy(tempCorrel, finalCorrel);
             }
-          //  if (File.Exists(tempCorrel))
+            //  if (File.Exists(tempCorrel))
             //    File.Delete(tempCorrel);
         }
 
