@@ -18,7 +18,7 @@ namespace EditCorrel
         {
             InitializeComponent();
         }
-        public bool OpenFile() //Abrir o arquivo na raiz do diretório que contém ".correl"
+        public bool OpenFile()
         {
             try
             {
@@ -47,7 +47,7 @@ namespace EditCorrel
 
             catch (Exception ex)
             {
-                MessageBox.Show("Erroe:" + ex.Message);
+                MessageBox.Show("Error:" + ex.Message);
                 return false;
             }
             return false;
@@ -56,7 +56,7 @@ namespace EditCorrel
         {
             getFile();
         }
-        private void getFile()//Abre o Arquivo ".correl"
+        private void getFile()
         {
             bool result = OpenFile();
             if (result)
@@ -65,7 +65,7 @@ namespace EditCorrel
                 buttonVerify.BackColor = Color.Red;
         }
 
-        private void buttonView_Click(object sender, EventArgs e) //Popula o data grid view
+        private void buttonView_Click(object sender, EventArgs e)
         {
             viewDataGridView();
         }
@@ -117,7 +117,7 @@ namespace EditCorrel
             }
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e) //deletar os testes não usados
+        private void buttonDelete_Click(object sender, EventArgs e)
         {
             deleteLineComboBox();
         }
@@ -219,15 +219,15 @@ namespace EditCorrel
         }
         private void changeFreqNewFile()
         {
-            string finalCorrel = tempCorrel.Replace("temp.correl", "new.correl");
+            string finalCorrel = tempCorrel.Replace("temporary.correl", "new_OK.correl");
 
             if (comboBoxNames.Text != "")
             {
                 if (File.Exists(tempCorrel))
                     File.Delete(tempCorrel);
 
-                if (File.Exists(originalCorrel + "_new.correl"))
-                    File.Copy(originalCorrel + "_new.correl", tempCorrel);
+                if (File.Exists(originalCorrel + "_new_OK.correl"))
+                    File.Copy(originalCorrel + "_new_OK.correl", tempCorrel);
 
                 using (var readerN = new StreamReader(tempCorrel))
                 using (var writerN = new StreamWriter(finalCorrel))
@@ -291,8 +291,8 @@ namespace EditCorrel
             {
                 textBoxCorrelDir.Text = openFileDialog1.FileName;
                 originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
-                tempCorrel = originalCorrel + "_temp.correl";
-                File.Copy(originalCorrel + ".correl", originalCorrel + "_new.correl", true);
+                tempCorrel = originalCorrel + "_temporary.correl";
+                File.Copy(originalCorrel + ".correl", originalCorrel + "_new_OK.correl", true);
             }
         }
         public DataTable ConvertCSVtoDataTable(string strFilePath)

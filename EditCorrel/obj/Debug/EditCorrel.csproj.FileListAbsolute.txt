@@ -9,6 +9,9 @@ C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.csproj.CoreCompileInputs.
 C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.exe
 C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.pdb
 C:\Projetos\EditCorrel\EditCorrel\obj\Debug\EditCorrel.csprojAssemblyReference.cache
+C:\DEVELOPMENT PROJECTS\editCorrel\EditCorrel\bin\Debug\EditCorrel.exe.config
+C:\DEVELOPMENT PROJECTS\editCorrel\EditCorrel\bin\Debug\EditCorrel.exe
+C:\DEVELOPMENT PROJECTS\editCorrel\EditCorrel\bin\Debug\EditCorrel.pdb
 C:\DEVELOPMENT PROJECTS\editCorrel\EditCorrel\obj\Debug\EditCorrel.formMain.resources
 C:\DEVELOPMENT PROJECTS\editCorrel\EditCorrel\obj\Debug\EditCorrel.FormExportOk.resources
 C:\DEVELOPMENT PROJECTS\editCorrel\EditCorrel\obj\Debug\EditCorrel.Properties.Resources.resources
@@ -16,6 +19,3 @@ C:\DEVELOPMENT PROJECTS\editCorrel\EditCorrel\obj\Debug\EditCorrel.csproj.Genera
 C:\DEVELOPMENT PROJECTS\editCorrel\EditCorrel\obj\Debug\EditCorrel.csproj.CoreCompileInputs.cache
 C:\DEVELOPMENT PROJECTS\editCorrel\EditCorrel\obj\Debug\EditCorrel.exe
 C:\DEVELOPMENT PROJECTS\editCorrel\EditCorrel\obj\Debug\EditCorrel.pdb
-C:\DEVELOPMENT PROJECTS\editCorrel\EditCorrel\bin\Debug\EditCorrel.exe.config
-C:\DEVELOPMENT PROJECTS\editCorrel\EditCorrel\bin\Debug\EditCorrel.exe
-C:\DEVELOPMENT PROJECTS\editCorrel\EditCorrel\bin\Debug\EditCorrel.pdb
