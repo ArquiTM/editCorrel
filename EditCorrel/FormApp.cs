@@ -121,12 +121,10 @@ namespace EditCorrel
         {
             deleteLineComboBox();
         }
-
         private void deleteLineComboBox()
         {
             if (comboBoxNames.Text == "")
                 MessageBox.Show("Não foi selecionado nenhum arquivo!!!", "ComboBox Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             else
             {
                 string nodesXml = string.Empty;
@@ -297,7 +295,6 @@ namespace EditCorrel
                 File.Copy(originalCorrel + ".correl", originalCorrel + "_new.correl", true);
             }
         }
-
         public DataTable ConvertCSVtoDataTable(string strFilePath)
         {
             DataTable dt = new DataTable();
