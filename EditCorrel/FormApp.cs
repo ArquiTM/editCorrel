@@ -283,7 +283,6 @@ namespace EditCorrel
                 File.Copy(tempCorrel, finalCorrel, true);
             }
         }
-
         private void buttonOpenFile_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Correl files (*.correl)|*.correl|All files (*.*)|*.*";

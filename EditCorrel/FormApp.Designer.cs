@@ -37,12 +37,12 @@
             this.labelName = new System.Windows.Forms.Label();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonView = new System.Windows.Forms.Button();
-            this.buttonGravar = new System.Windows.Forms.Button();
-            this.buttonVerify = new System.Windows.Forms.Button();
-            this.buttonOpenFile = new System.Windows.Forms.Button();
-            this.textBoxCorrelDir = new System.Windows.Forms.TextBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.labelFile = new System.Windows.Forms.Label();
+            this.buttonGravar = new System.Windows.Forms.Button();
+            this.textBoxCorrelDir = new System.Windows.Forms.TextBox();
+            this.buttonOpenFile = new System.Windows.Forms.Button();
+            this.buttonVerify = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.buttonOpenFreqFile = new System.Windows.Forms.Button();
             this.textBoxFreqFileDir = new System.Windows.Forms.TextBox();
@@ -147,6 +147,16 @@
             this.buttonView.UseVisualStyleBackColor = false;
             this.buttonView.Click += new System.EventHandler(this.buttonView_Click);
             // 
+            // labelFile
+            // 
+            this.labelFile.AutoSize = true;
+            this.labelFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.labelFile.Location = new System.Drawing.Point(6, 15);
+            this.labelFile.Name = "labelFile";
+            this.labelFile.Size = new System.Drawing.Size(33, 16);
+            this.labelFile.TabIndex = 8;
+            this.labelFile.Text = "File:";
+            // 
             // buttonGravar
             // 
             this.buttonGravar.BackColor = System.Drawing.Color.DeepSkyBlue;
@@ -159,17 +169,12 @@
             this.buttonGravar.UseVisualStyleBackColor = false;
             this.buttonGravar.Click += new System.EventHandler(this.buttonGravar_Click);
             // 
-            // buttonVerify
+            // textBoxCorrelDir
             // 
-            this.buttonVerify.BackColor = System.Drawing.Color.Red;
-            this.buttonVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.buttonVerify.Location = new System.Drawing.Point(85, 62);
-            this.buttonVerify.Name = "buttonVerify";
-            this.buttonVerify.Size = new System.Drawing.Size(148, 48);
-            this.buttonVerify.TabIndex = 5;
-            this.buttonVerify.Text = "File Verify";
-            this.buttonVerify.UseVisualStyleBackColor = false;
-            this.buttonVerify.Click += new System.EventHandler(this.buttonVerify_Click);
+            this.textBoxCorrelDir.Location = new System.Drawing.Point(6, 34);
+            this.textBoxCorrelDir.Name = "textBoxCorrelDir";
+            this.textBoxCorrelDir.Size = new System.Drawing.Size(279, 22);
+            this.textBoxCorrelDir.TabIndex = 7;
             // 
             // buttonOpenFile
             // 
@@ -182,22 +187,17 @@
             this.buttonOpenFile.UseVisualStyleBackColor = false;
             this.buttonOpenFile.Click += new System.EventHandler(this.buttonOpenFile_Click);
             // 
-            // textBoxCorrelDir
+            // buttonVerify
             // 
-            this.textBoxCorrelDir.Location = new System.Drawing.Point(6, 34);
-            this.textBoxCorrelDir.Name = "textBoxCorrelDir";
-            this.textBoxCorrelDir.Size = new System.Drawing.Size(279, 22);
-            this.textBoxCorrelDir.TabIndex = 7;
-            // 
-            // labelFile
-            // 
-            this.labelFile.AutoSize = true;
-            this.labelFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.labelFile.Location = new System.Drawing.Point(6, 15);
-            this.labelFile.Name = "labelFile";
-            this.labelFile.Size = new System.Drawing.Size(33, 16);
-            this.labelFile.TabIndex = 8;
-            this.labelFile.Text = "File:";
+            this.buttonVerify.BackColor = System.Drawing.Color.Red;
+            this.buttonVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonVerify.Location = new System.Drawing.Point(85, 62);
+            this.buttonVerify.Name = "buttonVerify";
+            this.buttonVerify.Size = new System.Drawing.Size(148, 48);
+            this.buttonVerify.TabIndex = 5;
+            this.buttonVerify.Text = "File Verify";
+            this.buttonVerify.UseVisualStyleBackColor = false;
+            this.buttonVerify.Click += new System.EventHandler(this.buttonVerify_Click);
             // 
             // buttonOpenFreqFile
             // 
@@ -245,7 +245,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.groupBox1.Location = new System.Drawing.Point(2, 418);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(339, 157);
+            this.groupBox1.Size = new System.Drawing.Size(339, 240);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Excel File";
@@ -263,7 +263,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "formMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Edit Correl";
+            this.Text = "Edit Correl v1.0";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).EndInit();
             this.groupBoxNames.ResumeLayout(false);
             this.groupBoxNames.PerformLayout();
