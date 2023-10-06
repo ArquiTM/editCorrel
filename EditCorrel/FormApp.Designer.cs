@@ -78,7 +78,7 @@
             this.dataGridViewCorrel.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridViewCorrel.Location = new System.Drawing.Point(347, 1);
             this.dataGridViewCorrel.Name = "dataGridViewCorrel";
-            this.dataGridViewCorrel.Size = new System.Drawing.Size(382, 657);
+            this.dataGridViewCorrel.Size = new System.Drawing.Size(382, 799);
             this.dataGridViewCorrel.TabIndex = 1;
             // 
             // Frequency
@@ -255,7 +255,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(741, 672);
+            this.ClientSize = new System.Drawing.Size(741, 807);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBoxNames);
@@ -263,7 +263,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "formMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Edit Correl v1.0";
+            this.Text = "Edit Correl v1.1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).EndInit();
             this.groupBoxNames.ResumeLayout(false);
             this.groupBoxNames.PerformLayout();

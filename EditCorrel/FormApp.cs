@@ -317,30 +317,85 @@ namespace EditCorrel
             }
             return dt;
         }
+
+        //trying
+
+        public DataTable READExcel(string strFilePath)
+        {
+            int indexExcel = 1;
+
+            if (comboBoxNames.Text.Contains("LEFT"))
+                indexExcel = 1;
+
+            else if (comboBoxNames.Text.Contains("RIGHT"))
+                indexExcel = 2;
+
+            else
+                indexExcel = 3;
+
+            Microsoft.Office.Interop.Excel.Application objXL = null;
+            Microsoft.Office.Interop.Excel.Workbook objWB = null;
+            objXL = new Microsoft.Office.Interop.Excel.Application();
+            objWB = objXL.Workbooks.Open(strFilePath);
+            Microsoft.Office.Interop.Excel.Worksheet objSHT = objWB.Worksheets[indexExcel];
+
+            int rows = objSHT.UsedRange.Rows.Count;
+            int cols = objSHT.UsedRange.Columns.Count;
+            DataTable dt = new DataTable();
+            int noofrow = 1;
+
+            for (int i = 1; i <= cols; i++)
+            {
+                string colname = objSHT.Cells[1, i].Text;
+                dt.Columns.Add(colname);
+                noofrow = 2;
+            }
+
+            for (int i = noofrow; i <= rows; i++)
+            {
+                DataRow dr = dt.NewRow();
+                for (int j = 1; j <= cols; j++)
+                {
+                    dr[j - 1] = objSHT.Cells[i, j].Text;
+                }
+
+                dt.Rows.Add(dr);
+            }
+
+            objWB.Close();
+            objXL.Quit();
+            return dt;
+        }
+
+        //end trying
+
         private void buttonOpenFreqFile_Click(object sender, EventArgs e)
         {
-            openFileDialog2.Filter = "Comma delimited (*.csv)|*.csv|All files (*.*)|*.*";
+            // openFileDialog2.Filter = "Comma delimited (*.csv)|*.csv|All files (*.*)|*.*";
+            openFileDialog2.Filter = "Excel Files| *.xls; *.xlsx; *.xlsm|All files (*.*)|*.*";
             if (openFileDialog2.ShowDialog() == DialogResult.OK)
             {
                 textBoxFreqFileDir.Text = openFileDialog2.FileName;
             }
             try
             {
-                DataTable freqFileDt = ConvertCSVtoDataTable(textBoxFreqFileDir.Text);
+                //  DataTable freqFileDt = ConvertCSVtoDataTable(textBoxFreqFileDir.Text);
+                DataTable trying = READExcel(textBoxFreqFileDir.Text);
+
                 int countR = dataGridViewCorrel.Rows.Count;
                 double Ll = 0.0;
                 double Ul = 0.0;
                 double average = 0.0;
                 for (int i = 0; i < countR; i++)
                 {
-                    foreach (DataRow row in freqFileDt.Rows)
+                    foreach (DataRow row in trying.Rows)
                     {
                         if (row[2].ToString().Contains(dataGridViewCorrel.Rows[i].Cells[0].Value.ToString()) && row[2].ToString().Contains("_AMP_"))
                         {
                             Ll = Convert.ToDouble(row[3]);
                             Ul = Convert.ToDouble(row[4]);
                             average = (Ll + Ul) / 2;
-                            dataGridViewCorrel.Rows[i].Cells[2].Value = average;
+                            dataGridViewCorrel.Rows[i].Cells[2].Value = average.ToString("F4");
                         }
                     }
                 }

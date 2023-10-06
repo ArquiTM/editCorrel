@@ -9715,143 +9715,143 @@
     <ValueDescription />
     <FrequencyOffset>
       <Frequency>7100</Frequency>
-      <Offset>103.162</Offset>
+      <Offset>103.1625</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>6300</Frequency>
-      <Offset>107.024</Offset>
+      <Offset>107.0236</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>5600</Frequency>
-      <Offset>112.675</Offset>
+      <Offset>112.6745</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>5000</Frequency>
-      <Offset>115.291</Offset>
+      <Offset>115.2908</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>4500</Frequency>
-      <Offset>109.700</Offset>
+      <Offset>109.6999</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>4000</Frequency>
-      <Offset>103.164</Offset>
+      <Offset>103.1638</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>3550</Frequency>
-      <Offset>105.442</Offset>
+      <Offset>105.4425</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>3150</Frequency>
-      <Offset>105.207</Offset>
+      <Offset>105.2067</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>2800</Frequency>
-      <Offset>103.398</Offset>
+      <Offset>103.3981</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>2500</Frequency>
-      <Offset>102.302</Offset>
+      <Offset>102.3016</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>2240</Frequency>
-      <Offset>101.614</Offset>
+      <Offset>101.6137</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>2000</Frequency>
-      <Offset>101.212</Offset>
+      <Offset>101.2123</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1800</Frequency>
-      <Offset>101.182</Offset>
+      <Offset>101.1819</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1600</Frequency>
-      <Offset>100.187</Offset>
+      <Offset>100.1872</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1400</Frequency>
-      <Offset>100.632</Offset>
+      <Offset>100.6316</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1250</Frequency>
-      <Offset>100.955</Offset>
+      <Offset>100.9546</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1120</Frequency>
-      <Offset>101.200</Offset>
+      <Offset>101.2005</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1000</Frequency>
-      <Offset>100.656</Offset>
+      <Offset>100.6562</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>900</Frequency>
-      <Offset>101.361</Offset>
+      <Offset>101.3613</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>800</Frequency>
-      <Offset>101.347</Offset>
+      <Offset>101.3469</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>710</Frequency>
-      <Offset>101.339</Offset>
+      <Offset>101.3395</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>630</Frequency>
-      <Offset>100.426</Offset>
+      <Offset>100.4264</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>560</Frequency>
-      <Offset>99.210</Offset>
+      <Offset>99.2100</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>500</Frequency>
-      <Offset>97.964</Offset>
+      <Offset>97.9639</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>450</Frequency>
-      <Offset>96.665</Offset>
+      <Offset>96.6648</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>400</Frequency>
-      <Offset>94.945</Offset>
+      <Offset>94.9453</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>355</Frequency>
-      <Offset>92.793</Offset>
+      <Offset>92.7932</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>315</Frequency>
-      <Offset>90.753</Offset>
+      <Offset>90.7526</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>280</Frequency>
-      <Offset>89.109</Offset>
+      <Offset>89.1093</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>250</Frequency>
-      <Offset>87.371</Offset>
+      <Offset>87.3714</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>224</Frequency>
-      <Offset>85.793</Offset>
+      <Offset>85.7926</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>200</Frequency>
-      <Offset>84.135</Offset>
+      <Offset>84.1353</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>180</Frequency>
-      <Offset>82.717</Offset>
+      <Offset>82.7168</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>160</Frequency>
-      <Offset>81.043</Offset>
+      <Offset>81.0425</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>140</Frequency>
-      <Offset>79.353</Offset>
+      <Offset>79.3533</Offset>
     </FrequencyOffset>
   </Tests>
   <Tests>
@@ -9862,143 +9862,143 @@
     <ValueDescription />
     <FrequencyOffset>
       <Frequency>7100</Frequency>
-      <Offset>106.857</Offset>
+      <Offset>106.8576</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>6300</Frequency>
-      <Offset>110.521</Offset>
+      <Offset>110.5218</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>5600</Frequency>
-      <Offset>113.434</Offset>
+      <Offset>113.4349</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>5000</Frequency>
-      <Offset>116.411</Offset>
+      <Offset>116.4116</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>4500</Frequency>
-      <Offset>119.073</Offset>
+      <Offset>119.0733</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>4000</Frequency>
-      <Offset>118.037</Offset>
+      <Offset>118.0379</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>3550</Frequency>
-      <Offset>112.503</Offset>
+      <Offset>112.5031</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>3150</Frequency>
-      <Offset>114.888</Offset>
+      <Offset>114.8883</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>2800</Frequency>
-      <Offset>111.236</Offset>
+      <Offset>111.2366</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>2500</Frequency>
-      <Offset>109.339</Offset>
+      <Offset>109.3397</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>2240</Frequency>
-      <Offset>107.335</Offset>
+      <Offset>107.3336</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>2000</Frequency>
-      <Offset>106.654</Offset>
+      <Offset>106.6544</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1800</Frequency>
-      <Offset>106.788</Offset>
+      <Offset>106.7887</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1600</Frequency>
-      <Offset>107.261</Offset>
+      <Offset>107.2618</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1400</Frequency>
-      <Offset>107.637</Offset>
+      <Offset>107.6376</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1250</Frequency>
-      <Offset>107.883</Offset>
+      <Offset>107.8835</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1120</Frequency>
-      <Offset>108.450</Offset>
+      <Offset>108.4505</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1000</Frequency>
-      <Offset>108.815</Offset>
+      <Offset>108.8157</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>900</Frequency>
-      <Offset>108.584</Offset>
+      <Offset>108.5850</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>800</Frequency>
-      <Offset>108.173</Offset>
+      <Offset>108.1738</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>710</Frequency>
-      <Offset>107.713</Offset>
+      <Offset>107.7130</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>630</Frequency>
-      <Offset>106.028</Offset>
+      <Offset>106.0281</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>560</Frequency>
-      <Offset>102.956</Offset>
+      <Offset>102.9570</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>500</Frequency>
-      <Offset>100.282</Offset>
+      <Offset>100.2822</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>450</Frequency>
-      <Offset>98.106</Offset>
+      <Offset>98.1069</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>400</Frequency>
-      <Offset>95.901</Offset>
+      <Offset>95.9020</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>355</Frequency>
-      <Offset>93.466</Offset>
+      <Offset>93.4667</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>315</Frequency>
-      <Offset>91.162</Offset>
+      <Offset>91.1625</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>280</Frequency>
-      <Offset>89.014</Offset>
+      <Offset>89.0144</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>250</Frequency>
-      <Offset>86.818</Offset>
+      <Offset>86.8187</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>224</Frequency>
-      <Offset>85.065</Offset>
+      <Offset>85.0651</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>200</Frequency>
-      <Offset>83.760</Offset>
+      <Offset>83.7601</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>180</Frequency>
-      <Offset>81.716</Offset>
+      <Offset>81.7165</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>160</Frequency>
-      <Offset>79.612</Offset>
+      <Offset>79.6122</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>140</Frequency>
-      <Offset>77.150</Offset>
+      <Offset>77.1506</Offset>
     </FrequencyOffset>
   </Tests>
   <Tests>
@@ -10149,3 +10149,5 @@
     </FrequencyOffset>
   </Tests>
 </CorrelationData>
+
+
