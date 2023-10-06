@@ -3,6 +3,653 @@
   <XmlVersion>2</XmlVersion>
   <UnitID>NNSR2C0106</UnitID>
   <Tests>
+    <Name>PrimaryExternalSource</Name>
+    <BenchName>NPI06AR01</BenchName>
+    <CalibrationDate>2013-02-28T17:40:24.5134678-03:00</CalibrationDate>
+    <Value>0</Value>
+    <ValueDescription>Total Power</ValueDescription>
+    <FrequencyOffset>
+      <Frequency>0</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>50</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>100</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>150</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>200</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>250</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>300</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>350</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>400</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>450</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>500</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>550</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>600</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>650</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>700</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>750</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>800</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>850</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>900</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>950</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1000</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1050</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1100</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1150</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1200</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1250</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1300</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1350</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1400</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1450</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1500</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1550</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1600</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1650</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1700</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1750</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1800</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1850</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1900</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>1950</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2000</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2050</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2100</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2150</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2200</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2250</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2300</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2350</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2400</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2450</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2500</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2550</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2600</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2650</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2700</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2750</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2800</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2850</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2900</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>2950</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3000</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3050</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3100</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3150</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3200</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3250</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3300</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3350</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3400</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3450</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3500</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3550</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3600</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3650</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3700</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3750</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3800</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3850</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3900</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>3950</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4000</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4050</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4100</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4150</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4200</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4250</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4300</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4350</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4400</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4450</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4500</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4550</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4600</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4650</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4700</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4750</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4800</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4850</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4900</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>4950</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5000</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5050</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5100</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5150</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5200</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5250</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5300</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5350</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5400</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5450</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5500</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5550</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5600</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5650</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5700</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5750</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5800</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5850</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5900</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>5950</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6000</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6050</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6100</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6150</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6200</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6250</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6300</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6350</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6400</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6450</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6500</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6550</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6600</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6650</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6700</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6750</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6800</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6850</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6900</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>6950</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7000</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7050</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7100</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7150</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7200</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7250</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7300</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7350</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7400</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7450</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7500</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7550</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7600</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7650</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7700</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7750</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7800</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7850</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7900</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+    <FrequencyOffset>
+      <Frequency>7950</Frequency>
+      <Offset>-30</Offset>
+    </FrequencyOffset>
+  </Tests>
+  <Tests>
     <Name>SecondaryExternalSource</Name>
     <BenchName>L2S17ALA</BenchName>
     <CalibrationDate>2013-02-28T17:40:24.5134678-03:00</CalibrationDate>
@@ -9068,143 +9715,143 @@
     <ValueDescription />
     <FrequencyOffset>
       <Frequency>7100</Frequency>
-      <Offset>103.16248719</Offset>
+      <Offset>103.162</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>6300</Frequency>
-      <Offset>107.0236057</Offset>
+      <Offset>107.024</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>5600</Frequency>
-      <Offset>112.6745072</Offset>
+      <Offset>112.675</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>5000</Frequency>
-      <Offset>115.2908399</Offset>
+      <Offset>115.291</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>4500</Frequency>
-      <Offset>109.6998659</Offset>
+      <Offset>109.700</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>4000</Frequency>
-      <Offset>103.163815915</Offset>
+      <Offset>103.164</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>3550</Frequency>
-      <Offset>105.4424736</Offset>
+      <Offset>105.442</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>3150</Frequency>
-      <Offset>105.2066722</Offset>
+      <Offset>105.207</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>2800</Frequency>
-      <Offset>103.39807051</Offset>
+      <Offset>103.398</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>2500</Frequency>
-      <Offset>102.301604805</Offset>
+      <Offset>102.302</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>2240</Frequency>
-      <Offset>101.613748495</Offset>
+      <Offset>101.614</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>2000</Frequency>
-      <Offset>101.212345505</Offset>
+      <Offset>101.212</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1800</Frequency>
-      <Offset>101.1818881</Offset>
+      <Offset>101.182</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1600</Frequency>
-      <Offset>100.187212085</Offset>
+      <Offset>100.187</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1400</Frequency>
-      <Offset>100.631593905</Offset>
+      <Offset>100.632</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1250</Frequency>
-      <Offset>100.95455519</Offset>
+      <Offset>100.955</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1120</Frequency>
-      <Offset>101.200464605</Offset>
+      <Offset>101.200</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>1000</Frequency>
-      <Offset>100.656248085</Offset>
+      <Offset>100.656</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>900</Frequency>
-      <Offset>101.361251715</Offset>
+      <Offset>101.361</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>800</Frequency>
-      <Offset>101.346856505</Offset>
+      <Offset>101.347</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>710</Frequency>
-      <Offset>101.339451885</Offset>
+      <Offset>101.339</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>630</Frequency>
-      <Offset>100.4264166</Offset>
+      <Offset>100.426</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>560</Frequency>
-      <Offset>99.20995189</Offset>
+      <Offset>99.210</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>500</Frequency>
-      <Offset>97.963896005</Offset>
+      <Offset>97.964</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>450</Frequency>
-      <Offset>96.664786615</Offset>
+      <Offset>96.665</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>400</Frequency>
-      <Offset>94.94532506</Offset>
+      <Offset>94.945</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>355</Frequency>
-      <Offset>92.79323242</Offset>
+      <Offset>92.793</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>315</Frequency>
-      <Offset>90.75262384</Offset>
+      <Offset>90.753</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>280</Frequency>
-      <Offset>89.10925548</Offset>
+      <Offset>89.109</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>250</Frequency>
-      <Offset>87.37135417</Offset>
+      <Offset>87.371</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>224</Frequency>
-      <Offset>85.79261074</Offset>
+      <Offset>85.793</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>200</Frequency>
-      <Offset>84.13527441</Offset>
+      <Offset>84.135</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>180</Frequency>
-      <Offset>82.71682669</Offset>
+      <Offset>82.717</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>160</Frequency>
-      <Offset>81.04252019</Offset>
+      <Offset>81.043</Offset>
     </FrequencyOffset>
     <FrequencyOffset>
       <Frequency>140</Frequency>
-      <Offset>79.35331174</Offset>
+      <Offset>79.353</Offset>
     </FrequencyOffset>
   </Tests>
   <Tests>
@@ -9502,4 +10149,3 @@
     </FrequencyOffset>
   </Tests>
 </CorrelationData>
-

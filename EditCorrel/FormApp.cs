@@ -2,7 +2,6 @@
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -13,82 +12,69 @@ namespace EditCorrel
         string originalCorrel = string.Empty;
         string tempCorrel = string.Empty;
         string line = string.Empty;
-        bool status = false;
         XmlDocument myDoc = new XmlDocument();
 
         public formMain()
         {
             InitializeComponent();
         }
-
-        public void OpenFile() //Abrir o arquivo na raiz do diretório que contém ".correl"
+        public bool OpenFile()
         {
             try
             {
-                if (!status)
+                string file_name = textBoxCorrelDir.Text;
+
+                if (file_name == string.Empty)
+                    MessageBox.Show("Não foi selecionado nenhum arquivo para edição!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
                 {
-                    string file_name = (textBoxCorrelDir.Text);
-
-                    if (file_name == string.Empty)
-                        MessageBox.Show("Não foi selecionado nenhum arquivo para edição!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                    else
+                    using (var reader = new StreamReader(file_name))
                     {
-                        using (var reader = new StreamReader(file_name))
+                        myDoc.Load(new StreamReader(file_name));
+                        while ((line = reader.ReadLine()) != null)
                         {
-                            myDoc.Load(new StreamReader(file_name));
-                            status = true;
-                            while ((line = reader.ReadLine()) != null)
+                            if (line.Contains("<Name>"))
                             {
-                                if (line.Contains("<Name>"))
-                                {
-                                    line = line.Replace("    <Name>", "");
-                                    line = line.Replace("</Name>", "");
-                                    comboBoxNames.Items.Add(line);
-                                }
+                                line = line.Replace("    <Name>", "");
+                                line = line.Replace("</Name>", "");
+                                comboBoxNames.Items.Add(line);
                             }
                         }
                     }
+                    return true;
                 }
             }
 
             catch (Exception ex)
             {
-                MessageBox.Show(" " + ex);
-                status = false;
+                MessageBox.Show("Error:" + ex.Message);
+                return false;
             }
+            return false;
         }
         private void buttonVerify_Click(object sender, EventArgs e)
         {
             getFile();
         }
-
-        private void getFile()//Abre o Arquivo ".correl"
+        private void getFile()
         {
-            OpenFile();
-
-            if (status)
+            bool result = OpenFile();
+            if (result)
                 buttonVerify.BackColor = Color.Green;
-
             else
                 buttonVerify.BackColor = Color.Red;
         }
 
-        private void buttonView_Click(object sender, EventArgs e) //Popula o data grid view
+        private void buttonView_Click(object sender, EventArgs e)
         {
             viewDataGridView();
         }
 
         private void viewDataGridView()
         {
-
             dataGridViewCorrel.Rows.Clear();
             if (comboBoxNames.Text == "")
                 MessageBox.Show("Não foi selecionado nenhum arquivo!!!", "ComboBox Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            else if (!status)
-                MessageBox.Show("Não há arquivo Correl selecionado!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             else
             {
                 string freqF = string.Empty;
@@ -98,7 +84,6 @@ namespace EditCorrel
                 string[] vectLine;
 
                 int countLine = 0;
-
                 foreach (XmlNode node in myDoc.DocumentElement.ChildNodes)
                 {
                     nodesXml = node.InnerXml;
@@ -132,19 +117,14 @@ namespace EditCorrel
             }
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e) //deletar os testes não usados
+        private void buttonDelete_Click(object sender, EventArgs e)
         {
             deleteLineComboBox();
         }
-
         private void deleteLineComboBox()
         {
             if (comboBoxNames.Text == "")
                 MessageBox.Show("Não foi selecionado nenhum arquivo!!!", "ComboBox Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            else if (!status)
-                MessageBox.Show("Não há arquivo Correl selecionado!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             else
             {
                 string nodesXml = string.Empty;
@@ -168,81 +148,86 @@ namespace EditCorrel
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
-            deleteNamesNewFile();
-            changeFreqNewFile();
-            FormExportOk formEOk = new FormExportOk();
-            formEOk.Show();
-            deleteTemp();
+            bool result = false;
+            result = deleteNamesNewFile();
+            if (result)
+            {
+                changeFreqNewFile();
+                FormExportOk formEOk = new FormExportOk();
+                formEOk.Show();
+            }
         }
-
-        private void deleteNamesNewFile()
+        private bool deleteNamesNewFile()
         {
             if (originalCorrel == string.Empty)
+            {
                 MessageBox.Show("Não há arquivo Correl selecionado!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                return false;
+            }
             else
             {
-                if (File.Exists(tempCorrel))
-                    File.Delete(tempCorrel);
-
-                string sourcefile = (originalCorrel + ".correl");
-                File.Copy(sourcefile, tempCorrel);
-
-
-                using (var reader = new StreamReader(textBoxCorrelDir.Text))
-                using (var writer = new StreamWriter(tempCorrel))
+                try
                 {
-                    myDoc.Load(new StreamReader(textBoxCorrelDir.Text));
+                    if (File.Exists(tempCorrel))
+                        File.Delete(tempCorrel);
 
-                    while ((line = reader.ReadLine()) != null)
+                    string sourcefile = originalCorrel + ".correl";
+                    File.Copy(sourcefile, tempCorrel);
+
+                    using (var reader = new StreamReader(textBoxCorrelDir.Text))
+                    using (var writer = new StreamWriter(tempCorrel))
                     {
-                        if (line.Contains("<Tests>"))
-                            line = line.Replace(line, "");
+                        myDoc.Load(new StreamReader(textBoxCorrelDir.Text));
 
-                        else if (line.Contains("<Name>"))
+                        while ((line = reader.ReadLine()) != null)
                         {
-                            line = line.Replace("    <Name>", "");
-                            line = line.Replace("</Name>", "");
+                            if (line.Contains("<Tests>"))
+                                line = line.Replace(line, "");
 
-                            if (!comboBoxNames.Items.Contains(line))
+                            else if (line.Contains("<Name>"))
                             {
-                                while (!line.Contains(@"</Tests>"))
+                                line = line.Replace("    <Name>", "");
+                                line = line.Replace("</Name>", "");
+
+                                if (!comboBoxNames.Items.Contains(line))
                                 {
-                                    line = line.Replace(line, "");
-                                    writer.Write(line);
-                                    line = reader.ReadLine();
+                                    while (!line.Contains(@"</Tests>"))
+                                    {
+                                        line = line.Replace(line, "");
+                                        writer.Write(line);
+                                        line = reader.ReadLine();
+                                    }
+                                }
+                                else
+                                {
+                                    writer.WriteLine("  <Tests>");
+                                    line = "    <Name>" + line + "</Name>";
+                                    writer.WriteLine(line);
                                 }
                             }
                             else
-                            {
-                                writer.WriteLine("  <Tests>");
-                                line = "    <Name>" + line + "</Name>";
                                 writer.WriteLine(line);
-                            }
                         }
-                        else
-                            writer.WriteLine(line);
                     }
+                    return true;
+                }
+                catch
+                {
+                    return false;
                 }
             }
         }
-        private void deleteTemp()
-        {
-            if (File.Exists(tempCorrel))
-                File.Delete(tempCorrel);
-        }
-
         private void changeFreqNewFile()
         {
-            string finalCorrel = tempCorrel.Replace("temp.correl", "new.correl");
+            string finalCorrel = tempCorrel.Replace("temporary.correl", "new_OK.correl");
 
             if (comboBoxNames.Text != "")
             {
                 if (File.Exists(tempCorrel))
                     File.Delete(tempCorrel);
 
-                if (File.Exists(originalCorrel + "_new.correl"))
-                    File.Copy((originalCorrel + "_new.correl"), tempCorrel);
+                if (File.Exists(originalCorrel + "_new_OK.correl"))
+                    File.Copy(originalCorrel + "_new_OK.correl", tempCorrel);
 
                 using (var readerN = new StreamReader(tempCorrel))
                 using (var writerN = new StreamWriter(finalCorrel))
@@ -295,13 +280,9 @@ namespace EditCorrel
             }
             else
             {
-                // File.Delete(finalCorrel);
-                File.Copy(tempCorrel, finalCorrel);
+                File.Copy(tempCorrel, finalCorrel, true);
             }
-            //  if (File.Exists(tempCorrel))
-            //    File.Delete(tempCorrel);
         }
-
         private void buttonOpenFile_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Correl files (*.correl)|*.correl|All files (*.*)|*.*";
@@ -309,10 +290,10 @@ namespace EditCorrel
             {
                 textBoxCorrelDir.Text = openFileDialog1.FileName;
                 originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
-                tempCorrel = originalCorrel + "_temp.correl";
+                tempCorrel = originalCorrel + "_temporary.correl";
+                File.Copy(originalCorrel + ".correl", originalCorrel + "_new_OK.correl", true);
             }
         }
-
         public DataTable ConvertCSVtoDataTable(string strFilePath)
         {
             DataTable dt = new DataTable();
@@ -334,9 +315,7 @@ namespace EditCorrel
                     dt.Rows.Add(dr);
                 }
             }
-
             return dt;
-
         }
         private void buttonOpenFreqFile_Click(object sender, EventArgs e)
         {
@@ -352,7 +331,6 @@ namespace EditCorrel
                 double Ll = 0.0;
                 double Ul = 0.0;
                 double average = 0.0;
-
                 for (int i = 0; i < countR; i++)
                 {
                     foreach (DataRow row in freqFileDt.Rows)
@@ -361,15 +339,13 @@ namespace EditCorrel
                         {
                             Ll = Convert.ToDouble(row[3]);
                             Ul = Convert.ToDouble(row[4]);
-                            average = ((Ll + Ul) / 2);
+                            average = (Ll + Ul) / 2;
                             dataGridViewCorrel.Rows[i].Cells[2].Value = average;
                         }
                     }
                 }
             }
             catch { }
-
-
         }
     }
 }
