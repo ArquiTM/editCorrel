@@ -104,6 +104,12 @@
   <ItemGroup>
     <None Include="img\flex.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loadingGif.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\Done.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

@@ -36,7 +36,6 @@
             this.groupBoxNames = new System.Windows.Forms.GroupBox();
             this.labelName = new System.Windows.Forms.Label();
             this.buttonDelete = new System.Windows.Forms.Button();
-            this.buttonView = new System.Windows.Forms.Button();
             this.labelFile = new System.Windows.Forms.Label();
             this.buttonGravar = new System.Windows.Forms.Button();
             this.textBoxCorrelDir = new System.Windows.Forms.TextBox();
@@ -49,11 +48,13 @@
             this.labelImportFreqFile = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBoxWarning = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).BeginInit();
             this.groupBoxNames.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarning)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxNames
@@ -63,6 +64,7 @@
             this.comboBoxNames.Name = "comboBoxNames";
             this.comboBoxNames.Size = new System.Drawing.Size(244, 24);
             this.comboBoxNames.TabIndex = 0;
+            this.comboBoxNames.SelectedIndexChanged += new System.EventHandler(this.comboBoxNames_SelectedIndexChanged);
             // 
             // dataGridViewCorrel
             // 
@@ -76,9 +78,9 @@
             this.OldOffset,
             this.NewOffset});
             this.dataGridViewCorrel.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dataGridViewCorrel.Location = new System.Drawing.Point(347, 1);
+            this.dataGridViewCorrel.Location = new System.Drawing.Point(357, 3);
             this.dataGridViewCorrel.Name = "dataGridViewCorrel";
-            this.dataGridViewCorrel.Size = new System.Drawing.Size(382, 799);
+            this.dataGridViewCorrel.Size = new System.Drawing.Size(372, 797);
             this.dataGridViewCorrel.TabIndex = 1;
             // 
             // Frequency
@@ -101,7 +103,6 @@
             this.groupBoxNames.Controls.Add(this.labelName);
             this.groupBoxNames.Controls.Add(this.comboBoxNames);
             this.groupBoxNames.Controls.Add(this.buttonDelete);
-            this.groupBoxNames.Controls.Add(this.buttonView);
             this.groupBoxNames.Controls.Add(this.labelFile);
             this.groupBoxNames.Controls.Add(this.buttonGravar);
             this.groupBoxNames.Controls.Add(this.textBoxCorrelDir);
@@ -110,7 +111,7 @@
             this.groupBoxNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxNames.Location = new System.Drawing.Point(2, 87);
             this.groupBoxNames.Name = "groupBoxNames";
-            this.groupBoxNames.Size = new System.Drawing.Size(339, 325);
+            this.groupBoxNames.Size = new System.Drawing.Size(349, 325);
             this.groupBoxNames.TabIndex = 2;
             this.groupBoxNames.TabStop = false;
             this.groupBoxNames.Text = "Correl Config";
@@ -127,25 +128,14 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.BackColor = System.Drawing.Color.White;
-            this.buttonDelete.Location = new System.Drawing.Point(260, 211);
+            this.buttonDelete.BackColor = System.Drawing.Color.Red;
+            this.buttonDelete.Location = new System.Drawing.Point(260, 180);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.Size = new System.Drawing.Size(75, 54);
             this.buttonDelete.TabIndex = 3;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
-            // 
-            // buttonView
-            // 
-            this.buttonView.BackColor = System.Drawing.Color.White;
-            this.buttonView.Location = new System.Drawing.Point(260, 181);
-            this.buttonView.Name = "buttonView";
-            this.buttonView.Size = new System.Drawing.Size(75, 23);
-            this.buttonView.TabIndex = 2;
-            this.buttonView.Text = "View";
-            this.buttonView.UseVisualStyleBackColor = false;
-            this.buttonView.Click += new System.EventHandler(this.buttonView_Click);
             // 
             // labelFile
             // 
@@ -204,7 +194,7 @@
             this.buttonOpenFreqFile.BackColor = System.Drawing.Color.White;
             this.buttonOpenFreqFile.Location = new System.Drawing.Point(292, 55);
             this.buttonOpenFreqFile.Name = "buttonOpenFreqFile";
-            this.buttonOpenFreqFile.Size = new System.Drawing.Size(44, 22);
+            this.buttonOpenFreqFile.Size = new System.Drawing.Size(51, 22);
             this.buttonOpenFreqFile.TabIndex = 9;
             this.buttonOpenFreqFile.Text = "...";
             this.buttonOpenFreqFile.UseVisualStyleBackColor = false;
@@ -239,16 +229,26 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pictureBoxWarning);
             this.groupBox1.Controls.Add(this.textBoxFreqFileDir);
             this.groupBox1.Controls.Add(this.buttonOpenFreqFile);
             this.groupBox1.Controls.Add(this.labelImportFreqFile);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.groupBox1.Location = new System.Drawing.Point(2, 418);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(339, 240);
+            this.groupBox1.Size = new System.Drawing.Size(349, 393);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Excel File";
+            // 
+            // pictureBoxWarning
+            // 
+            this.pictureBoxWarning.Location = new System.Drawing.Point(6, 85);
+            this.pictureBoxWarning.Name = "pictureBoxWarning";
+            this.pictureBoxWarning.Size = new System.Drawing.Size(337, 292);
+            this.pictureBoxWarning.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxWarning.TabIndex = 12;
+            this.pictureBoxWarning.TabStop = false;
             // 
             // formMain
             // 
@@ -256,10 +256,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(741, 807);
+            this.Controls.Add(this.dataGridViewCorrel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBoxNames);
-            this.Controls.Add(this.dataGridViewCorrel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "formMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -270,6 +270,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarning)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -283,7 +284,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NewOffset;
         private System.Windows.Forms.GroupBox groupBoxNames;
         private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.Button buttonView;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonGravar;
         private System.Windows.Forms.Button buttonVerify;
@@ -298,6 +298,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.PictureBox pictureBoxWarning;
     }
 }
 

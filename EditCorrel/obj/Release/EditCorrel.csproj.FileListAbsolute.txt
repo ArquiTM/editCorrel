@@ -1,0 +1,10 @@
+C:\Projetos\EditCorrel\EditCorrel\bin\Release\EditCorrel.exe.config
+C:\Projetos\EditCorrel\EditCorrel\bin\Release\EditCorrel.exe
+C:\Projetos\EditCorrel\EditCorrel\bin\Release\EditCorrel.pdb
+C:\Projetos\EditCorrel\EditCorrel\obj\Release\EditCorrel.formMain.resources
+C:\Projetos\EditCorrel\EditCorrel\obj\Release\EditCorrel.FormExportOk.resources
+C:\Projetos\EditCorrel\EditCorrel\obj\Release\EditCorrel.Properties.Resources.resources
+C:\Projetos\EditCorrel\EditCorrel\obj\Release\EditCorrel.csproj.GenerateResource.cache
+C:\Projetos\EditCorrel\EditCorrel\obj\Release\EditCorrel.csproj.CoreCompileInputs.cache
+C:\Projetos\EditCorrel\EditCorrel\obj\Release\EditCorrel.exe
+C:\Projetos\EditCorrel\EditCorrel\obj\Release\EditCorrel.pdb

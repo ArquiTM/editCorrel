@@ -1,7 +1,10 @@
-﻿using System;
+﻿using EditCorrel.Properties;
+using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Resources;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -65,11 +68,6 @@ namespace EditCorrel
                 buttonVerify.BackColor = Color.Red;
         }
 
-        private void buttonView_Click(object sender, EventArgs e)
-        {
-            viewDataGridView();
-        }
-
         private void viewDataGridView()
         {
             dataGridViewCorrel.Rows.Clear();
@@ -124,7 +122,7 @@ namespace EditCorrel
         private void deleteLineComboBox()
         {
             if (comboBoxNames.Text == "")
-                MessageBox.Show("Não foi selecionado nenhum arquivo!!!", "ComboBox Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Não foi selecionado nenhum teste!!!", "ComboBox Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
                 string nodesXml = string.Empty;
@@ -138,12 +136,11 @@ namespace EditCorrel
                         node.RemoveAll();
                         comboBoxNames.Items.Remove(comboBoxNames.Text);
                         comboBoxNames.Text = "";
+                        dataGridViewCorrel.Rows.Clear();
                         return;
                     }
                 }
             }
-            dataGridViewCorrel.Rows.Clear();
-            Application.DoEvents();
         }
 
         private void buttonGravar_Click(object sender, EventArgs e)
@@ -168,11 +165,11 @@ namespace EditCorrel
             {
                 try
                 {
-                    if (File.Exists(tempCorrel))
-                        File.Delete(tempCorrel);
-
-                    string sourcefile = originalCorrel + ".correl";
-                    File.Copy(sourcefile, tempCorrel);
+                    if (!File.Exists(tempCorrel))
+                    {
+                        string sourcefile = originalCorrel + ".correl";
+                        File.Copy(sourcefile, tempCorrel);
+                    }
 
                     using (var reader = new StreamReader(textBoxCorrelDir.Text))
                     using (var writer = new StreamWriter(tempCorrel))
@@ -223,11 +220,11 @@ namespace EditCorrel
 
             if (comboBoxNames.Text != "")
             {
-                if (File.Exists(tempCorrel))
-                    File.Delete(tempCorrel);
+                //   if (File.Exists(tempCorrel))
+                //     File.Delete(tempCorrel);
 
-                if (File.Exists(originalCorrel + "_new_OK.correl"))
-                    File.Copy(originalCorrel + "_new_OK.correl", tempCorrel);
+                //if (File.Exists(originalCorrel + "_new_OK.correl"))
+                //  File.Copy(originalCorrel + "_new_OK.correl", tempCorrel);
 
                 using (var readerN = new StreamReader(tempCorrel))
                 using (var writerN = new StreamWriter(finalCorrel))
@@ -235,21 +232,30 @@ namespace EditCorrel
                     myDoc.Load(new StreamReader(tempCorrel));
                     int freqDataGridView = 0;
                     int count = dataGridViewCorrel.Rows.Count;
+
+                    int rowsCount = Convert.ToInt32(dataGridViewCorrel.RowCount.ToString());
                     int i = 0;
 
-                    dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
+                    //for (int j = 0; j < rowsCount; j++)
+                    //{
+                    //    dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
+                    //}
+
                     while ((line = readerN.ReadLine()) != null && i < count)
                     {
-                        if (i == 35)
+
+                        if (i == rowsCount)
                             writerN.WriteLine(line);
 
-                        dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
+                        // dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
 
                         if (line.Contains(comboBoxNames.Text))
                         {
                             writerN.WriteLine(line);
                             while ((line = readerN.ReadLine()) != null && i < count)
                             {
+                                dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
+
                                 freqDataGridView = Convert.ToInt32(dataGridViewCorrel.Rows[i].Cells[0].Value);
                                 if (line.Contains($"<Frequency>{freqDataGridView.ToString()}"))
                                 {
@@ -278,10 +284,10 @@ namespace EditCorrel
                     writerN.WriteLine(line);
                 }
             }
-            else
-            {
-                File.Copy(tempCorrel, finalCorrel, true);
-            }
+            //  else
+            //{
+            //File.Copy(tempCorrel, finalCorrel, true);
+            //}
         }
         private void buttonOpenFile_Click(object sender, EventArgs e)
         {
@@ -294,6 +300,7 @@ namespace EditCorrel
                 File.Copy(originalCorrel + ".correl", originalCorrel + "_new_OK.correl", true);
             }
         }
+
         public DataTable ConvertCSVtoDataTable(string strFilePath)
         {
             DataTable dt = new DataTable();
@@ -317,8 +324,6 @@ namespace EditCorrel
             }
             return dt;
         }
-
-        //trying
 
         public DataTable READExcel(string strFilePath)
         {
@@ -349,6 +354,7 @@ namespace EditCorrel
                 string colname = objSHT.Cells[1, i].Text;
                 dt.Columns.Add(colname);
                 noofrow = 2;
+                Application.DoEvents();
             }
 
             for (int i = noofrow; i <= rows; i++)
@@ -357,21 +363,24 @@ namespace EditCorrel
                 for (int j = 1; j <= cols; j++)
                 {
                     dr[j - 1] = objSHT.Cells[i, j].Text;
+                    Application.DoEvents();
                 }
 
                 dt.Rows.Add(dr);
+                Application.DoEvents();
             }
-
             objWB.Close();
             objXL.Quit();
             return dt;
         }
 
-        //end trying
-
         private void buttonOpenFreqFile_Click(object sender, EventArgs e)
         {
-            // openFileDialog2.Filter = "Comma delimited (*.csv)|*.csv|All files (*.*)|*.*";
+            string caminhoDoGIF = (@"C:\Projetos\EditCorrel\EditCorrel\img\loadingGif.gif");
+            Image gifImage = Image.FromFile(caminhoDoGIF);
+
+            pictureBoxWarning.Image = gifImage;
+
             openFileDialog2.Filter = "Excel Files| *.xls; *.xlsx; *.xlsm|All files (*.*)|*.*";
             if (openFileDialog2.ShowDialog() == DialogResult.OK)
             {
@@ -379,16 +388,17 @@ namespace EditCorrel
             }
             try
             {
-                //  DataTable freqFileDt = ConvertCSVtoDataTable(textBoxFreqFileDir.Text);
-                DataTable trying = READExcel(textBoxFreqFileDir.Text);
+                DataTable dt = READExcel(textBoxFreqFileDir.Text);
 
                 int countR = dataGridViewCorrel.Rows.Count;
                 double Ll = 0.0;
                 double Ul = 0.0;
                 double average = 0.0;
+
                 for (int i = 0; i < countR; i++)
                 {
-                    foreach (DataRow row in trying.Rows)
+                    Application.DoEvents();
+                    foreach (DataRow row in dt.Rows)
                     {
                         if (row[2].ToString().Contains(dataGridViewCorrel.Rows[i].Cells[0].Value.ToString()) && row[2].ToString().Contains("_AMP_"))
                         {
@@ -397,10 +407,18 @@ namespace EditCorrel
                             average = (Ll + Ul) / 2;
                             dataGridViewCorrel.Rows[i].Cells[2].Value = average.ToString("F4");
                         }
+                        Application.DoEvents();
                     }
                 }
+                pictureBoxWarning.Image = Resources.Done;
             }
             catch { }
+        }
+
+        private void comboBoxNames_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxNames.Text != "")
+                viewDataGridView();
         }
     }
 }
