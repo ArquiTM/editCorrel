@@ -73,7 +73,7 @@ namespace EditCorrel
             if (result)
             {
                 textBoxFileVerify.Text = "File Import Successfully!!!";
-                textBoxFileVerify.BackColor = Color.Green;
+                textBoxFileVerify.BackColor = Color.LimeGreen;
                 textBoxFileVerify.ForeColor = Color.Black;
             }
             else

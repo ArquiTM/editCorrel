@@ -34,6 +34,7 @@
             this.OldOffset = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NewOffset = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxNames = new System.Windows.Forms.GroupBox();
+            this.textBoxFileVerify = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.labelFile = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxWarning = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.textBoxFileVerify = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).BeginInit();
             this.groupBoxNames.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,6 +59,7 @@
             // 
             // comboBoxNames
             // 
+            this.comboBoxNames.BackColor = System.Drawing.Color.White;
             this.comboBoxNames.FormattingEnabled = true;
             this.comboBoxNames.Location = new System.Drawing.Point(7, 199);
             this.comboBoxNames.Name = "comboBoxNames";
@@ -116,6 +117,19 @@
             this.groupBoxNames.TabStop = false;
             this.groupBoxNames.Text = "Correl Config";
             // 
+            // textBoxFileVerify
+            // 
+            this.textBoxFileVerify.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.textBoxFileVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxFileVerify.ForeColor = System.Drawing.Color.Black;
+            this.textBoxFileVerify.Location = new System.Drawing.Point(6, 73);
+            this.textBoxFileVerify.Multiline = true;
+            this.textBoxFileVerify.Name = "textBoxFileVerify";
+            this.textBoxFileVerify.ReadOnly = true;
+            this.textBoxFileVerify.Size = new System.Drawing.Size(279, 38);
+            this.textBoxFileVerify.TabIndex = 9;
+            this.textBoxFileVerify.Text = "File Verify";
+            // 
             // labelName
             // 
             this.labelName.AutoSize = true;
@@ -163,6 +177,7 @@
             // 
             // textBoxCorrelDir
             // 
+            this.textBoxCorrelDir.BackColor = System.Drawing.Color.White;
             this.textBoxCorrelDir.Location = new System.Drawing.Point(6, 34);
             this.textBoxCorrelDir.Name = "textBoxCorrelDir";
             this.textBoxCorrelDir.ReadOnly = true;
@@ -193,6 +208,7 @@
             // 
             // textBoxFreqFileDir
             // 
+            this.textBoxFreqFileDir.BackColor = System.Drawing.Color.White;
             this.textBoxFreqFileDir.Location = new System.Drawing.Point(7, 46);
             this.textBoxFreqFileDir.Name = "textBoxFreqFileDir";
             this.textBoxFreqFileDir.ReadOnly = true;
@@ -240,19 +256,6 @@
             this.pictureBoxWarning.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxWarning.TabIndex = 12;
             this.pictureBoxWarning.TabStop = false;
-            // 
-            // textBoxFileVerify
-            // 
-            this.textBoxFileVerify.BackColor = System.Drawing.Color.Red;
-            this.textBoxFileVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFileVerify.ForeColor = System.Drawing.Color.White;
-            this.textBoxFileVerify.Location = new System.Drawing.Point(6, 73);
-            this.textBoxFileVerify.Multiline = true;
-            this.textBoxFileVerify.Name = "textBoxFileVerify";
-            this.textBoxFileVerify.ReadOnly = true;
-            this.textBoxFileVerify.Size = new System.Drawing.Size(279, 38);
-            this.textBoxFileVerify.TabIndex = 9;
-            this.textBoxFileVerify.Text = "File Verify";
             // 
             // formMain
             // 
