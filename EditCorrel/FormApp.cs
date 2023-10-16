@@ -80,6 +80,8 @@ namespace EditCorrel
             {
                 textBoxFileVerify.BackColor = Color.Red;
                 textBoxFileVerify.Text = "File Import Error!!!";
+                textBoxFileVerify.ForeColor = Color.White;
+
             }
         }
 
@@ -308,15 +310,31 @@ namespace EditCorrel
 
         private void buttonOpenFile_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Correl files (*.correl)|*.correl|All files (*.*)|*.*";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            bool result = false;
+            result = selectingCorrel();
+
+            if (result)
+                getFile();
+        }
+
+        private bool selectingCorrel()
+        {
+            try
             {
-                textBoxCorrelDir.Text = openFileDialog1.FileName;
-                originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
-                tempCorrel = originalCorrel + "_temporary.correl";
-                File.Copy(originalCorrel + ".correl", originalCorrel + "_new_OK.correl", true);
+                openFileDialog1.Filter = "Correl files (*.correl)|*.correl|All files (*.*)|*.*";
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    textBoxCorrelDir.Text = openFileDialog1.FileName;
+                    originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
+                    tempCorrel = originalCorrel + "_temporary.correl";
+                    File.Copy(originalCorrel + ".correl", originalCorrel + "_new_OK.correl", true);
+                }
+                return true;
             }
-            getFile();
+            catch
+            {
+                return false;
+            }
         }
 
         public DataTable ConvertCSVtoDataTable(string strFilePath)
