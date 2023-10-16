@@ -151,9 +151,9 @@
             // 
             this.buttonGravar.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.buttonGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGravar.Location = new System.Drawing.Point(85, 243);
+            this.buttonGravar.Location = new System.Drawing.Point(10, 243);
             this.buttonGravar.Name = "buttonGravar";
-            this.buttonGravar.Size = new System.Drawing.Size(148, 45);
+            this.buttonGravar.Size = new System.Drawing.Size(241, 45);
             this.buttonGravar.TabIndex = 3;
             this.buttonGravar.Text = "Gravar Alterações";
             this.buttonGravar.UseVisualStyleBackColor = false;
@@ -183,7 +183,7 @@
             this.buttonVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.buttonVerify.Location = new System.Drawing.Point(85, 62);
             this.buttonVerify.Name = "buttonVerify";
-            this.buttonVerify.Size = new System.Drawing.Size(148, 48);
+            this.buttonVerify.Size = new System.Drawing.Size(162, 48);
             this.buttonVerify.TabIndex = 5;
             this.buttonVerify.Text = "File Verify";
             this.buttonVerify.UseVisualStyleBackColor = false;
@@ -192,7 +192,7 @@
             // buttonOpenFreqFile
             // 
             this.buttonOpenFreqFile.BackColor = System.Drawing.Color.White;
-            this.buttonOpenFreqFile.Location = new System.Drawing.Point(292, 55);
+            this.buttonOpenFreqFile.Location = new System.Drawing.Point(292, 46);
             this.buttonOpenFreqFile.Name = "buttonOpenFreqFile";
             this.buttonOpenFreqFile.Size = new System.Drawing.Size(51, 22);
             this.buttonOpenFreqFile.TabIndex = 9;
@@ -202,7 +202,7 @@
             // 
             // textBoxFreqFileDir
             // 
-            this.textBoxFreqFileDir.Location = new System.Drawing.Point(7, 57);
+            this.textBoxFreqFileDir.Location = new System.Drawing.Point(7, 46);
             this.textBoxFreqFileDir.Name = "textBoxFreqFileDir";
             this.textBoxFreqFileDir.Size = new System.Drawing.Size(279, 22);
             this.textBoxFreqFileDir.TabIndex = 10;
@@ -211,7 +211,7 @@
             // 
             this.labelImportFreqFile.AutoSize = true;
             this.labelImportFreqFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.labelImportFreqFile.Location = new System.Drawing.Point(7, 38);
+            this.labelImportFreqFile.Location = new System.Drawing.Point(7, 27);
             this.labelImportFreqFile.Name = "labelImportFreqFile";
             this.labelImportFreqFile.Size = new System.Drawing.Size(84, 16);
             this.labelImportFreqFile.TabIndex = 11;
@@ -229,21 +229,20 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pictureBoxWarning);
             this.groupBox1.Controls.Add(this.textBoxFreqFileDir);
             this.groupBox1.Controls.Add(this.buttonOpenFreqFile);
             this.groupBox1.Controls.Add(this.labelImportFreqFile);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.groupBox1.Location = new System.Drawing.Point(2, 418);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(349, 393);
+            this.groupBox1.Size = new System.Drawing.Size(349, 80);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Excel File";
             // 
             // pictureBoxWarning
             // 
-            this.pictureBoxWarning.Location = new System.Drawing.Point(6, 85);
+            this.pictureBoxWarning.Location = new System.Drawing.Point(8, 508);
             this.pictureBoxWarning.Name = "pictureBoxWarning";
             this.pictureBoxWarning.Size = new System.Drawing.Size(337, 292);
             this.pictureBoxWarning.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -256,6 +255,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(741, 807);
+            this.Controls.Add(this.pictureBoxWarning);
             this.Controls.Add(this.dataGridViewCorrel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
