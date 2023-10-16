@@ -145,9 +145,9 @@
             this.buttonDelete.BackColor = System.Drawing.Color.Red;
             this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDelete.ForeColor = System.Drawing.Color.White;
-            this.buttonDelete.Location = new System.Drawing.Point(260, 180);
+            this.buttonDelete.Location = new System.Drawing.Point(258, 199);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(75, 54);
+            this.buttonDelete.Size = new System.Drawing.Size(75, 45);
             this.buttonDelete.TabIndex = 3;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = false;

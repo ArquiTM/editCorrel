@@ -99,6 +99,11 @@ namespace EditCorrel
                 string[] vectLine;
                 int countLine = 0;
 
+                myDoc = new XmlDocument();
+
+                string file_name = textBoxCorrelDir.Text;
+                myDoc.Load(new StreamReader(file_name));
+
                 foreach (XmlNode node in myDoc.DocumentElement.ChildNodes)
                 {
                     nodesXml = node.InnerXml;
@@ -145,6 +150,10 @@ namespace EditCorrel
             {
                 string nodesXml = string.Empty;
 
+                myDoc = new XmlDocument();
+                string file_name = textBoxCorrelDir.Text;
+                myDoc.Load(new StreamReader(file_name));
+
                 foreach (XmlNode node in myDoc.DocumentElement.ChildNodes)
                 {
                     nodesXml = node.InnerXml;
@@ -172,9 +181,9 @@ namespace EditCorrel
             {
                 if (changeFNF)
                 {
-                    myDoc = null;
-                    GC.Collect();
-                    // copyNewtoTemp();
+                    //myDoc = null;
+                    //GC.Collect();
+                    copyNewtoTemp();
                     FormExportOk formEOk = new FormExportOk();
                     formEOk.Show();
                 }
@@ -305,6 +314,9 @@ namespace EditCorrel
         }
         private void copyNewtoTemp()
         {
+            myDoc = null;
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
             File.Copy(originalCorrel + "_new_OK.correl", tempCorrel, true);
         }
 
