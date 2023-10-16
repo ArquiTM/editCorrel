@@ -30,7 +30,6 @@ namespace EditCorrel
             comboBoxNames.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-
         public bool OpenFile()
         {
             try
@@ -42,6 +41,7 @@ namespace EditCorrel
 
                 else
                 {
+                    comboBoxNames.Items.Clear();
                     using (var reader = new StreamReader(file_name))
                     {
                         myDoc.Load(new StreamReader(file_name));
@@ -394,15 +394,23 @@ namespace EditCorrel
 
         private void buttonOpenFreqFile_Click(object sender, EventArgs e)
         {
+            bool result = false;
+            result = importingExcel();
+        }
+
+        private bool importingExcel()
+        {
             string caminhoDoGIF = (@"C:\Projetos\EditCorrel\EditCorrel\img\loadingGif.gif");
             Image gifImage = Image.FromFile(caminhoDoGIF);
-
             pictureBoxWarning.Image = gifImage;
 
-            openFileDialog2.Filter = "Excel Files| *.xls; *.xlsx; *.xlsm|All files (*.*)|*.*";
-            if (openFileDialog2.ShowDialog() == DialogResult.OK)
+            if (textBoxFreqFileDir.Text == "")
             {
-                textBoxFreqFileDir.Text = openFileDialog2.FileName;
+                openFileDialog2.Filter = "Excel Files| *.xls; *.xlsx; *.xlsm|All files (*.*)|*.*";
+                if (openFileDialog2.ShowDialog() == DialogResult.OK)
+                {
+                    textBoxFreqFileDir.Text = openFileDialog2.FileName;
+                }
             }
             try
             {
@@ -429,14 +437,23 @@ namespace EditCorrel
                     }
                 }
                 pictureBoxWarning.Image = Resources.Done;
+                return true;
             }
-            catch { }
+            catch
+            {
+                return false;
+            }
         }
 
         private void comboBoxNames_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxNames.Text != "")
+            {
                 viewDataGridView();
+
+                if (textBoxFreqFileDir.Text != "")
+                    importingExcel();
+            }
         }
     }
 }
