@@ -18,7 +18,19 @@ namespace EditCorrel
         public formMain()
         {
             InitializeComponent();
+            settingTextsBoxAndComboBox();
         }
+
+        public void settingTextsBoxAndComboBox()
+        {
+            textBoxFileVerify.TextAlign = HorizontalAlignment.Center;
+            textBoxFileVerify.ReadOnly = true;
+            textBoxCorrelDir.ReadOnly = true;
+            textBoxFreqFileDir.ReadOnly = true;
+            comboBoxNames.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+
         public bool OpenFile()
         {
             try
@@ -54,19 +66,21 @@ namespace EditCorrel
             return false;
         }
 
-        private void buttonVerify_Click(object sender, EventArgs e)
-        {
-            getFile();
-        }
-
         private void getFile()
         {
             bool result = OpenFile();
 
             if (result)
-                buttonVerify.BackColor = Color.Green;
+            {
+                textBoxFileVerify.Text = "File Import Successfully!!!";
+                textBoxFileVerify.BackColor = Color.Green;
+                textBoxFileVerify.ForeColor = Color.Black;
+            }
             else
-                buttonVerify.BackColor = Color.Red;
+            {
+                textBoxFileVerify.BackColor = Color.Red;
+                textBoxFileVerify.Text = "File Import Error!!!";
+            }
         }
 
         private void viewDataGridView()
@@ -158,7 +172,7 @@ namespace EditCorrel
                 {
                     myDoc = null;
                     GC.Collect();
-                    copyNewtoTemp();
+                    // copyNewtoTemp();
                     FormExportOk formEOk = new FormExportOk();
                     formEOk.Show();
                 }
@@ -302,6 +316,7 @@ namespace EditCorrel
                 tempCorrel = originalCorrel + "_temporary.correl";
                 File.Copy(originalCorrel + ".correl", originalCorrel + "_new_OK.correl", true);
             }
+            getFile();
         }
 
         public DataTable ConvertCSVtoDataTable(string strFilePath)

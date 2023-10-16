@@ -40,7 +40,6 @@
             this.buttonGravar = new System.Windows.Forms.Button();
             this.textBoxCorrelDir = new System.Windows.Forms.TextBox();
             this.buttonOpenFile = new System.Windows.Forms.Button();
-            this.buttonVerify = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.buttonOpenFreqFile = new System.Windows.Forms.Button();
@@ -50,6 +49,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxWarning = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.textBoxFileVerify = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).BeginInit();
             this.groupBoxNames.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,6 +100,7 @@
             // 
             // groupBoxNames
             // 
+            this.groupBoxNames.Controls.Add(this.textBoxFileVerify);
             this.groupBoxNames.Controls.Add(this.labelName);
             this.groupBoxNames.Controls.Add(this.comboBoxNames);
             this.groupBoxNames.Controls.Add(this.buttonDelete);
@@ -107,7 +108,6 @@
             this.groupBoxNames.Controls.Add(this.buttonGravar);
             this.groupBoxNames.Controls.Add(this.textBoxCorrelDir);
             this.groupBoxNames.Controls.Add(this.buttonOpenFile);
-            this.groupBoxNames.Controls.Add(this.buttonVerify);
             this.groupBoxNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxNames.Location = new System.Drawing.Point(2, 87);
             this.groupBoxNames.Name = "groupBoxNames";
@@ -129,6 +129,8 @@
             // buttonDelete
             // 
             this.buttonDelete.BackColor = System.Drawing.Color.Red;
+            this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelete.ForeColor = System.Drawing.Color.White;
             this.buttonDelete.Location = new System.Drawing.Point(260, 180);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 54);
@@ -150,7 +152,7 @@
             // buttonGravar
             // 
             this.buttonGravar.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.buttonGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGravar.Location = new System.Drawing.Point(10, 243);
             this.buttonGravar.Name = "buttonGravar";
             this.buttonGravar.Size = new System.Drawing.Size(241, 45);
@@ -163,6 +165,7 @@
             // 
             this.textBoxCorrelDir.Location = new System.Drawing.Point(6, 34);
             this.textBoxCorrelDir.Name = "textBoxCorrelDir";
+            this.textBoxCorrelDir.ReadOnly = true;
             this.textBoxCorrelDir.Size = new System.Drawing.Size(279, 22);
             this.textBoxCorrelDir.TabIndex = 7;
             // 
@@ -176,18 +179,6 @@
             this.buttonOpenFile.Text = "...";
             this.buttonOpenFile.UseVisualStyleBackColor = false;
             this.buttonOpenFile.Click += new System.EventHandler(this.buttonOpenFile_Click);
-            // 
-            // buttonVerify
-            // 
-            this.buttonVerify.BackColor = System.Drawing.Color.Red;
-            this.buttonVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.buttonVerify.Location = new System.Drawing.Point(85, 62);
-            this.buttonVerify.Name = "buttonVerify";
-            this.buttonVerify.Size = new System.Drawing.Size(162, 48);
-            this.buttonVerify.TabIndex = 5;
-            this.buttonVerify.Text = "File Verify";
-            this.buttonVerify.UseVisualStyleBackColor = false;
-            this.buttonVerify.Click += new System.EventHandler(this.buttonVerify_Click);
             // 
             // buttonOpenFreqFile
             // 
@@ -204,6 +195,7 @@
             // 
             this.textBoxFreqFileDir.Location = new System.Drawing.Point(7, 46);
             this.textBoxFreqFileDir.Name = "textBoxFreqFileDir";
+            this.textBoxFreqFileDir.ReadOnly = true;
             this.textBoxFreqFileDir.Size = new System.Drawing.Size(279, 22);
             this.textBoxFreqFileDir.TabIndex = 10;
             // 
@@ -249,6 +241,19 @@
             this.pictureBoxWarning.TabIndex = 12;
             this.pictureBoxWarning.TabStop = false;
             // 
+            // textBoxFileVerify
+            // 
+            this.textBoxFileVerify.BackColor = System.Drawing.Color.Red;
+            this.textBoxFileVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxFileVerify.ForeColor = System.Drawing.Color.White;
+            this.textBoxFileVerify.Location = new System.Drawing.Point(6, 73);
+            this.textBoxFileVerify.Multiline = true;
+            this.textBoxFileVerify.Name = "textBoxFileVerify";
+            this.textBoxFileVerify.ReadOnly = true;
+            this.textBoxFileVerify.Size = new System.Drawing.Size(279, 38);
+            this.textBoxFileVerify.TabIndex = 9;
+            this.textBoxFileVerify.Text = "File Verify";
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,7 +291,6 @@
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonGravar;
-        private System.Windows.Forms.Button buttonVerify;
         private System.Windows.Forms.Button buttonOpenFile;
         private System.Windows.Forms.TextBox textBoxCorrelDir;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
@@ -299,6 +303,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.PictureBox pictureBoxWarning;
+        private System.Windows.Forms.TextBox textBoxFileVerify;
     }
 }
 
