@@ -81,7 +81,6 @@ namespace EditCorrel
                 textBoxFileVerify.BackColor = Color.Red;
                 textBoxFileVerify.Text = "File Import Error!!!";
                 textBoxFileVerify.ForeColor = Color.White;
-
             }
         }
 
@@ -179,10 +178,9 @@ namespace EditCorrel
 
             if (deleteNNF)
             {
+                copyNewtoTemp();
                 if (changeFNF)
                 {
-                    //myDoc = null;
-                    //GC.Collect();
                     copyNewtoTemp();
                     FormExportOk formEOk = new FormExportOk();
                     formEOk.Show();
@@ -206,11 +204,11 @@ namespace EditCorrel
                         File.Copy(sourcefile, tempCorrel);
                     }
 
-                    using (var reader = new StreamReader(textBoxCorrelDir.Text))
+                    using (var reader = new StreamReader(tempCorrel))
                     {
-                        using (var writer = new StreamWriter(tempCorrel))
+                        using (var writer = new StreamWriter(originalCorrel + "_new_OK.correl"))
                         {
-                            myDoc.Load(new StreamReader(textBoxCorrelDir.Text));
+                            myDoc.Load(new StreamReader(tempCorrel));
 
                             while ((line = reader.ReadLine()) != null)
                             {
@@ -254,14 +252,13 @@ namespace EditCorrel
         }
         private bool changeFreqNewFile()
         {
-            string finalCorrel = tempCorrel.Replace("temporary.correl", "new_OK.correl");
-
             try
             {
                 using (var readerN = new StreamReader(tempCorrel))
                 {
-                    using (var writerN = new StreamWriter(finalCorrel))
+                    using (var writerN = new StreamWriter(originalCorrel + ".correl"))
                     {
+                        myDoc = new XmlDocument();
                         myDoc.Load(new StreamReader(tempCorrel));
                         int freqDataGridView = 0;
                         int count = dataGridViewCorrel.Rows.Count;
@@ -318,6 +315,7 @@ namespace EditCorrel
             GC.Collect();
             GC.WaitForPendingFinalizers();
             File.Copy(originalCorrel + "_new_OK.correl", tempCorrel, true);
+            //  File.Delete(tempCorrel);
         }
 
         private void buttonOpenFile_Click(object sender, EventArgs e)
@@ -339,7 +337,7 @@ namespace EditCorrel
                     textBoxCorrelDir.Text = openFileDialog1.FileName;
                     originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
                     tempCorrel = originalCorrel + "_temporary.correl";
-                    File.Copy(originalCorrel + ".correl", originalCorrel + "_new_OK.correl", true);
+                    File.Copy(originalCorrel + ".correl", tempCorrel, true);
                 }
                 return true;
             }
@@ -375,7 +373,8 @@ namespace EditCorrel
 
         public DataTable READExcel(string strFilePath)
         {
-            int indexExcel = 1;
+            DataTable dt = new DataTable();
+            int indexExcel = 0;
 
             if (comboBoxNames.Text.Contains("LEFT"))
                 indexExcel = 1;
@@ -383,49 +382,69 @@ namespace EditCorrel
             else if (comboBoxNames.Text.Contains("RIGHT"))
                 indexExcel = 2;
 
-            else
+            else if (comboBoxNames.Text.Contains("EARPIECE"))
                 indexExcel = 3;
 
-            Microsoft.Office.Interop.Excel.Application objXL = null;
-            Microsoft.Office.Interop.Excel.Workbook objWB = null;
-            objXL = new Microsoft.Office.Interop.Excel.Application();
-            objWB = objXL.Workbooks.Open(strFilePath);
-            Microsoft.Office.Interop.Excel.Worksheet objSHT = objWB.Worksheets[indexExcel];
-
-            int rows = objSHT.UsedRange.Rows.Count;
-            int cols = objSHT.UsedRange.Columns.Count;
-            DataTable dt = new DataTable();
-            int noofrow = 1;
-
-            for (int i = 1; i <= cols; i++)
+            if (indexExcel != 0)
             {
-                string colname = objSHT.Cells[1, i].Text;
-                dt.Columns.Add(colname);
-                noofrow = 2;
-                Application.DoEvents();
-            }
+                Microsoft.Office.Interop.Excel.Application objXL = null;
+                Microsoft.Office.Interop.Excel.Workbook objWB = null;
+                objXL = new Microsoft.Office.Interop.Excel.Application();
+                objWB = objXL.Workbooks.Open(strFilePath);
+                Microsoft.Office.Interop.Excel.Worksheet objSHT = objWB.Worksheets[indexExcel];
 
-            for (int i = noofrow; i <= rows; i++)
-            {
-                DataRow dr = dt.NewRow();
-                for (int j = 1; j <= cols; j++)
+                int rows = objSHT.UsedRange.Rows.Count;
+                int cols = objSHT.UsedRange.Columns.Count;
+                int noofrow = 1;
+
+                for (int i = 1; i <= cols; i++)
                 {
-                    dr[j - 1] = objSHT.Cells[i, j].Text;
+                    string colname = objSHT.Cells[1, i].Text;
+                    dt.Columns.Add(colname);
+                    noofrow = 2;
                     Application.DoEvents();
                 }
 
-                dt.Rows.Add(dr);
-                Application.DoEvents();
+                for (int i = noofrow; i <= rows; i++)
+                {
+                    DataRow dr = dt.NewRow();
+                    for (int j = 1; j <= cols; j++)
+                    {
+                        dr[j - 1] = objSHT.Cells[i, j].Text;
+                        Application.DoEvents();
+                    }
+                    dt.Rows.Add(dr);
+                    Application.DoEvents();
+                }
+                objWB.Close();
+                objXL.Quit();
             }
-            objWB.Close();
-            objXL.Quit();
             return dt;
         }
 
         private void buttonOpenFreqFile_Click(object sender, EventArgs e)
         {
+            disableButtons();
             bool result = false;
             result = importingExcel();
+            if (result)
+                enableButtons();
+        }
+
+        private void enableButtons()
+        {
+            buttonGravar.Enabled = true;
+            buttonDelete.Enabled = true;
+            buttonOpenFile.Enabled = true;
+            buttonOpenFreqFile.Enabled = true;
+        }
+
+        private void disableButtons()
+        {
+            buttonGravar.Enabled = false;
+            buttonDelete.Enabled = false;
+            buttonOpenFile.Enabled = false;
+            buttonOpenFreqFile.Enabled = false;
         }
 
         private bool importingExcel()
@@ -434,18 +453,15 @@ namespace EditCorrel
             Image gifImage = Image.FromFile(caminhoDoGIF);
             pictureBoxWarning.Image = gifImage;
 
-            if (textBoxFreqFileDir.Text == "")
+            //if (textBoxFreqFileDir.Text == "")
             {
                 openFileDialog2.Filter = "Excel Files| *.xls; *.xlsx; *.xlsm|All files (*.*)|*.*";
                 if (openFileDialog2.ShowDialog() == DialogResult.OK)
-                {
                     textBoxFreqFileDir.Text = openFileDialog2.FileName;
-                }
             }
             try
             {
                 DataTable dt = READExcel(textBoxFreqFileDir.Text);
-
                 int countR = dataGridViewCorrel.Rows.Count;
                 double Ll = 0.0;
                 double Ul = 0.0;
