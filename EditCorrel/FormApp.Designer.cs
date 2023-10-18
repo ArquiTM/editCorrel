@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
             this.comboBoxNames = new System.Windows.Forms.ComboBox();
             this.dataGridViewCorrel = new System.Windows.Forms.DataGridView();
             this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +51,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxWarning = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.buttonTrying = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).BeginInit();
             this.groupBoxNames.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -101,6 +103,7 @@
             // 
             // groupBoxNames
             // 
+            this.groupBoxNames.Controls.Add(this.buttonTrying);
             this.groupBoxNames.Controls.Add(this.textBoxFileVerify);
             this.groupBoxNames.Controls.Add(this.labelName);
             this.groupBoxNames.Controls.Add(this.comboBoxNames);
@@ -257,6 +260,16 @@
             this.pictureBoxWarning.TabIndex = 12;
             this.pictureBoxWarning.TabStop = false;
             // 
+            // buttonTrying
+            // 
+            this.buttonTrying.Location = new System.Drawing.Point(110, 131);
+            this.buttonTrying.Name = "buttonTrying";
+            this.buttonTrying.Size = new System.Drawing.Size(175, 49);
+            this.buttonTrying.TabIndex = 10;
+            this.buttonTrying.Text = "button1";
+            this.buttonTrying.UseVisualStyleBackColor = true;
+            this.buttonTrying.Click += new System.EventHandler(this.buttonTrying_Click);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,6 +282,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBoxNames);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Correl v1.1";
@@ -307,6 +321,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.PictureBox pictureBoxWarning;
         private System.Windows.Forms.TextBox textBoxFileVerify;
+        private System.Windows.Forms.Button buttonTrying;
     }
 }
 

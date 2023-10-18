@@ -5,6 +5,8 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
+using NPOI.XSSF.UserModel;
+using NPOI.SS.UserModel;
 
 namespace EditCorrel
 {
@@ -12,7 +14,9 @@ namespace EditCorrel
     {
         string originalCorrel = string.Empty;
         string tempCorrel = string.Empty;
+        string newCorrel = string.Empty;
         string line = string.Empty;
+        int count = 0;
         XmlDocument myDoc = new XmlDocument();
 
         public formMain()
@@ -23,7 +27,7 @@ namespace EditCorrel
 
         public void settingTextsBoxAndComboBox()
         {
-            textBoxFileVerify.TextAlign = HorizontalAlignment.Center;
+            textBoxFileVerify.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             textBoxFileVerify.ReadOnly = true;
             textBoxCorrelDir.ReadOnly = true;
             textBoxFreqFileDir.ReadOnly = true;
@@ -206,7 +210,7 @@ namespace EditCorrel
 
                     using (var reader = new StreamReader(tempCorrel))
                     {
-                        using (var writer = new StreamWriter(originalCorrel + "_new_OK.correl"))
+                        using (var writer = new StreamWriter(newCorrel))
                         {
                             myDoc.Load(new StreamReader(tempCorrel));
 
@@ -256,7 +260,7 @@ namespace EditCorrel
             {
                 using (var readerN = new StreamReader(tempCorrel))
                 {
-                    using (var writerN = new StreamWriter(originalCorrel + ".correl"))
+                    using (var writerN = new StreamWriter(newCorrel))
                     {
                         myDoc = new XmlDocument();
                         myDoc.Load(new StreamReader(tempCorrel));
@@ -314,7 +318,7 @@ namespace EditCorrel
             myDoc = null;
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            File.Copy(originalCorrel + "_new_OK.correl", tempCorrel, true);
+            File.Copy(newCorrel, tempCorrel, true);
             //  File.Delete(tempCorrel);
         }
 
@@ -337,6 +341,7 @@ namespace EditCorrel
                     textBoxCorrelDir.Text = openFileDialog1.FileName;
                     originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
                     tempCorrel = originalCorrel + "_temporary.correl";
+                    newCorrel = originalCorrel + "_new_OK.correl";
                     File.Copy(originalCorrel + ".correl", tempCorrel, true);
                 }
                 return true;
@@ -373,6 +378,8 @@ namespace EditCorrel
 
         public DataTable READExcel(string strFilePath)
         {
+
+
             DataTable dt = new DataTable();
             int indexExcel = 0;
 
@@ -453,7 +460,8 @@ namespace EditCorrel
             Image gifImage = Image.FromFile(caminhoDoGIF);
             pictureBoxWarning.Image = gifImage;
 
-            //if (textBoxFreqFileDir.Text == "")
+
+            if (textBoxFreqFileDir.Text == "")
             {
                 openFileDialog2.Filter = "Excel Files| *.xls; *.xlsx; *.xlsm|All files (*.*)|*.*";
                 if (openFileDialog2.ShowDialog() == DialogResult.OK)
@@ -461,6 +469,9 @@ namespace EditCorrel
             }
             try
             {
+                if (count == 0)
+                    editingExcel();
+
                 DataTable dt = READExcel(textBoxFreqFileDir.Text);
                 int countR = dataGridViewCorrel.Rows.Count;
                 double Ll = 0.0;
@@ -483,10 +494,12 @@ namespace EditCorrel
                     }
                 }
                 pictureBoxWarning.Image = Resources.Done;
+                count++;
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                MessageBox.Show(e + "");
                 return false;
             }
         }
@@ -499,6 +512,59 @@ namespace EditCorrel
 
                 if (textBoxFreqFileDir.Text != "")
                     importingExcel();
+            }
+        }
+
+        private void buttonTrying_Click(object sender, EventArgs e)
+        {
+            editingExcel();
+        }
+
+        static void AddCell(IRow row, int columnIndex, string value)
+        {
+            ICell cell = row.CreateCell(columnIndex);
+            cell.SetCellValue(value);
+        }
+
+        private bool editingExcel()
+        {
+            try
+            {
+                string filePath = textBoxFreqFileDir.Text;
+                using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite))
+                {
+                    XSSFWorkbook workbook = new XSSFWorkbook(fs);
+
+                    for (int sheetIndex = 0; sheetIndex < 3; sheetIndex++)
+                    {
+                        ISheet sheet = workbook.GetSheetAt(sheetIndex);
+                        IRow newRow = sheet.CreateRow(0);
+
+                        AddCell(newRow, 0, "amplitude");
+                        AddCell(newRow, 1, "cdg");
+                        AddCell(newRow, 2, "freq");
+                        AddCell(newRow, 3, "Ll");
+                        AddCell(newRow, 4, "Hl");
+                        AddCell(newRow, 5, "nsei");
+                        AddCell(newRow, 6, "produto");
+                        AddCell(newRow, 7, "*");
+                        AddCell(newRow, 8, "-");
+                        AddCell(newRow, 9, "+");
+                        AddCell(newRow, 10, "sla");
+                        AddCell(newRow, 11, "obs");
+                        AddCell(newRow, 12, "false");
+                    }
+                    using (FileStream fsWrite = new FileStream(filePath, FileMode.Create))
+                    {
+                        workbook.Write(fsWrite);
+                    }
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e + "");
+                return false;
             }
         }
     }
