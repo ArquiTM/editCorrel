@@ -17,10 +17,12 @@ namespace EditCorrel
         string newCorrel = string.Empty;
         string line = string.Empty;
         int countXlsx = 0;
+
         XmlDocument myDoc = new XmlDocument();
 
         public formMain()
         {
+            changeLineCorrel();
             InitializeComponent();
             settingTextsBoxAndComboBox();
         }
@@ -70,6 +72,27 @@ namespace EditCorrel
             return false;
         }
 
+        private void changeLineCorrel()
+        {
+            string directoryPath = @"C:\Projetos\EditCorrel\EditCorrel\bin\Debug\correl";
+            string fileExtension = ".correl";
+            string originalXmlString = "<CorrelationData xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.motorolamobility.com/globaltest/nextest2010/correlation\">";
+            string replacementXmlString = "<CorrelationData>";
+            string[] files = Directory.GetFiles(directoryPath, "*" + fileExtension);
+
+            foreach (string filePath in files)
+            {
+                try
+                {
+                    string xmlContent = File.ReadAllText(filePath);
+                    xmlContent = xmlContent.Replace(originalXmlString, replacementXmlString);
+                    File.WriteAllText(filePath, xmlContent);
+                }
+                catch
+                { }
+            }
+        }
+
         private void getFile()
         {
             bool result = OpenFile();
@@ -103,7 +126,6 @@ namespace EditCorrel
                 int countLine = 0;
 
                 myDoc = new XmlDocument();
-
                 string file_name = textBoxCorrelDir.Text;
                 myDoc.Load(new StreamReader(file_name));
 
@@ -131,6 +153,7 @@ namespace EditCorrel
 
                                 else
                                     vectLine[0] = "00" + vectLine[0];
+
 
                                 dataGridViewCorrel.Rows.Add(vectLine[0], vectLine[1]);
                             }
