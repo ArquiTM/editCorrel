@@ -51,7 +51,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxWarning = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.buttonTrying = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCorrel)).BeginInit();
             this.groupBoxNames.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -103,7 +102,6 @@
             // 
             // groupBoxNames
             // 
-            this.groupBoxNames.Controls.Add(this.buttonTrying);
             this.groupBoxNames.Controls.Add(this.textBoxFileVerify);
             this.groupBoxNames.Controls.Add(this.labelName);
             this.groupBoxNames.Controls.Add(this.comboBoxNames);
@@ -260,16 +258,6 @@
             this.pictureBoxWarning.TabIndex = 12;
             this.pictureBoxWarning.TabStop = false;
             // 
-            // buttonTrying
-            // 
-            this.buttonTrying.Location = new System.Drawing.Point(110, 131);
-            this.buttonTrying.Name = "buttonTrying";
-            this.buttonTrying.Size = new System.Drawing.Size(175, 49);
-            this.buttonTrying.TabIndex = 10;
-            this.buttonTrying.Text = "button1";
-            this.buttonTrying.UseVisualStyleBackColor = true;
-            this.buttonTrying.Click += new System.EventHandler(this.buttonTrying_Click);
-            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,7 +309,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.PictureBox pictureBoxWarning;
         private System.Windows.Forms.TextBox textBoxFileVerify;
-        private System.Windows.Forms.Button buttonTrying;
     }
 }
 

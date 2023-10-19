@@ -16,7 +16,7 @@ namespace EditCorrel
         string tempCorrel = string.Empty;
         string newCorrel = string.Empty;
         string line = string.Empty;
-        int count = 0;
+        int countXlsx = 0;
         XmlDocument myDoc = new XmlDocument();
 
         public formMain()
@@ -175,22 +175,19 @@ namespace EditCorrel
 
         private void buttonGravar_Click(object sender, EventArgs e)
         {
-            bool deleteNNF = false;
-            bool changeFNF = false;
-            deleteNNF = deleteNamesNewFile();
-            changeFNF = changeFreqNewFile();
-
-            if (deleteNNF)
+            if (deleteNamesNewFile())
             {
                 copyNewtoTemp();
-                if (changeFNF)
+                if (changeFreqNewFile())
                 {
                     copyNewtoTemp();
+                    File.Delete(tempCorrel);
                     FormExportOk formEOk = new FormExportOk();
                     formEOk.Show();
                 }
             }
         }
+
         private bool deleteNamesNewFile()
         {
             if (originalCorrel == string.Empty)
@@ -203,15 +200,13 @@ namespace EditCorrel
                 try
                 {
                     if (!File.Exists(tempCorrel))
-                    {
-                        string sourcefile = originalCorrel + ".correl";
-                        File.Copy(sourcefile, tempCorrel);
-                    }
+                        File.Copy(newCorrel, tempCorrel);
 
                     using (var reader = new StreamReader(tempCorrel))
                     {
                         using (var writer = new StreamWriter(newCorrel))
                         {
+                            myDoc = new XmlDocument();
                             myDoc.Load(new StreamReader(tempCorrel));
 
                             while ((line = reader.ReadLine()) != null)
@@ -258,6 +253,9 @@ namespace EditCorrel
         {
             try
             {
+                if (!File.Exists(tempCorrel))
+                    File.Copy(newCorrel, tempCorrel);
+
                 using (var readerN = new StreamReader(tempCorrel))
                 {
                     using (var writerN = new StreamWriter(newCorrel))
@@ -319,7 +317,6 @@ namespace EditCorrel
             GC.Collect();
             GC.WaitForPendingFinalizers();
             File.Copy(newCorrel, tempCorrel, true);
-            //  File.Delete(tempCorrel);
         }
 
         private void buttonOpenFile_Click(object sender, EventArgs e)
@@ -343,6 +340,7 @@ namespace EditCorrel
                     tempCorrel = originalCorrel + "_temporary.correl";
                     newCorrel = originalCorrel + "_new_OK.correl";
                     File.Copy(originalCorrel + ".correl", tempCorrel, true);
+                    File.Copy(originalCorrel + ".correl", newCorrel, true);
                 }
                 return true;
             }
@@ -378,8 +376,6 @@ namespace EditCorrel
 
         public DataTable READExcel(string strFilePath)
         {
-
-
             DataTable dt = new DataTable();
             int indexExcel = 0;
 
@@ -459,7 +455,7 @@ namespace EditCorrel
             string caminhoDoGIF = (@"C:\Projetos\EditCorrel\EditCorrel\img\loadingGif.gif");
             Image gifImage = Image.FromFile(caminhoDoGIF);
             pictureBoxWarning.Image = gifImage;
-
+            disableButtons();
 
             if (textBoxFreqFileDir.Text == "")
             {
@@ -469,7 +465,7 @@ namespace EditCorrel
             }
             try
             {
-                if (count == 0)
+                if (countXlsx == 0)
                     editingExcel();
 
                 DataTable dt = READExcel(textBoxFreqFileDir.Text);
@@ -485,6 +481,7 @@ namespace EditCorrel
                     {
                         if (row[2].ToString().Contains(dataGridViewCorrel.Rows[i].Cells[0].Value.ToString()) && row[2].ToString().Contains("_AMP_"))
                         {
+                            int lineDGV = Convert.ToInt32(dataGridViewCorrel.Rows[i].Cells[0].Value);
                             Ll = Convert.ToDouble(row[3]);
                             Ul = Convert.ToDouble(row[4]);
                             average = (Ll + Ul) / 2;
@@ -494,7 +491,8 @@ namespace EditCorrel
                     }
                 }
                 pictureBoxWarning.Image = Resources.Done;
-                count++;
+                enableButtons();
+                countXlsx++;
                 return true;
             }
             catch (Exception e)
@@ -515,11 +513,6 @@ namespace EditCorrel
             }
         }
 
-        private void buttonTrying_Click(object sender, EventArgs e)
-        {
-            editingExcel();
-        }
-
         static void AddCell(IRow row, int columnIndex, string value)
         {
             ICell cell = row.CreateCell(columnIndex);
@@ -538,6 +531,8 @@ namespace EditCorrel
                     for (int sheetIndex = 0; sheetIndex < 3; sheetIndex++)
                     {
                         ISheet sheet = workbook.GetSheetAt(sheetIndex);
+                        sheet.ShiftRows(0, sheet.LastRowNum, 1);
+
                         IRow newRow = sheet.CreateRow(0);
 
                         AddCell(newRow, 0, "amplitude");
