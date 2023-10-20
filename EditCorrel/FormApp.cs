@@ -22,14 +22,13 @@ namespace EditCorrel
 
         public formMain()
         {
-            changeLineCorrel();
             InitializeComponent();
             settingTextsBoxAndComboBox();
+            changeLineCorrel();
         }
 
         public void settingTextsBoxAndComboBox()
         {
-            textBoxFileVerify.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             textBoxFileVerify.ReadOnly = true;
             textBoxCorrelDir.ReadOnly = true;
             textBoxFreqFileDir.ReadOnly = true;
@@ -74,6 +73,9 @@ namespace EditCorrel
 
         private void changeLineCorrel()
         {
+            if (!Directory.Exists(@"correl"))
+                Directory.CreateDirectory(@"correl");
+
             string directoryPath = @".\correl";
             string fileExtension = ".correl";
             string originalXmlString = "<CorrelationData xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.motorolamobility.com/globaltest/nextest2010/correlation\">";

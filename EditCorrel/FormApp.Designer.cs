@@ -130,6 +130,7 @@
             this.textBoxFileVerify.Size = new System.Drawing.Size(279, 38);
             this.textBoxFileVerify.TabIndex = 9;
             this.textBoxFileVerify.Text = "File Verify";
+            this.textBoxFileVerify.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelName
             // 
