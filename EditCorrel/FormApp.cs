@@ -23,8 +23,7 @@ namespace EditCorrel
         public formMain()
         {
             InitializeComponent();
-            settingTextsBoxAndComboBox();
-            changeLineCorrel();
+            settingTextsBoxAndComboBox();         
         }
 
         public void settingTextsBoxAndComboBox()
@@ -346,6 +345,8 @@ namespace EditCorrel
 
         private void buttonOpenFile_Click(object sender, EventArgs e)
         {
+            changeLineCorrel();
+
             bool result = false;
             result = selectingCorrel();
 
