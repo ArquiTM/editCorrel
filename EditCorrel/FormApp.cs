@@ -74,7 +74,7 @@ namespace EditCorrel
 
         private void changeLineCorrel()
         {
-            string directoryPath = @"C:\Projetos\EditCorrel\EditCorrel\bin\Debug\correl";
+            string directoryPath = @".\correl";
             string fileExtension = ".correl";
             string originalXmlString = "<CorrelationData xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.motorolamobility.com/globaltest/nextest2010/correlation\">";
             string replacementXmlString = "<CorrelationData>";
@@ -475,9 +475,7 @@ namespace EditCorrel
 
         private bool importingExcel()
         {
-            string caminhoDoGIF = (@"C:\Projetos\EditCorrel\EditCorrel\img\loadingGif.gif");
-            Image gifImage = Image.FromFile(caminhoDoGIF);
-            pictureBoxWarning.Image = gifImage;
+            pictureBoxWarning.Image = Resources.loadingGif;
             disableButtons();
 
             if (textBoxFreqFileDir.Text == "")
