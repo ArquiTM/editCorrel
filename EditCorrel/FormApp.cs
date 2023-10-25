@@ -26,7 +26,7 @@ namespace EditCorrel
 			settingTextsBoxAndComboBox();
 		}
 
-		public void settingTextsBoxAndComboBox()
+		public void settingTextsBoxAndComboBox()//Set textBoxs and comboBox to only read
 		{
 			textBoxFileVerify.ReadOnly = true;
 			textBoxCorrelDir.ReadOnly = true;
@@ -35,7 +35,7 @@ namespace EditCorrel
 			buttonSetKey.Enabled = false;
 		}
 
-		public bool OpenFile()
+		public bool OpenFile()//Fill comboBox
 		{
 			try
 			{
@@ -71,7 +71,7 @@ namespace EditCorrel
 			return false;
 		}
 
-		private void changeLineCorrel()
+		private void changeLineCorrel()//Remove a node part of correl file
 		{
 			if (!Directory.Exists(@"correl"))
 				Directory.CreateDirectory(@"correl");
@@ -95,7 +95,7 @@ namespace EditCorrel
 			}
 		}
 
-		private void reWriteLineCorrel()
+		private void reWriteLineCorrel()//Insert a node part of correl
 		{
 			if (!Directory.Exists(@"correl"))
 				Directory.CreateDirectory(@"correl");
@@ -119,7 +119,7 @@ namespace EditCorrel
 			}
 		}
 
-		private void getFile()
+		private void getFile()//Import correl
 		{
 			bool result = OpenFile();
 
@@ -137,7 +137,7 @@ namespace EditCorrel
 			}
 		}
 
-		private void viewDataGridView()
+		private void viewDataGridView()//Fill Data Grid View with values
 		{
 			dataGridViewCorrel.Rows.Clear();
 			if (comboBoxNames.Text == "")
@@ -189,12 +189,12 @@ namespace EditCorrel
 			}
 		}
 
-		private void buttonDelete_Click(object sender, EventArgs e)
+		private void buttonDelete_Click(object sender, EventArgs e) //Delete test from correl file
 		{
 			deleteLineComboBox();
 		}
 
-		private void deleteLineComboBox()
+		private void deleteLineComboBox()//Delete the test of Combo Box
 		{
 			if (comboBoxNames.Text == "")
 				MessageBox.Show("Não foi selecionado nenhum teste!!!", "ComboBox Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -222,7 +222,7 @@ namespace EditCorrel
 			}
 		}
 
-		private void buttonGravar_Click(object sender, EventArgs e)
+		private void buttonGravar_Click(object sender, EventArgs e)//Save the new correl
 		{
 			if (deleteNamesNewFile())
 			{
@@ -238,7 +238,7 @@ namespace EditCorrel
 			}
 		}
 
-		private bool deleteNamesNewFile()
+		private bool deleteNamesNewFile()//Delete the test node from correl file
 		{
 			if (originalCorrel == string.Empty)
 			{
@@ -299,7 +299,7 @@ namespace EditCorrel
 				}
 			}
 		}
-		private bool changeFreqNewFile()
+		private bool changeFreqNewFile()//Change the freq of new correl file
 		{
 			try
 			{
@@ -361,7 +361,7 @@ namespace EditCorrel
 				return false;
 			}
 		}
-		private void copyNewtoTemp()
+		private void copyNewtoTemp()//Copy new file to temp file
 		{
 			myDoc = null;
 			GC.Collect();
@@ -369,7 +369,7 @@ namespace EditCorrel
 			File.Copy(newCorrel, tempCorrel, true);
 		}
 
-		private void buttonOpenFile_Click(object sender, EventArgs e)
+		private void buttonOpenFile_Click(object sender, EventArgs e)//Button to open the correl
 		{
 			changeLineCorrel();
 
@@ -380,7 +380,7 @@ namespace EditCorrel
 				getFile();
 		}
 
-		private bool selectingCorrel()
+		private bool selectingCorrel()//Select the correl
 		{
 			try
 			{
@@ -402,31 +402,7 @@ namespace EditCorrel
 			}
 		}
 
-		public DataTable ConvertCSVtoDataTable(string strFilePath)
-		{
-			DataTable dt = new DataTable();
-			using (StreamReader sr = new StreamReader(strFilePath))
-			{
-				string[] headers = sr.ReadLine().Split(',');
-				foreach (string header in headers)
-				{
-					dt.Columns.Add(header);
-				}
-				while (!sr.EndOfStream)
-				{
-					string[] rows = sr.ReadLine().Split(',');
-					DataRow dr = dt.NewRow();
-					for (int i = 0; i < headers.Length; i++)
-					{
-						dr[i] = rows[i];
-					}
-					dt.Rows.Add(dr);
-				}
-			}
-			return dt;
-		}
-
-		public DataTable READExcel(string strFilePath)
+		public DataTable READExcel(string strFilePath)//Read the XLSX file
 		{
 			DataTable dt = new DataTable();
 			int indexExcel = 0;
@@ -477,7 +453,7 @@ namespace EditCorrel
 			return dt;
 		}
 
-		private void buttonOpenFreqFile_Click(object sender, EventArgs e)
+		private void buttonOpenFreqFile_Click(object sender, EventArgs e)//Import data from XSLX
 		{
 			disableButtons();
 			bool result = false;
@@ -504,7 +480,7 @@ namespace EditCorrel
 			buttonSetKey.Enabled = false;
 		}
 
-		private bool importingExcel()
+		private bool importingExcel() //Import the XLSX to application
 		{
 			pictureBoxWarning.Image = Resources.loadingGif;
 			disableButtons();
@@ -565,13 +541,13 @@ namespace EditCorrel
 			}
 		}
 
-		static void AddCell(IRow row, int columnIndex, string value)
+		static void AddCell(IRow row, int columnIndex, string value)//Create new line
 		{
 			ICell cell = row.CreateCell(columnIndex);
 			cell.SetCellValue(value);
 		}
 
-		private bool editingExcel()
+		private bool editingExcel()//Change the XLSX and insert the new line
 		{
 			try
 			{
