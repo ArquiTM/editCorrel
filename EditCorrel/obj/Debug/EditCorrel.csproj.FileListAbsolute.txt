@@ -157,6 +157,7 @@ C:\Projetos\editCorrel\EditCorrel\bin\Debug\System.Security.Cryptography.Xml.xml
 C:\Projetos\editCorrel\EditCorrel\bin\Debug\System.Security.Permissions.xml
 C:\Projetos\editCorrel\EditCorrel\bin\Debug\System.Security.Principal.Windows.xml
 C:\Projetos\editCorrel\EditCorrel\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\Projetos\editCorrel\EditCorrel\obj\Debug\EditCorrel.csprojAssemblyReference.cache
 C:\Projetos\editCorrel\EditCorrel\obj\Debug\EditCorrel.exe.config
 C:\Projetos\editCorrel\EditCorrel\obj\Debug\EditCorrel.formMain.resources
 C:\Projetos\editCorrel\EditCorrel\obj\Debug\EditCorrel.FormExportOk.resources

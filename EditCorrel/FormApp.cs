@@ -492,39 +492,48 @@ namespace EditCorrel
             }
             try
             {
-                if (countXlsx == 0)
-                    editingExcel();
-
-                DataTable dt = READExcel(textBoxFreqFileDir.Text);
-                int countR = dataGridViewCorrel.Rows.Count;
-                double Ll = 0.0;
-                double Ul = 0.0;
-                double average = 0.0;
-
-                for (int i = 0; i < countR; i++)
+                if (textBoxFreqFileDir.Text != "")
                 {
-                    Application.DoEvents();
-                    foreach (DataRow row in dt.Rows)
+                    if (countXlsx == 0)
+                        editingExcel();
+
+                    DataTable dt = READExcel(textBoxFreqFileDir.Text);
+                    int countR = dataGridViewCorrel.Rows.Count;
+                    double Ll = 0.0;
+                    double Ul = 0.0;
+                    double average = 0.0;
+
+                    for (int i = 0; i < countR; i++)
                     {
-                        if (row[2].ToString().Contains(dataGridViewCorrel.Rows[i].Cells[0].Value.ToString()) && row[2].ToString().Contains("_AMP_"))
-                        {
-                            int lineDGV = Convert.ToInt32(dataGridViewCorrel.Rows[i].Cells[0].Value);
-                            Ll = Convert.ToDouble(row[3]);
-                            Ul = Convert.ToDouble(row[4]);
-                            average = (Ll + Ul) / 2;
-                            dataGridViewCorrel.Rows[i].Cells[2].Value = average.ToString("F4");
-                        }
                         Application.DoEvents();
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            if (row[2].ToString().Contains(dataGridViewCorrel.Rows[i].Cells[0].Value.ToString()) && row[2].ToString().Contains("_AMP_"))
+                            {
+                                int lineDGV = Convert.ToInt32(dataGridViewCorrel.Rows[i].Cells[0].Value);
+                                Ll = Convert.ToDouble(row[3]);
+                                Ul = Convert.ToDouble(row[4]);
+                                average = (Ll + Ul) / 2;
+                                dataGridViewCorrel.Rows[i].Cells[2].Value = average.ToString("F4");
+                            }
+                            Application.DoEvents();
+                        }
                     }
+                    pictureBoxWarning.Image = Resources.Done;
+                    enableButtons();
+                    countXlsx++;
+                    return true;
                 }
-                pictureBoxWarning.Image = Resources.Done;
-                enableButtons();
-                countXlsx++;
-                return true;
+                else
+                {
+                    pictureBoxWarning.Image = null;
+                    enableButtons();
+                    return false;
+                }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e + "");
+                pictureBoxWarning.Image = null;
                 return false;
             }
         }
@@ -591,7 +600,6 @@ namespace EditCorrel
             }
             catch (Exception e)
             {
-                MessageBox.Show(e + "");
                 return false;
             }
         }
