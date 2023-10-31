@@ -39,7 +39,24 @@ namespace EditCorrel
         {
             try
             {
+                string directoryPath = @".\correl";
+
                 string file_name = textBoxCorrelDir.Text;
+                string[] vet = file_name.Split('\\');
+                int x = (vet.Length - 1);
+                string name = vet[x];
+
+                if (!Directory.Exists(@"correl"))
+                    Directory.CreateDirectory(@"correl");
+
+                if (Directory.GetFileSystemEntries(directoryPath).Length == 0)
+                {
+                    string fileToCopy = textBoxCorrelDir.Text;
+                    File.Copy(fileToCopy, directoryPath + "\\" + name);
+                }
+                changeLineCorrel();
+
+
 
                 if (file_name == string.Empty)
                     MessageBox.Show("Não foi selecionado nenhum arquivo para edição!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -65,7 +82,6 @@ namespace EditCorrel
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:" + ex.Message);
                 return false;
             }
             return false;
@@ -73,9 +89,6 @@ namespace EditCorrel
 
         private void changeLineCorrel()//Remove a node part of correl file
         {
-            if (!Directory.Exists(@"correl"))
-                Directory.CreateDirectory(@"correl");
-
             string directoryPath = @".\correl";
             string fileExtension = ".correl";
             string originalXmlString = "<CorrelationData xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.motorolamobility.com/globaltest/nextest2010/correlation\">";
@@ -370,8 +383,6 @@ namespace EditCorrel
 
         private void buttonOpenFile_Click(object sender, EventArgs e)//Button to open the correl
         {
-            changeLineCorrel();
-
             bool result = false;
             result = selectingCorrel();
 
