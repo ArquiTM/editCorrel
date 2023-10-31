@@ -10,8 +10,9 @@ using NPOI.SS.UserModel;
 
 namespace EditCorrel
 {
-    public partial class formMain : Form
+    public partial class FormApp : Form
     {
+        FileImport fI = new FileImport();
         string originalCorrel = string.Empty;
         string tempCorrel = string.Empty;
         string newCorrel = string.Empty;
@@ -20,7 +21,7 @@ namespace EditCorrel
 
         XmlDocument myDoc = new XmlDocument();
 
-        public formMain()
+        public FormApp()
         {
             InitializeComponent();
             settingTextsBoxAndComboBox();
@@ -39,48 +40,44 @@ namespace EditCorrel
         {
             try
             {
-                string directoryPath = @".\correl";
-
                 string file_name = textBoxCorrelDir.Text;
-                string[] vet = file_name.Split('\\');
-                int x = (vet.Length - 1);
-                string name = vet[x];
+                string correctDir = fI.CopyingFile(file_name);
+                textBoxCorrelDir.Text = correctDir;
 
-                if (!Directory.Exists(@"correl"))
-                    Directory.CreateDirectory(@"correl");
+                originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
+                tempCorrel = originalCorrel + "_temporary.correl";
+                newCorrel = originalCorrel + "_new_OK.correl";
+                File.Copy(originalCorrel + ".correl", tempCorrel, true);
+                File.Copy(originalCorrel + ".correl", newCorrel, true);
 
-                if (Directory.GetFileSystemEntries(directoryPath).Length == 0)
+                if (correctDir != "")
                 {
-                    string fileToCopy = textBoxCorrelDir.Text;
-                    File.Copy(fileToCopy, directoryPath + "\\" + name);
-                }
-                changeLineCorrel();
+                    changeLineCorrel();
 
+                    if (file_name == string.Empty)
+                        MessageBox.Show("Não foi selecionado nenhum arquivo para edição!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-
-                if (file_name == string.Empty)
-                    MessageBox.Show("Não foi selecionado nenhum arquivo para edição!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                else
-                {
-                    comboBoxNames.Items.Clear();
-                    using (var reader = new StreamReader(file_name))
+                    else
                     {
-                        myDoc.Load(new StreamReader(file_name));
-                        while ((line = reader.ReadLine()) != null)
+                        comboBoxNames.Items.Clear();
+                        using (var reader = new StreamReader(textBoxCorrelDir.Text))
                         {
-                            if (line.Contains("<Name>"))
+                            myDoc.Load(new StreamReader(textBoxCorrelDir.Text));
+                            while ((line = reader.ReadLine()) != null)
                             {
-                                line = line.Replace("    <Name>", "");
-                                line = line.Replace("</Name>", "");
-                                comboBoxNames.Items.Add(line);
+                                if (line.Contains("<Name>"))
+                                {
+                                    line = line.Replace("    <Name>", "");
+                                    line = line.Replace("</Name>", "");
+                                    comboBoxNames.Items.Add(line);
+                                }
                             }
                         }
+                        return true;
                     }
-                    return true;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }
@@ -304,9 +301,8 @@ namespace EditCorrel
                     }
                     return true;
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show("Error:" + ex.Message);
                     return false;
                 }
             }
@@ -367,9 +363,8 @@ namespace EditCorrel
                 }
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Error:" + ex.Message);
                 return false;
             }
         }
@@ -396,14 +391,8 @@ namespace EditCorrel
             {
                 openFileDialog1.Filter = "Correl files (*.correl)|*.correl|All files (*.*)|*.*";
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {
                     textBoxCorrelDir.Text = openFileDialog1.FileName;
-                    originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
-                    tempCorrel = originalCorrel + "_temporary.correl";
-                    newCorrel = originalCorrel + "_new_OK.correl";
-                    File.Copy(originalCorrel + ".correl", tempCorrel, true);
-                    File.Copy(originalCorrel + ".correl", newCorrel, true);
-                }
+
                 return true;
             }
             catch
@@ -544,6 +533,7 @@ namespace EditCorrel
             }
             catch (Exception e)
             {
+                MessageBox.Show(e.Message + "");
                 pictureBoxWarning.Image = null;
                 return false;
             }
@@ -609,7 +599,7 @@ namespace EditCorrel
                 }
                 return true;
             }
-            catch (Exception e)
+            catch
             {
                 return false;
             }
@@ -619,6 +609,7 @@ namespace EditCorrel
         {
             reWriteLineCorrel();
             buttonSetKey.BackColor = Color.LimeGreen;
+            disableButtons();
         }
     }
 }
