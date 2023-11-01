@@ -10,6 +10,7 @@ namespace EditCorrel
         FileImport fI = new FileImport();
         EditNodeCorrel ENC = new EditNodeCorrel();
         XmlDocument myDoc = new XmlDocument();
+        string file_name = string.Empty;
 
         public bool OpenFile()//Fill comboBox
         {
@@ -19,7 +20,10 @@ namespace EditCorrel
                     Directory.CreateDirectory(@"correl");
 
                 string directoryPath = @".\correl";
-                string file_name = frmMain.textBoxCorrelDir.Text;
+                file_name = frmMain.textBoxCorrelDir.Text;
+
+                frmMain.originalDir = ChangeName(file_name);
+
                 string correctDir = string.Empty;
                 int fileDir = Directory.GetFiles(directoryPath).Length;
 
@@ -67,6 +71,13 @@ namespace EditCorrel
                 return false;
             }
             return false;
+        }
+
+        private string ChangeName(string finalDir)
+        {
+            string file_nameChanged = file_name;
+            file_nameChanged = file_nameChanged.Replace(".correl", "_new_OK.correl");
+            return file_nameChanged;
         }
     }
 }

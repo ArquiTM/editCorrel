@@ -13,6 +13,7 @@ namespace EditCorrel
         public string tempCorrel = string.Empty;
         public string newCorrel = string.Empty;
         public string line = string.Empty;
+        public string originalDir = string.Empty;
         XmlDocument myDoc = new XmlDocument();
 
         EditXlsx EdX;
@@ -114,6 +115,7 @@ namespace EditCorrel
             ENC.reWriteLineCorrel();
             buttonSetKey.BackColor = Color.LimeGreen;
             Uts.disableButtons();
+            File.Copy(newCorrel, originalDir);
         }
     }
 }
