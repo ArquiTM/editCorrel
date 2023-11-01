@@ -166,3 +166,4 @@ C:\Projetos\editCorrel\EditCorrel\obj\Debug\EditCorrel.csproj.CoreCompileInputs.
 C:\Projetos\editCorrel\EditCorrel\obj\Debug\EditCorrel.csproj.CopyComplete
 C:\Projetos\editCorrel\EditCorrel\obj\Debug\EditCorrel.exe
 C:\Projetos\editCorrel\EditCorrel\obj\Debug\EditCorrel.pdb
+C:\Projetos\editCorrel\EditCorrel\obj\Debug\EditCorrel.csprojAssemblyReference.cache

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -16,8 +12,8 @@ namespace EditCorrel
             FormApp frmMain = FormApp.getInstance();
             XmlDocument myDoc = new XmlDocument();
 
-
             frmMain.dataGridViewCorrel.Rows.Clear();
+
             if (frmMain.comboBoxNames.Text == "")
                 MessageBox.Show("Não foi selecionado nenhum arquivo!!!", "ComboBox Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else

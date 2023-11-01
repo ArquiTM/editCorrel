@@ -63,9 +63,8 @@ namespace EditCorrel
                 }
                 return true;
             }
-            catch(Exception e)
+            catch
             {
-                MessageBox.Show(e.Message + "");
                 return false;
             }
         }
@@ -122,9 +121,8 @@ namespace EditCorrel
                     return false;
                 }
             }
-            catch (Exception e)
+            catch
             {
-                MessageBox.Show(e.Message + "");
                 frmMain.pictureBoxWarning.Image = null;
                 return false;
             }

@@ -11,7 +11,6 @@ namespace EditCorrel
         FormApp frmMain = FormApp.getInstance();
         XmlDocument myDoc = new XmlDocument();
 
-
         public void deleteLineComboBox()//Delete the test of Combo Box
         {
             if (frmMain.comboBoxNames.Text == "")
@@ -160,6 +159,5 @@ namespace EditCorrel
                 return false;
             }
         }
-
     }
 }
