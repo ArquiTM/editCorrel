@@ -21,7 +21,9 @@ namespace EditCorrel
         FillDGV FDGV;
         OpenCorrel Oc;
         EditNodeCorrel ENC;
+        DeleteAndChangeFreq DaCF;
 
+        public object Convert { get; internal set; }
 
         public FormApp()
         {
@@ -38,6 +40,7 @@ namespace EditCorrel
             FDGV = new FillDGV();
             Oc = new OpenCorrel();
             ENC = new EditNodeCorrel();
+            DaCF = new DeleteAndChangeFreq();
         }
 
         public static FormApp getInstance()
@@ -50,43 +53,15 @@ namespace EditCorrel
 
         private void buttonDelete_Click(object sender, EventArgs e) //Delete test from correl file
         {
-            deleteLineComboBox();
-        }
-
-        private void deleteLineComboBox()//Delete the test of Combo Box
-        {
-            if (comboBoxNames.Text == "")
-                MessageBox.Show("Não foi selecionado nenhum teste!!!", "ComboBox Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            else
-            {
-                string nodesXml = string.Empty;
-
-                myDoc = new XmlDocument();
-                string file_name = textBoxCorrelDir.Text;
-                myDoc.Load(new StreamReader(file_name));
-
-                foreach (XmlNode node in myDoc.DocumentElement.ChildNodes)
-                {
-                    nodesXml = node.InnerXml;
-
-                    if (nodesXml.Contains(comboBoxNames.Text))
-                    {
-                        node.RemoveAll();
-                        comboBoxNames.Items.Remove(comboBoxNames.Text);
-                        comboBoxNames.Text = "";
-                        dataGridViewCorrel.Rows.Clear();
-                        return;
-                    }
-                }
-            }
+            DaCF.deleteLineComboBox();
         }
 
         private void buttonGravar_Click(object sender, EventArgs e)//Save the new correl
         {
-            if (deleteNamesNewFile())
+            if (DaCF.deleteNamesNewFile())
             {
                 copyNewtoTemp();
-                if (changeFreqNewFile())
+                if (DaCF.changeFreqNewFile())
                 {
                     copyNewtoTemp();
                     File.Delete(tempCorrel);
@@ -97,127 +72,6 @@ namespace EditCorrel
             }
         }
 
-        private bool deleteNamesNewFile()//Delete the test node from correl file
-        {
-            if (originalCorrel == string.Empty)
-            {
-                MessageBox.Show("Não há arquivo Correl selecionado!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            else
-            {
-                try
-                {
-                    if (!File.Exists(tempCorrel))
-                        File.Copy(newCorrel, tempCorrel);
-
-                    using (var reader = new StreamReader(tempCorrel))
-                    {
-                        using (var writer = new StreamWriter(newCorrel))
-                        {
-                            myDoc = new XmlDocument();
-                            myDoc.Load(new StreamReader(tempCorrel));
-
-                            while ((line = reader.ReadLine()) != null)
-                            {
-                                if (line.Contains("<Tests>"))
-                                    line = line.Replace(line, "");
-
-                                else if (line.Contains("<Name>"))
-                                {
-                                    line = line.Replace("    <Name>", "");
-                                    line = line.Replace("</Name>", "");
-
-                                    if (!comboBoxNames.Items.Contains(line))
-                                    {
-                                        while (!line.Contains(@"</Tests>"))
-                                        {
-                                            line = line.Replace(line, "");
-                                            writer.Write(line);
-                                            line = reader.ReadLine();
-                                        }
-                                    }
-                                    else
-                                    {
-                                        writer.WriteLine("  <Tests>");
-                                        line = "    <Name>" + line + "</Name>";
-                                        writer.WriteLine(line);
-                                    }
-                                }
-                                else
-                                    writer.WriteLine(line);
-                            }
-                        }
-                    }
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-        }
-        private bool changeFreqNewFile()//Change the freq of new correl file
-        {
-            try
-            {
-                if (!File.Exists(tempCorrel))
-                    File.Copy(newCorrel, tempCorrel);
-
-                using (var readerN = new StreamReader(tempCorrel))
-                {
-                    using (var writerN = new StreamWriter(newCorrel))
-                    {
-                        myDoc = new XmlDocument();
-                        myDoc.Load(new StreamReader(tempCorrel));
-                        int freqDataGridView = 0;
-                        int count = dataGridViewCorrel.Rows.Count;
-                        int rowsCount = Convert.ToInt32(dataGridViewCorrel.RowCount.ToString());
-                        int i = 0;
-
-                        while ((line = readerN.ReadLine()) != null)
-                        {
-                            if (line.Contains(comboBoxNames.Text))
-                            {
-                                writerN.WriteLine(line);
-                                while ((line = readerN.ReadLine()) != null && i < count)
-                                {
-                                    dataGridViewCorrel.Rows[i].Cells[1].Value = dataGridViewCorrel.Rows[i].Cells[2].Value;
-
-                                    freqDataGridView = Convert.ToInt32(dataGridViewCorrel.Rows[i].Cells[0].Value);
-                                    if (line.Contains($"<Frequency>{freqDataGridView.ToString()}"))
-                                    {
-                                        writerN.WriteLine(line);
-                                        line = readerN.ReadLine();
-                                        writerN.WriteLine($"      <Offset>{ dataGridViewCorrel.Rows[i].Cells[2].Value}</Offset>");
-                                        i++;
-                                    }
-                                    else
-                                        writerN.WriteLine(line);
-                                }
-                                writerN.WriteLine(line);
-
-                                if (comboBoxNames.SelectedIndex < comboBoxNames.Items.Count)
-                                {
-                                    while ((line = readerN.ReadLine()) != null)
-                                    {
-                                        writerN.WriteLine(line);
-                                    }
-                                }
-                            }
-                            else
-                                writerN.WriteLine(line);
-                        }
-                        writerN.WriteLine(line);
-                    }
-                }
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
         private void copyNewtoTemp()//Copy new file to temp file
         {
             myDoc = null;
@@ -234,22 +88,6 @@ namespace EditCorrel
             if (result)
                 Uts.getFileStatus();
         }
-
-        //private bool selectingCorrel()//Select the correl
-        //{
-        //    try
-        //    {
-        //        openFileDialog1.Filter = "Correl files (*.correl)|*.correl|All files (*.*)|*.*";
-        //        if (openFileDialog1.ShowDialog() == DialogResult.OK)
-        //            textBoxCorrelDir.Text = openFileDialog1.FileName;
-
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
 
         private void buttonOpenFreqFile_Click(object sender, EventArgs e)//Import data from XSLX
         {
