@@ -9,10 +9,10 @@ namespace EditCorrel
     public partial class FormApp : Form
     {
         private static FormApp INSTANCE = null;
-        string originalCorrel = string.Empty;
-        string tempCorrel = string.Empty;
-        string newCorrel = string.Empty;
-        string line = string.Empty;
+        public string originalCorrel = string.Empty;
+        public string tempCorrel = string.Empty;
+        public string newCorrel = string.Empty;
+        public string line = string.Empty;
         XmlDocument myDoc = new XmlDocument();
 
         EditXlsx EdX;
@@ -20,6 +20,7 @@ namespace EditCorrel
         Utils Uts;
         FillDGV FDGV;
         OpenCorrel Oc;
+        EditNodeCorrel ENC;
 
 
         public FormApp()
@@ -36,6 +37,7 @@ namespace EditCorrel
             Uts = new Utils();
             FDGV = new FillDGV();
             Oc = new OpenCorrel();
+            ENC = new EditNodeCorrel();
         }
 
         public static FormApp getInstance()
@@ -46,110 +48,7 @@ namespace EditCorrel
             return INSTANCE;
         }
 
-        //public bool OpenFile()//Fill comboBox
-        //{
-        //    try
-        //    {
-        //        if (!Directory.Exists(@"correl"))
-        //            Directory.CreateDirectory(@"correl");
-
-        //        string directoryPath = @".\correl";
-        //        string file_name = textBoxCorrelDir.Text;
-        //        string correctDir = string.Empty;
-        //        int fileDir = Directory.GetFiles(directoryPath).Length;
-
-        //        if (fileDir == 0)
-        //        {
-        //            correctDir = fI.CopyingFile(file_name);
-        //            textBoxCorrelDir.Text = correctDir;
-        //        }
-
-        //        originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
-        //        tempCorrel = originalCorrel + "_temporary.correl";
-        //        newCorrel = originalCorrel + "_new_OK.correl";
-        //        File.Copy(originalCorrel + ".correl", tempCorrel, true);
-        //        File.Copy(originalCorrel + ".correl", newCorrel, true);
-
-        //        if (correctDir != "" || fileDir > 0)
-        //        {
-        //            changeLineCorrel();
-
-        //            if (file_name == string.Empty)
-        //                MessageBox.Show("Não foi selecionado nenhum arquivo para edição!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-        //            else
-        //            {
-        //                comboBoxNames.Items.Clear();
-        //                using (var reader = new StreamReader(textBoxCorrelDir.Text))
-        //                {
-        //                    myDoc.Load(new StreamReader(textBoxCorrelDir.Text));
-        //                    while ((line = reader.ReadLine()) != null)
-        //                    {
-        //                        if (line.Contains("<Name>"))
-        //                        {
-        //                            line = line.Replace("    <Name>", "");
-        //                            line = line.Replace("</Name>", "");
-        //                            comboBoxNames.Items.Add(line);
-        //                        }
-        //                    }
-        //                }
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //    return false;
-        //}
-
-        public void changeLineCorrel()//Remove a node part of correl file
-        {
-            string directoryPath = @".\correl";
-            string fileExtension = ".correl";
-            string originalXmlString = "<CorrelationData xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.motorolamobility.com/globaltest/nextest2010/correlation\">";
-            string replacementXmlString = "<CorrelationData>";
-            string[] files = Directory.GetFiles(directoryPath, "*" + fileExtension);
-
-            foreach (string filePath in files)
-            {
-                try
-                {
-                    string xmlContent = File.ReadAllText(filePath);
-                    xmlContent = xmlContent.Replace(originalXmlString, replacementXmlString);
-                    File.WriteAllText(filePath, xmlContent);
-                }
-                catch
-                { }
-            }
-        }
-
-        private void reWriteLineCorrel()//Insert a node part of correl
-        {
-            if (!Directory.Exists(@"correl"))
-                Directory.CreateDirectory(@"correl");
-
-            string directoryPath = @".\correl";
-            string fileExtension = ".correl";
-            string replacementXmlString = "<CorrelationData xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.motorolamobility.com/globaltest/nextest2010/correlation\">";
-            string actualXmlString = "<CorrelationData>";
-            string[] files = Directory.GetFiles(directoryPath, "*" + fileExtension);
-
-            foreach (string filePath in files)
-            {
-                try
-                {
-                    string xmlContent = File.ReadAllText(filePath);
-                    xmlContent = xmlContent.Replace(actualXmlString, replacementXmlString);
-                    File.WriteAllText(filePath, xmlContent);
-                }
-                catch
-                { }
-            }
-        }
-
-        private void getFile()//Import correl
+        public void getFile()//Import correl
         {
             bool result = Oc.OpenFile();
 
@@ -392,7 +291,7 @@ namespace EditCorrel
 
         private void buttonSetKey_Click(object sender, EventArgs e)
         {
-            reWriteLineCorrel();
+            ENC.reWriteLineCorrel();
             buttonSetKey.BackColor = Color.LimeGreen;
             Uts.disableButtons();
         }

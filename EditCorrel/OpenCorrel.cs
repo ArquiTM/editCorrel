@@ -9,10 +9,7 @@ namespace EditCorrel
     {
         FormApp frmMain = FormApp.getInstance();
         FileImport fI = new FileImport();
-        string originalCorrel = string.Empty;
-        string tempCorrel = string.Empty;
-        string newCorrel = string.Empty;
-        string line = string.Empty;
+        EditNodeCorrel ENC = new EditNodeCorrel();
         XmlDocument myDoc = new XmlDocument();
 
         public bool OpenFile()//Fill comboBox
@@ -33,15 +30,15 @@ namespace EditCorrel
                     frmMain.textBoxCorrelDir.Text = correctDir;
                 }
 
-                originalCorrel = frmMain.textBoxCorrelDir.Text.Replace(".correl", "");
-                tempCorrel = originalCorrel + "_temporary.correl";
-                newCorrel = originalCorrel + "_new_OK.correl";
-                File.Copy(originalCorrel + ".correl", tempCorrel, true);
-                File.Copy(originalCorrel + ".correl", newCorrel, true);
+                frmMain.originalCorrel = frmMain.textBoxCorrelDir.Text.Replace(".correl", "");
+                frmMain.tempCorrel = frmMain.originalCorrel + "_temporary.correl";
+                frmMain.newCorrel = frmMain.originalCorrel + "_new_OK.correl";
+                File.Copy(frmMain.originalCorrel + ".correl", frmMain.tempCorrel, true);
+                File.Copy(frmMain.originalCorrel + ".correl", frmMain.newCorrel, true);
 
                 if (correctDir != "" || fileDir > 0)
                 {
-                    frmMain.changeLineCorrel();
+                    ENC.changeLineCorrel();
 
                     if (file_name == string.Empty)
                         MessageBox.Show("Não foi selecionado nenhum arquivo para edição!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -52,13 +49,13 @@ namespace EditCorrel
                         using (var reader = new StreamReader(frmMain.textBoxCorrelDir.Text))
                         {
                             myDoc.Load(new StreamReader(frmMain.textBoxCorrelDir.Text));
-                            while ((line = reader.ReadLine()) != null)
+                            while ((frmMain.line = reader.ReadLine()) != null)
                             {
-                                if (line.Contains("<Name>"))
+                                if (frmMain.line.Contains("<Name>"))
                                 {
-                                    line = line.Replace("    <Name>", "");
-                                    line = line.Replace("</Name>", "");
-                                    frmMain.comboBoxNames.Items.Add(line);
+                                    frmMain.line = frmMain.line.Replace("    <Name>", "");
+                                    frmMain.line = frmMain.line.Replace("</Name>", "");
+                                    frmMain.comboBoxNames.Items.Add(frmMain.line);
                                 }
                             }
                         }

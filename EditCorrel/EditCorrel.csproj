@@ -133,6 +133,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditNodeCorrel.cs" />
     <Compile Include="EditXlsx.cs" />
     <Compile Include="FileImport.cs" />
     <Compile Include="FillDGV.cs" />
