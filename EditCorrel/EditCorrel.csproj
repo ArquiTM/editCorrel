@@ -133,7 +133,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeleteAndChangeFreq.cs" />
+    <Compile Include="EditNodeCorrel.cs" />
+    <Compile Include="EditXlsx.cs" />
     <Compile Include="FileImport.cs" />
+    <Compile Include="FillDGV.cs" />
     <Compile Include="FormApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,8 +150,10 @@
     <Compile Include="FormExportOk.Designer.cs">
       <DependentUpon>FormExportOk.cs</DependentUpon>
     </Compile>
+    <Compile Include="OpenCorrel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="FormApp.resx">
       <DependentUpon>FormApp.cs</DependentUpon>
     </EmbeddedResource>
