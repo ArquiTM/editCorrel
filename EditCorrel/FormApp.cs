@@ -116,7 +116,7 @@ namespace EditCorrel
             buttonSetKey.BackColor = Color.LimeGreen;
             Uts.disableButtons();
             File.Copy(newCorrel, originalDir);
-
+            Directory.Delete(@".\correl",true);
             FormExportOk formEOk = new FormExportOk();
             formEOk.labelStatusFinishIcon.Text = "Arquivo finalizado com sucesso!!!";
             formEOk.Show();
