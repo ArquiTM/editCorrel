@@ -48,24 +48,6 @@ namespace EditCorrel
             return INSTANCE;
         }
 
-        public void getFile()//Import correl
-        {
-            bool result = Oc.OpenFile();
-
-            if (result)
-            {
-                textBoxFileVerify.Text = "File Import Successfully!!!";
-                textBoxFileVerify.BackColor = Color.LimeGreen;
-                textBoxFileVerify.ForeColor = Color.Black;
-            }
-            else
-            {
-                textBoxFileVerify.BackColor = Color.Red;
-                textBoxFileVerify.Text = "File Import Error!!!";
-                textBoxFileVerify.ForeColor = Color.White;
-            }
-        }
-
         private void buttonDelete_Click(object sender, EventArgs e) //Delete test from correl file
         {
             deleteLineComboBox();
@@ -247,27 +229,27 @@ namespace EditCorrel
         private void buttonOpenFile_Click(object sender, EventArgs e)//Button to open the correl
         {
             bool result = false;
-            result = selectingCorrel();
+            result = Uts.selectingCorrel();
 
             if (result)
-                getFile();
+                Uts.getFileStatus();
         }
 
-        private bool selectingCorrel()//Select the correl
-        {
-            try
-            {
-                openFileDialog1.Filter = "Correl files (*.correl)|*.correl|All files (*.*)|*.*";
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                    textBoxCorrelDir.Text = openFileDialog1.FileName;
+        //private bool selectingCorrel()//Select the correl
+        //{
+        //    try
+        //    {
+        //        openFileDialog1.Filter = "Correl files (*.correl)|*.correl|All files (*.*)|*.*";
+        //        if (openFileDialog1.ShowDialog() == DialogResult.OK)
+        //            textBoxCorrelDir.Text = openFileDialog1.FileName;
 
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        //        return true;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
 
         private void buttonOpenFreqFile_Click(object sender, EventArgs e)//Import data from XSLX
         {
