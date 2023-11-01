@@ -412,57 +412,6 @@ namespace EditCorrel
             }
         }
 
-        //public DataTable READExcel(string strFilePath)//Read the XLSX file
-        //{
-        //    DataTable dt = new DataTable();
-        //    int indexExcel = 0;
-
-        //    if (comboBoxNames.Text.Contains("LEFT"))
-        //        indexExcel = 1;
-
-        //    else if (comboBoxNames.Text.Contains("RIGHT"))
-        //        indexExcel = 2;
-
-        //    else if (comboBoxNames.Text.Contains("EARPIECE"))
-        //        indexExcel = 3;
-
-        //    if (indexExcel != 0)
-        //    {
-        //        Microsoft.Office.Interop.Excel.Application objXL = null;
-        //        Microsoft.Office.Interop.Excel.Workbook objWB = null;
-        //        objXL = new Microsoft.Office.Interop.Excel.Application();
-        //        objWB = objXL.Workbooks.Open(strFilePath);
-        //        Microsoft.Office.Interop.Excel.Worksheet objSHT = objWB.Worksheets[indexExcel];
-
-        //        int rows = objSHT.UsedRange.Rows.Count;
-        //        int cols = objSHT.UsedRange.Columns.Count;
-        //        int noofrow = 1;
-
-        //        for (int i = 1; i <= cols; i++)
-        //        {
-        //            string colname = objSHT.Cells[1, i].Text;
-        //            dt.Columns.Add(colname);
-        //            noofrow = 2;
-        //            Application.DoEvents();
-        //        }
-
-        //        for (int i = noofrow; i <= rows; i++)
-        //        {
-        //            DataRow dr = dt.NewRow();
-        //            for (int j = 1; j <= cols; j++)
-        //            {
-        //                dr[j - 1] = objSHT.Cells[i, j].Text;
-        //                Application.DoEvents();
-        //            }
-        //            dt.Rows.Add(dr);
-        //            Application.DoEvents();
-        //        }
-        //        objWB.Close();
-        //        objXL.Quit();
-        //    }
-        //    return dt;
-        //}
-
         private void buttonOpenFreqFile_Click(object sender, EventArgs e)//Import data from XSLX
         {
             Uts.disableButtons();
@@ -472,66 +421,6 @@ namespace EditCorrel
                 Uts.enableButtons();
         }
 
-        //private bool importingExcel() //Import the XLSX to application
-        //{
-        //    pictureBoxWarning.Image = Resources.loadingGif;
-        //    disableButtons();
-
-        //    if (textBoxFreqFileDir.Text == "")
-        //    {
-        //        openFileDialog2.Filter = "Excel Files| *.xls; *.xlsx; *.xlsm|All files (*.*)|*.*";
-        //        if (openFileDialog2.ShowDialog() == DialogResult.OK)
-        //            textBoxFreqFileDir.Text = openFileDialog2.FileName;
-        //    }
-        //    try
-        //    {
-        //        if (textBoxFreqFileDir.Text != "")
-        //        {
-        //            if (countXlsx == 0)
-        //                EdX.editingExcel(textBoxFreqFileDir.Text);
-
-        //            DataTable dt = READExcel(textBoxFreqFileDir.Text);
-        //            int countR = dataGridViewCorrel.Rows.Count;
-        //            double Ll = 0.0;
-        //            double Ul = 0.0;
-        //            double average = 0.0;
-
-        //            for (int i = 0; i < countR; i++)
-        //            {
-        //                Application.DoEvents();
-        //                foreach (DataRow row in dt.Rows)
-        //                {
-        //                    if (row[2].ToString().Contains(dataGridViewCorrel.Rows[i].Cells[0].Value.ToString()) && row[2].ToString().Contains("_AMP_"))
-        //                    {
-        //                        int lineDGV = Convert.ToInt32(dataGridViewCorrel.Rows[i].Cells[0].Value);
-        //                        Ll = Convert.ToDouble(row[3]);
-        //                        Ul = Convert.ToDouble(row[4]);
-        //                        average = (Ll + Ul) / 2;
-        //                        dataGridViewCorrel.Rows[i].Cells[2].Value = average.ToString("F4");
-        //                    }
-        //                    Application.DoEvents();
-        //                }
-        //            }
-        //            pictureBoxWarning.Image = Resources.Done;
-        //            enableButtons();
-        //            countXlsx++;
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            pictureBoxWarning.Image = null;
-        //            enableButtons();
-        //            return false;
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        MessageBox.Show(e.Message + "");
-        //        pictureBoxWarning.Image = null;
-        //        return false;
-        //    }
-        //}
-
         private void comboBoxNames_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxNames.Text != "")
@@ -539,7 +428,7 @@ namespace EditCorrel
                 viewDataGridView();
 
                 if (textBoxFreqFileDir.Text != "")
-                    EdX.editingExcel(textBoxFreqFileDir.Text);
+                    EdX.importingExcel(dataGridViewCorrel);
             }
         }
 
