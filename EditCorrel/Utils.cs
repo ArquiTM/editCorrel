@@ -11,8 +11,7 @@ namespace EditCorrel
             frmMain.buttonGravar.Enabled = true;
             frmMain.buttonDelete.Enabled = true;
             frmMain.buttonOpenFile.Enabled = true;
-            frmMain.buttonOpenFreqFile.Enabled = true;
-            frmMain.buttonSetKey.Enabled = true;
+            frmMain.buttonOpenFreqFile.Enabled = true;           
         }
 
         public void disableButtons()

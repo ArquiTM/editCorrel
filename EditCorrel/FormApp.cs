@@ -44,6 +44,10 @@ namespace EditCorrel
         {
             try
             {
+
+                if (!Directory.Exists(@"correl"))
+                    Directory.CreateDirectory(@"correl");
+
                 string directoryPath = @".\correl";
                 string file_name = textBoxCorrelDir.Text;
                 string correctDir = string.Empty;

@@ -17,9 +17,6 @@ namespace EditCorrel
                 string name = vet[x];
                 string correctDirectory = directoryPath + "\\" + name;
 
-                if (!Directory.Exists(@"correl"))
-                    Directory.CreateDirectory(@"correl");
-
                 if (!Directory.GetFileSystemEntries(directoryPath).Contains(".correl"))
                 {
                     string fileToCopy = directory;
