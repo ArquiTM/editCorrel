@@ -10,7 +10,6 @@ namespace EditCorrel
         {
             try
             {
-                FormApp frmApp = new FormApp();
                 string directoryPath = @".\correl";
                 string file_name = directory;
                 string[] vet = file_name.Split('\\');

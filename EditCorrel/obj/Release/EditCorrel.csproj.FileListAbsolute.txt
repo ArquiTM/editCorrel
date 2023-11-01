@@ -306,6 +306,7 @@ C:\Projetos\editCorrel\EditCorrel\bin\Release\System.Security.Permissions.xml
 C:\Projetos\editCorrel\EditCorrel\bin\Release\System.Security.Principal.Windows.xml
 C:\Projetos\editCorrel\EditCorrel\bin\Release\System.Text.Encoding.CodePages.xml
 C:\Projetos\editCorrel\EditCorrel\obj\Release\EditCorrel.exe.config
+C:\Projetos\editCorrel\EditCorrel\obj\Release\EditCorrel.FormApp.resources
 C:\Projetos\editCorrel\EditCorrel\obj\Release\EditCorrel.FormExportOk.resources
 C:\Projetos\editCorrel\EditCorrel\obj\Release\EditCorrel.Properties.Resources.resources
 C:\Projetos\editCorrel\EditCorrel\obj\Release\EditCorrel.csproj.GenerateResource.cache
@@ -313,5 +314,3 @@ C:\Projetos\editCorrel\EditCorrel\obj\Release\EditCorrel.csproj.CoreCompileInput
 C:\Projetos\editCorrel\EditCorrel\obj\Release\EditCorrel.csproj.CopyComplete
 C:\Projetos\editCorrel\EditCorrel\obj\Release\EditCorrel.exe
 C:\Projetos\editCorrel\EditCorrel\obj\Release\EditCorrel.pdb
-C:\Projetos\editCorrel\EditCorrel\obj\Release\EditCorrel.csprojAssemblyReference.cache
-C:\Projetos\editCorrel\EditCorrel\obj\Release\EditCorrel.FormApp.resources
