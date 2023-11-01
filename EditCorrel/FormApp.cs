@@ -19,6 +19,7 @@ namespace EditCorrel
         FileImport fI = new FileImport();
         Utils Uts;
         FillDGV FDGV;
+        OpenCorrel Oc;
 
 
         public FormApp()
@@ -34,6 +35,7 @@ namespace EditCorrel
             EdX = new EditXlsx();
             Uts = new Utils();
             FDGV = new FillDGV();
+            Oc = new OpenCorrel();
         }
 
         public static FormApp getInstance()
@@ -44,66 +46,65 @@ namespace EditCorrel
             return INSTANCE;
         }
 
-        public bool OpenFile()//Fill comboBox
-        {
-            try
-            {
+        //public bool OpenFile()//Fill comboBox
+        //{
+        //    try
+        //    {
+        //        if (!Directory.Exists(@"correl"))
+        //            Directory.CreateDirectory(@"correl");
 
-                if (!Directory.Exists(@"correl"))
-                    Directory.CreateDirectory(@"correl");
+        //        string directoryPath = @".\correl";
+        //        string file_name = textBoxCorrelDir.Text;
+        //        string correctDir = string.Empty;
+        //        int fileDir = Directory.GetFiles(directoryPath).Length;
 
-                string directoryPath = @".\correl";
-                string file_name = textBoxCorrelDir.Text;
-                string correctDir = string.Empty;
-                int fileDir = Directory.GetFiles(directoryPath).Length;
+        //        if (fileDir == 0)
+        //        {
+        //            correctDir = fI.CopyingFile(file_name);
+        //            textBoxCorrelDir.Text = correctDir;
+        //        }
 
-                if (fileDir == 0)
-                {
-                    correctDir = fI.CopyingFile(file_name);
-                    textBoxCorrelDir.Text = correctDir;
-                }
+        //        originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
+        //        tempCorrel = originalCorrel + "_temporary.correl";
+        //        newCorrel = originalCorrel + "_new_OK.correl";
+        //        File.Copy(originalCorrel + ".correl", tempCorrel, true);
+        //        File.Copy(originalCorrel + ".correl", newCorrel, true);
 
-                originalCorrel = textBoxCorrelDir.Text.Replace(".correl", "");
-                tempCorrel = originalCorrel + "_temporary.correl";
-                newCorrel = originalCorrel + "_new_OK.correl";
-                File.Copy(originalCorrel + ".correl", tempCorrel, true);
-                File.Copy(originalCorrel + ".correl", newCorrel, true);
+        //        if (correctDir != "" || fileDir > 0)
+        //        {
+        //            changeLineCorrel();
 
-                if (correctDir != "" || fileDir > 0)
-                {
-                    changeLineCorrel();
+        //            if (file_name == string.Empty)
+        //                MessageBox.Show("Não foi selecionado nenhum arquivo para edição!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                    if (file_name == string.Empty)
-                        MessageBox.Show("Não foi selecionado nenhum arquivo para edição!!!", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //            else
+        //            {
+        //                comboBoxNames.Items.Clear();
+        //                using (var reader = new StreamReader(textBoxCorrelDir.Text))
+        //                {
+        //                    myDoc.Load(new StreamReader(textBoxCorrelDir.Text));
+        //                    while ((line = reader.ReadLine()) != null)
+        //                    {
+        //                        if (line.Contains("<Name>"))
+        //                        {
+        //                            line = line.Replace("    <Name>", "");
+        //                            line = line.Replace("</Name>", "");
+        //                            comboBoxNames.Items.Add(line);
+        //                        }
+        //                    }
+        //                }
+        //                return true;
+        //            }
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //    return false;
+        //}
 
-                    else
-                    {
-                        comboBoxNames.Items.Clear();
-                        using (var reader = new StreamReader(textBoxCorrelDir.Text))
-                        {
-                            myDoc.Load(new StreamReader(textBoxCorrelDir.Text));
-                            while ((line = reader.ReadLine()) != null)
-                            {
-                                if (line.Contains("<Name>"))
-                                {
-                                    line = line.Replace("    <Name>", "");
-                                    line = line.Replace("</Name>", "");
-                                    comboBoxNames.Items.Add(line);
-                                }
-                            }
-                        }
-                        return true;
-                    }
-                }
-            }
-            catch
-            {
-                return false;
-            }
-            return false;
-        }
-
-        private void changeLineCorrel()//Remove a node part of correl file
+        public void changeLineCorrel()//Remove a node part of correl file
         {
             string directoryPath = @".\correl";
             string fileExtension = ".correl";
@@ -150,7 +151,7 @@ namespace EditCorrel
 
         private void getFile()//Import correl
         {
-            bool result = OpenFile();
+            bool result = Oc.OpenFile();
 
             if (result)
             {
