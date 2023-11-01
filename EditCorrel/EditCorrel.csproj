@@ -135,6 +135,7 @@
   <ItemGroup>
     <Compile Include="EditXlsx.cs" />
     <Compile Include="FileImport.cs" />
+    <Compile Include="FillDGV.cs" />
     <Compile Include="FormApp.cs">
       <SubType>Form</SubType>
     </Compile>
