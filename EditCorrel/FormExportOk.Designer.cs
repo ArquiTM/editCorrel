@@ -31,6 +31,7 @@
             this.buttonOkFinishIcon = new System.Windows.Forms.Button();
             this.pictureBoxSuccessfully = new System.Windows.Forms.PictureBox();
             this.labelStatusFinishIcon = new System.Windows.Forms.Label();
+            this.labelClickOk = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSuccessfully)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,9 +61,17 @@
             this.labelStatusFinishIcon.AutoSize = true;
             this.labelStatusFinishIcon.Location = new System.Drawing.Point(80, 41);
             this.labelStatusFinishIcon.Name = "labelStatusFinishIcon";
-            this.labelStatusFinishIcon.Size = new System.Drawing.Size(145, 13);
+            this.labelStatusFinishIcon.Size = new System.Drawing.Size(124, 13);
             this.labelStatusFinishIcon.TabIndex = 2;
-            this.labelStatusFinishIcon.Text = "Arquivo salvo com sucesso!!!";
+            this.labelStatusFinishIcon.Text = "File edited successfully!!!";
+            // 
+            // labelClickOk
+            // 
+            this.labelClickOk.AutoSize = true;
+            this.labelClickOk.Location = new System.Drawing.Point(80, 60);
+            this.labelClickOk.Name = "labelClickOk";
+            this.labelClickOk.Size = new System.Drawing.Size(0, 13);
+            this.labelClickOk.TabIndex = 3;
             // 
             // FormExportOk
             // 
@@ -71,6 +80,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(304, 122);
             this.ControlBox = false;
+            this.Controls.Add(this.labelClickOk);
             this.Controls.Add(this.labelStatusFinishIcon);
             this.Controls.Add(this.pictureBoxSuccessfully);
             this.Controls.Add(this.buttonOkFinishIcon);
@@ -89,5 +99,6 @@
         private System.Windows.Forms.Button buttonOkFinishIcon;
         private System.Windows.Forms.PictureBox pictureBoxSuccessfully;
         public System.Windows.Forms.Label labelStatusFinishIcon;
+        public System.Windows.Forms.Label labelClickOk;
     }
 }
