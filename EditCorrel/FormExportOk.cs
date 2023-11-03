@@ -12,7 +12,7 @@ namespace EditCorrel
 
         private void buttonOkFinishIcon_Click(object sender, EventArgs e)
         {
-            if (labelStatusFinishIcon.Text.Contains("finalizado"))
+            if (labelStatusFinishIcon.Text.Contains("Completed"))
                 Environment.Exit(0);
 
             this.Close();

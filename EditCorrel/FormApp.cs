@@ -14,8 +14,8 @@ namespace EditCorrel
         public string newCorrel = string.Empty;
         public string line = string.Empty;
         public string originalDir = string.Empty;
-        XmlDocument myDoc = new XmlDocument();
 
+        XmlDocument myDoc = new XmlDocument();
         EditXlsx EdX;
         FileImport fI = new FileImport();
         Utils Uts;
@@ -118,7 +118,8 @@ namespace EditCorrel
             File.Copy(newCorrel, originalDir);
             Directory.Delete(@".\correl",true);
             FormExportOk formEOk = new FormExportOk();
-            formEOk.labelStatusFinishIcon.Text = "Arquivo finalizado com sucesso!!!";
+            formEOk.labelStatusFinishIcon.Text = "File Completed Successfully!!!";
+            formEOk.labelClickOk.Text = "Click OK to close the program";
             formEOk.Show();
         }
     }
